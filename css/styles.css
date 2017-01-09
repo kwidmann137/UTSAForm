@@ -1,0 +1,140 @@
+body{
+	background-color: #F7F7F7;
+}
+
+.top-bar{
+	left: -50px;
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+}
+
+.menu-btn{
+	margin-left: 15px;
+}
+
+textarea{
+	resize: vertical;
+}
+
+.year-input{
+	max-width: 10%;
+}
+
+.review-period-section{
+	display: flex;
+	flex-wrap: wrap;
+	/*margin:15px 0px;*/
+}
+
+.review-period-label{
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.form{
+	margin-top: 25px;
+	margin-bottom: 150px;
+	border: 1px solid grey;
+	border-radius: 4px;
+	padding: 35px;
+	background-color: #fff;
+}
+
+.dateRangePicker{
+	float: right !important;
+}
+
+.rating-label{
+	float: left;
+	width: 100%;
+}
+
+.selected-rating, .selected-position-type{
+	background-color: #5cb85c;
+}
+
+.rating-btn:focus, .position-btn:focus{
+	background-color: #5cb85c;
+}
+
+.rating-btn{
+	width: 33%;
+	padding: 4px 7px !important;
+}
+
+.position-btn{
+	border-radius: 4px !important;
+}
+
+.btn-group{
+	width: 100%;
+}
+
+.left-btn{
+	border-radius: 4px 0px 0px 4px !important; 
+}
+
+.job-function{
+	margin-bottom: 25px;
+}
+
+.day, .prev, .next:hover{
+	cursor: pointer;
+}
+
+.incomplete{
+	border: 2px solid red !important;
+	/*border-color: red !important;*/
+}
+
+.section-close-btn{
+	font-size: 1.2em;
+	padding: 3px 8px;
+	margin-bottom: 15px;
+}
+
+.project{
+	margin-bottom: 25px;
+}
+
+.form-header{
+	margin-top: 50px;
+}
+
+.development-plan{
+	margin-bottom: 25px;
+}
+
+.attributes-container{
+	margin-top: 25px;
+}
+
+.attribute-label-div{
+	text-align: right;
+}
+
+.attribute, .supervisor-attribute{
+	margin: 5px 0px;
+}
+
+.attribute-glyph-div{
+	position: absolute;
+    top: 0;
+    right: -5px;
+}
+
+.attribute-glyph{
+	color: #5cb85c;
+	font-size: 1.2em;
+	z-index: 2;
+}
+
+.attribute-glyph:hover{
+	cursor: pointer;
+}
+
+.instruction{
+	color: #D9534F;
+	font-weight: bold;
+}
