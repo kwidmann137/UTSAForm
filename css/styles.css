@@ -1,12 +1,139 @@
+
+/*TUTORIAL MENU CSS*/
+.tutorial-side-menu{
+	position: fixed;
+	top: 0;
+	left: -350px;
+	width: 350px;
+	height: 100%;
+	background-color: grey;
+	z-index: 10;
+	padding: 50px 15px 15px 15px;
+}
+
+.active{
+	left: 0;
+}
+
+.tutorial-menu-close-btn{
+	position: absolute;
+	top: 0px;
+	right: 0;
+	margin: 5px;
+	height: 35px;
+	width: 35px;
+	padding: 0px;
+}
+
+.tutorial-menu-show-btn{
+	position: fixed;
+	top: 50px;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	z-index: 9;
+	padding: 0px;
+	display: none;
+}
+
+.close-icon{
+	color: white;
+	font-size: 2em !important;
+}
+
+.show-icon{
+	color: white;
+	font-size: 2em !important;
+}
+.tutorial-item-btn{
+	width: 90%;
+	margin: 5px 30px;
+}
+
+.fa-arrow-left, .fa-arrow-right{
+	color: green;
+	font-size: 6em !important;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1200;
+}
+
+.tutorial-info-box{
+	position: fixed;
+	top: 50px;
+	left: calc(50% - 300px);
+	width:600px;
+	/*height: 250px;*/
+	z-index: 8;
+	background-color: #fff;
+	padding: 10px;
+	border: 1px solid #DA615D;
+	border-radius: 5px;
+}
+
+.tutorial-background{
+	background-color: rgba(0,0,0,0.4);
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    z-index: 6;
+    display: none;
+}
+
+.tutorial-bar{
+	background-color: grey;
+    position: fixed;
+    top: 100%;
+    transform: translateY(-100%);
+    z-index: 11;
+    width: 100%;
+    display: none;
+    padding: 5px 15px !important;
+    margin: 0px !important;
+}
+
+.warning{
+	font-size: 2em;
+	color: red;
+	margin: auto
+}
+
+.modal-in{
+	z-index: 5 !important: 
+}
+
+#tutorial-close-btn, #tutorial-next-btn{
+	margin: 5px 15px;
+}
+
 body{
 	background-color: #F7F7F7;
 }
 
+.logo{
+	width: 50%;
+	margin: auto;
+}
+
+.page-header{
+	font-weight: bold;
+	font-size: 2.2em;
+}
+
+.makePDFModalHeader{
+	font-size: 2em;
+	color: red;
+}
+
 .top-bar{
-	left: -50px;
 	position: fixed;
-	z-index: 100;
+	z-index: 3;
 	width: 100%;
+	background-color: grey;
+	margin: 0px !important;
+	padding: 5px 20px;
 }
 
 .menu-btn{
@@ -17,14 +144,14 @@ textarea{
 	resize: vertical;
 }
 
-.year-input{
-	max-width: 10%;
+
+.error{
+	color: red !important;
 }
 
 .review-period-section{
 	display: flex;
 	flex-wrap: wrap;
-	/*margin:15px 0px;*/
 }
 
 .review-period-label{
@@ -39,6 +166,10 @@ textarea{
 	border-radius: 4px;
 	padding: 35px;
 	background-color: #fff;
+}
+
+.year-input{
+	max-width: 35%;
 }
 
 .dateRangePicker{
@@ -59,7 +190,7 @@ textarea{
 }
 
 .rating-btn{
-	width: 33%;
+	width: 20% !important;
 	padding: 4px 7px !important;
 }
 
@@ -138,3 +269,42 @@ textarea{
 	color: #D9534F;
 	font-weight: bold;
 }
+
+/*RAISED DIV CSS*/
+.raised-div
+{
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.animated {
+	-webkit-transition: height 0.2s;
+	-moz-transition: height 0.2s;
+	transition: height 0.2s;
+}
+/*.raised-div:before, .raised-div:after
+{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.raised-div:after
+{
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}*/

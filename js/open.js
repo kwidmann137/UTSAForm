@@ -3,7 +3,7 @@ function openFormData(){
     var formData = new FormData();
     formData.append('userfile', fileData);
     $.ajax({
-        url: 'php/upload.php',  //Server script to process data
+        url: 'php/open.php',  //Server script to process data
         type: 'POST',
         // Form data
         data: formData,
@@ -46,16 +46,16 @@ function fillInForm(data){
             for (var key in currFunction.textareas){
                 for( var textareaname in currFunction.textareas[key]){
                     var text = currFunction.textareas[key][textareaname];
-                    if(text !== 'none'){
+                    if(text !== ''/*none*/){
                         $('#'+textareaname).text(text);        
                     }
                 }
                 var rating = currFunction.selectedRating;
-                if(rating !== 'none'){
+                if(rating !== ''/*none*/){
                     $('.rating-btn[value='+rating+']', this).addClass('selected-rating');
                 }
-                currJobFunctionIndex++;
             }
+            currJobFunctionIndex++;
         });
     }
 
@@ -72,20 +72,20 @@ function fillInForm(data){
             for (var key in currProject.textareas){
                 for( var textareaname in currProject.textareas[key]){
                     var text = currProject.textareas[key][textareaname];
-                    if(text !== 'none'){
+                    if(text !== ''/*none*/){
                         $('#'+textareaname).text(text);        
                     }
                 }
                 var rating = currProject.selectedRating;
-                if(rating !== 'none'){
+                if(rating !== ''/*none*/){
                     $('.rating-btn[value='+rating+']', this).addClass('selected-rating');
                 }
                 var dueDate = currProject.dueDate;
-                if(dueDate !=='none'){
+                if(dueDate !==''/*none*/){
                     $('.project-due-date', this).val(dueDate);
                 }
-                currProjectIndex++;
             }
+            currProjectIndex++;
         });
     }
 
@@ -102,21 +102,21 @@ function fillInForm(data){
             for (var key in currPlan.textareas){
                 for( var textareaname in currPlan.textareas[key]){
                     var text = currPlan.textareas[key][textareaname];
-                    if(text !== 'none'){
+                    if(text !== ''/*none*/){
                         $('#'+textareaname).text(text);        
                     }
                 }
             }
             var dueDate = currPlan.dueDate;
-            if(dueDate !=='none'){
+            if(dueDate !==''/*none*/){
                 $('.development-plan-due-date', this).val(dueDate);
             }
             var startDate = currPlan.startDate;
-            if(startDate !=='none'){
+            if(startDate !==''/*none*/){
                 $('.development-plan-start-date', this).val(startDate);
             }
             var endDate = currPlan.endDate;
-            if(endDate !=='none'){
+            if(endDate !==''/*none*/){
                 $('.development-plan-end-date', this).val(endDate);
             }
             currPlanIndex++;
@@ -129,10 +129,10 @@ function fillInForm(data){
         var rat = formData.attributes[attribute].rating;
         var parent = $('.attribute:contains("'+attr+'")');
 
-        if(com !== 'none'){
+        if(com !== ''/*none*/){
             $('textarea', parent).val(com);
         }
-        if(rat !== 'none'){
+        if(rat !== ''/*none*/){
             $('.rating-btn[value="'+rat+'"]', parent).addClass('selected-rating');
         }
     }
@@ -143,10 +143,10 @@ function fillInForm(data){
         var rat = formData.supervisorAttributes[attribute].rating;
         var parent = $('.supervisor-attribute:contains("'+attr+'")');
 
-        if(com !== 'none'){
+        if(com !== ''/*none*/){
             $('textarea', parent).val(com);
         }
-        if(rat !== 'none'){
+        if(rat !== ''/*none*/){
             $('.rating-btn[value="'+rat+'"]', parent).addClass('selected-rating');
         }
     }
@@ -154,20 +154,56 @@ function fillInForm(data){
     var overallText = formData.overallRating.overallComment;
     var overallRat = formData.overallRating.overallRating;
 
-    if(overallText !== 'none'){
+    if(overallText !== ''/*none*/){
         $('textarea', '#overall-rating-section').val(overallText);
     }
-    if(overallRat !== 'none'){
+    if(overallRat !== ''/*none*/){
         $('.rating-btn[value="'+overallRat+'"]', '#overall-rating-section').addClass('selected-rating');
     }
 
     var posType = formData.positionType;
-    if(posType !== 'none'){
+    if(posType !== ''/*none*/){
         $('.position-btn[value="'+posType+'"]', '#position-class-section').addClass('selected-position-type');
     }
 
     var employeeCom = formData.employeeComment;
-    if(employeeCom !== 'none'){
+    if(employeeCom !== ''/*none*/){
         $('textarea', '#employee-comments-section').val(employeeCom);
     }
+
+    runValidation()
+}
+
+function runValidation(){
+    $('#review_period_from').trigger("blur");
+    $('#review_period_to').trigger("blur");
+    // validate name
+    $('#employee_name').trigger('blur');
+
+    // validate title
+    $('#employee_title').trigger('blur');
+
+    // validate employee id
+    $('#employee_id').trigger('blur');
+
+    // validate job code
+    $('#job_code').trigger('blur');
+
+    // validate text areas for jub functions, dev plans and projects
+    $('#essential-job-functions-container textarea, #projects-container textarea, #development-plans-container textarea').trigger('blur');
+        
+
+    //validate calenders for functions, projects and dev plans
+    $('#projects-container .datepicker, #development-plans-container .datepicker').trigger('blur');
+
+    //validate attributes and supervisors only sections
+    $('#attributes-container .btn-group, #supervisor-attributes-container .btn-group').trigger('blur');
+        
+
+    //to double check after they enter a comment
+    $('#attributes-container textarea, #supervisor-attributes-container textarea').trigger('blur');
+        
+
+    $('#overall-rating-section textarea').trigger('blur');
+        
 }

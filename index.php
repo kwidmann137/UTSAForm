@@ -20,33 +20,67 @@
     <script type="text/javascript" src="js/tooltip.js"></script>
     <script type="text/javascript" src="js/ratingButton.js"></script>
     <script type="text/javascript" src="js/validateForm.js"></script>
+    <script type="text/javascript" src="js/tutorial.js"></script>
+    <script type="text/javascript" src="js/general.js"></script>
+    <script type="text/javascript" src="js/textareaResize.js"></script>
     <script type="text/javascript" src="bootstrap/addons/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="top-bar row">
-            <button type="button" class="btn btn-success btn-md pull-right menu-btn" onclick="save();" >Save</button>
-            <button type="button" class="btn btn-primary btn-md pull-right menu-btn" data-toggle="modal" data-target="#openModal">
-              Open
-            </button>
-            <button type="button" class="btn btn-danger btn-md pull-right menu-btn" onclick="makePDF();" >Create PDF</button>
+    <div class="top-bar row">
+        <button type="button" class="btn btn-success btn-md pull-right menu-btn" onclick="save();" id="save-btn">Save</button>
+        <button type="button" class="btn btn-primary btn-md pull-right menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
+          Open
+        </button>
+        <button type="button" class="btn btn-danger btn-md pull-right menu-btn" onclick="validatePDF();" id="make-pdf-btn">Create PDF</button>
+        <button type="button" class="btn btn-info btn-md pull-right menu-btn" onclick="startTutorial();" >Tutorial</button>
+    </div>
+    <button class="tutorial-menu-show-btn btn btn-danger"><i class="fa fa-bars show-icon" aria-hidden="true"></i></i></button>
+    <div class="tutorial-side-menu row">
+        <div class="col-xs-12">
+            <button class="tutorial-menu-close-btn btn btn-danger"><i class="fa fa-times close-icon" aria-hidden="true"></i></button>
+            <h1 class="tutorial-menu-header">Tutorials:</h1>
+            <button class="btn tutorial-item-btn" onclick="createPDFTutorial();">Create PDF</button>
+            <button class="btn tutorial-item-btn" onclick="saveFileTutorial();">Save Form</button>
+            <button class="btn tutorial-item-btn" onclick="openFileTutorial();">Open Saved Form</button>
+            <button class="btn tutorial-item-btn" onclick="employeeInfoTutorial();">Employee Info</button>
+            <button class="btn tutorial-item-btn" onclick="essentialJobFunctionsTutorial();">Job Functions</button>
+            <button class="btn tutorial-item-btn" onclick="projectsTutorial();">Projects</button>
+            <button class="btn tutorial-item-btn" onclick="developmentPlanTutorial();"">Development Plans</button>
+            <button class="btn tutorial-item-btn" onclick="attributesTutorial();">Attributes</button>
+            <button class="btn tutorial-item-btn" onclick="supservisorsOnlyTutorial();">Supervisor Attributes</button>
+            <button class="btn tutorial-item-btn" onclick="overallRatingTutorial();">Overall Rating</button>
+            <button class="btn tutorial-item-btn" onclick="employeeCommentTutorial();">Employee Comment</button>
+            <button class="btn tutorial-item-btn" onclick=";startTutorial();">Start Over</button>
         </div>
+    </div>`
+    <div class="container">
         <div class="form-header row">
-            <div class="col-xs-12 text-center"><img src="images/UTSALogo.png"></div>
+            <div class="col-xs-12 text-center"><img class="img-responsive logo" src="images/UTSA_HRLogo_Formal.png"></div>
             <div class="col-xs-12 text-center">
                 <!-- <p>The Univeristy of Texas at San Antonio</p> -->
-                <h2>NON-FACULTY PERFORMANCE EVALUATION REVIEW</h2>
+                <h2 class="page-header">NON-FACULTY PERFORMANCE EVALUATION REVIEW</h2>
             </div>
             <div class="col-xs-2"></div>
         </div>
         <div class="form">
             <div class=" row form-group text-center review-period-section">
-                <div class="col-xs-12 review-period-section">
-                    <span class="review-period-label">Review Period From: 2/1/&nbsp;</span>
-                <input class="form-control year-input" type="text" name="review_period_from" id="review_period_from">
-                <span class="review-period-label">&nbsp;&nbsp;To: 1/31/&nbsp;</span>
-                <input class="form-control year-input" type="text" name="review_period_to" id="review_period_to">
+                <div class="col-xs-6 review-period-section">
+                    <label class="review-period-label">Review Period From: 2/1/&nbsp;</label>
+                    <div class="row year-input">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" name="review_period_from" id="review_period_from">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 review-period-section">
+                    <label class="review-period-label">&nbsp;&nbsp;To: 1/31/&nbsp;</label>
+                    <div class="row year-input">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" name="review_period_to" id="review_period_to">  
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group text-center row employee-info-section">
@@ -62,6 +96,14 @@
                 <div class="col-xs-3">
                     <input type="text" class="form-control" id="job_code" placeholder="Job Code">
                 </div>
+            </div>
+            <div class="row">
+               <div class="col-xs-0 col-sm-1 col-md-2"></div>
+                <div class="col-xs-12 col-sm-10 col-md-8">
+                    <p class="certification-rule text-center">Rule 30501 of hte Rules and Regulations of the U.T. System Board of Regents requires all employees (administrative, faculty, and classified) receive and annual evaluation during hte past fiscal year.</p>
+                </div>
+                <div class="col-xs-0 col-sm-1 col-md-2"></div>
+                
             </div>
             <div class="form-group row" id="essential-job-functions-section">
                 <div class="col-xs-12">
@@ -81,7 +123,7 @@
                 </div>
                 <div class="col-xs-12 projects-container" id="projects-container"></div>
                 <div class="col-xs-12">
-                    <button class="btn btn-primary btn-md pull-right" onclick="addProject();">Add Project</button>
+                    <button class="btn btn-primary btn-md pull-right" id="add-project-btn" onclick="addProject();">Add Project</button>
                 </div>
             </div>
             <div class="form-group row" id="development-plans-section">
@@ -95,7 +137,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-primary btn-md pull-right" onclick="addDevelopmentPlan();">Add Training/Skill</button>
+                        <button class="btn btn-primary btn-md pull-right" id="add-development-plan-btn" onclick="addDevelopmentPlan();">Add Training/Skill</button>
                     </div>
                 </div>
             </div>
@@ -110,21 +152,23 @@
 
                         </ul>
                     </p>
-                    <p class="instruction">You can hover over the clipboard by each attribute to see a description.  Click clipboard to add the description to the associated text area!</p>
+                    <p class="instruction">You can hover over the clipboard (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  Click clipboard to add the description to the associated text area.</p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="attributes-container">
                     <div class="row attribute" id="attribute-1">
                         <div class="col-xs-2 attribute-label-div">
                             <label>TEAMWORK</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control" placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -132,14 +176,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>SERVICE ORIENTATION</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -147,29 +193,33 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>COMMUNICATION</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
-                            </div>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
+                           </div>
                         </div>
                     </div>
                     <div class="row attribute" id="attribute-4">
                         <div class="col-xs-2 attribute-label-div">
                             <label>ADAPTABILITY</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -177,14 +227,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>INNOVATION, CREATIVITY &amp; INITIATIVE</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -192,14 +244,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>MOTIVATION</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -207,14 +261,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>JOB KNOWLEDGE</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -222,14 +278,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>JUDGEMENT</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -237,14 +295,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>QUANTITY &amp; PRODUCTIVITY</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -252,14 +312,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>QUALITY</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -278,14 +340,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>STAFF DEVELOPMENT</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control" placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -293,14 +357,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>DECISION MAKING</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -308,14 +374,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>LEADERSHIP</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -323,14 +391,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>PROMOTES DIVERSITY</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -338,14 +408,16 @@
                         <div class="col-xs-2 attribute-label-div">
                             <label>COMPLICANCE, ACCOUNTABILITY &amp;  RISK MANAGEMENT</label>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <textarea class="form-control"  placeholder="Comment..."></textarea>
                         </div>
-                        <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                        <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                                <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                                 <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                                <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                                <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                                <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                             </div>
                         </div>
                     </div>
@@ -356,14 +428,16 @@
                     <h3>SECTION VI. OVERALL RATING</h3>
                     <p class="section-description">When providing comments/summary, consider the employee's performance in: Section I - Essential Job Functions, Section II - Projects, Section III - Development Plans, Sections IV &amp; V - Attributes</p>
                 </div>
-                <div class="col-xs-10">
+                <div class="col-xs-9">
                     <textarea class="form-control"  placeholder="Performance Summary/Manager's Comments -- REQUIRED"></textarea>
                 </div>
-                 <div class="col-xs-2" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
+                 <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default rating-btn left-btn" value="O">O</button>
+                        <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
+                        <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                         <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>
-                        <button type="button" class="btn btn-default rating-btn" value="I">I</button>
+                        <button type="button" class="btn btn-default rating-btn" value="SP+">SP+</button>
+                        <button type="button" class="btn btn-default rating-btn" value="O">O</button>
                     </div>
                 </div>
             </div>
@@ -391,7 +465,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal for opening -->
     <div class="modal" id="openModal" tabindex="-1" role="dialog" aria-labelledby="Open" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -401,12 +475,12 @@
             </button>
             <h4 class="modal-title" id="myModalLabel">Open File</h4>
           </div>
-            <div class="modal-body">
+            <div class="modal-body text-center">
                 <form enctype="multipart/form-data" action="php/upload.php" method="POST" id="upload-Form">
                     <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-                    <label for="userfile">Open file:</label>
-                    <input name="userfile" type="file" id="userfile"/>
-                    <input type="button" name="uploadFormBtn" value="Open" id="uploadFormBtn" onclick="openFormData();"/>
+                    <input  name="userfile" type="file" id="userfile"/>
+                    <br>
+                    <input  class="btn btn-success btn-md" type="button" name="uploadFormBtn" value="Open" id="uploadFormBtn" onclick="openFormData();"/>
                 </form>
           </div>
           <div class="modal-footer">
@@ -414,5 +488,40 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal for creating PDF and prompting to save -->
+    <div class="modal" id="makePDFModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>Please be aware that <strong>Generating a PDF</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click Generate PDF.</p>
+                <div class="text-center">
+                    <button class="btn btn-md btn-success" onclick="save();">Save</button>
+                    <button class="btn btn-md btn-danger" onclick="generatePDF();">Generate PDF</button>
+                </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tutorial-background"></div>
+    <!-- <div class="row tutorial-bar text-center">
+        <div class="col-xs-5">
+            <button class="btn btn-danger btn-lg pull-right" onclick="closeTutorial();">Close</button>
+        </div>
+        <div class="col-xs-2">
+            
+        </div>
+        <div class="col-xs-5">
+            <button class="btn btn-primary btn-lg pull-left" id="tutorial-next-btn" onclick="tutorialNext();">Next</button>
+        </div>
+    </div> -->
 </body>
 </html>

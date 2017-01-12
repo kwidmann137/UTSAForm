@@ -32,7 +32,7 @@ function createJSON(){
 				var field = $(this).attr('id');
 				var input = $(this).val();
 				if(typeof input === 'undefined'){
-					input = 'none';
+					input = ''/*none*/;
 				}
 				item[field] = input;
 				jobFunction.textareas.push(item);
@@ -41,7 +41,7 @@ function createJSON(){
 			if(typeof input !== 'undefined'){
 				jobFunction['selectedRating'] = input;
 			}else{
-				jobFunction['selectedRating'] = 'none';
+				jobFunction['selectedRating'] = ''/*none*/;
 			}
 			formData.jobFunctions.push(jobFunction);
 		});
@@ -59,7 +59,7 @@ function createJSON(){
 				var field = $(this).attr('id');
 				var input = $(this).val();
 				if(typeof input === 'undefined'){
-					input = 'none';
+					input = ''/*none*/;
 				}
 				item[field] = input;
 				project.textareas.push(item);
@@ -68,14 +68,14 @@ function createJSON(){
 			if(typeof input !== 'undefined'){
 				project['selectedRating'] = input;
 			}else{
-				project['selectedRating'] = 'none';
+				project['selectedRating'] = ''/*none*/;
 			}
 
 			var dueDate = $('.project-due-date', this).val();
 			if(dueDate !== ""){
 				project['dueDate'] = dueDate;
 			}else{
-				project['dueDate'] = 'none';
+				project['dueDate'] = ''/*none*/;
 			}
 			formData.projects.push(project);
 		});
@@ -93,7 +93,7 @@ function createJSON(){
 				var field = $(this).attr('id');
 				var input = $(this).val();
 				if(typeof input === 'undefined'){
-					input = 'none';
+					input = ''/*none*/;
 				}
 				item[field] = input;
 				developmentPlan.textareas.push(item);
@@ -102,19 +102,19 @@ function createJSON(){
 			if(dueDate !== ""){
 				developmentPlan['dueDate'] = dueDate;
 			}else{
-				developmentPlan['dueDate'] = 'none';
+				developmentPlan['dueDate'] = ''/*none*/;
 			}
 			var startDate = $('.development-plan-start-date', this).val();
 			if(startDate !== ""){
 				developmentPlan['startDate'] = startDate;
 			}else{
-				developmentPlan['startDate'] = 'none';
+				developmentPlan['startDate'] = ''/*none*/;
 			}
 			var endDate = $('.development-plan-end-date', this).val();
 			if(endDate !== ""){
 				developmentPlan['endDate'] = endDate;
 			}else{
-				developmentPlan['endDate'] = 'none';
+				developmentPlan['endDate'] = ''/*none*/;
 			}
 			formData.developmentPlans.push(developmentPlan);
 		})
@@ -127,7 +127,7 @@ function createJSON(){
 		var attribute = $('label', this).text();
 		var comment = $('textarea', this).val();
 		if(typeof comment === 'undefined'){
-			comment = 'none';
+			comment = ''/*none*/;
 		}
 		item['attribute'] = attribute;
 		item['comment'] = comment;
@@ -135,7 +135,7 @@ function createJSON(){
 		if(typeof rating !== 'undefined'){
 			item['rating'] = rating;
 		}else{
-			item['rating'] = 'none';
+			item['rating'] = ''/*none*/;
 		}
 		formData.attributes.push(item);
 	})
@@ -147,7 +147,7 @@ function createJSON(){
 		var attribute = $('label', this).text();
 		var comment = $('textarea', this).val();
 		if(typeof comment === 'undefined'){
-			comment = 'none';
+			comment = ''/*none*/;
 		}
 		item['attribute'] = attribute;
 		item['comment'] = comment;
@@ -155,7 +155,7 @@ function createJSON(){
 		if(typeof rating !== 'undefined'){
 			item['rating'] = rating;
 		}else{
-			item['rating'] = 'none';
+			item['rating'] = ''/*none*/;
 		}
 		formData.supervisorAttributes.push(item);
 	})
@@ -164,14 +164,14 @@ function createJSON(){
 	formData['overallRating'] = {};
 	var overallComment = $('textarea', '#overall-rating-section').val();
 	if(typeof overallComment === 'undefined'){
-		overallComment = 'none';
+		overallComment = ''/*none*/;
 	}
 	formData.overallRating['overallComment'] = overallComment;
 	var overallRating = $('.selected-rating', "#overall-rating-section").val();
 	if(typeof overallRating !== 'undefined'){
 		formData.overallRating['overallRating'] = overallRating;
 	}else{
-		formData.overallRating['overallRating'] = 'none';
+		formData.overallRating['overallRating'] = ''/*none*/;
 	}
 
 	// capture position type
@@ -179,12 +179,12 @@ function createJSON(){
 	if(typeof positionType !== 'undefined'){
 		formData['positionType'] = positionType;
 	}else{
-		formData['positionType'] = 'none';
+		formData['positionType'] = ''/*none*/;
 	}
 
-	var employeeComment = $('textarea', "#employee-comment-section").val();
+	var employeeComment = $('textarea', "#employee-comments-section").val();
 	if(typeof employeeComment === 'undefined'){
-		employeeComment = 'none';
+		employeeComment = ''/*none*/;
 	}
 	formData['employeeComment'] = employeeComment;
 }

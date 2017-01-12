@@ -1,7 +1,5 @@
 function save(){
     createJSON();
-    // console.log(formData);
-    // var formString = JSON.stringify(formData);
     $.ajax({
         type: 'POST',
         url: 'php/save.php',

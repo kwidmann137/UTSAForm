@@ -1,11 +1,10 @@
 <?php
-	require('./fpdf/fpdf.php');
+	require('pdf.php');
 
-	// echo "In make PDF.php"
-
-	$pdf = new FPDF();
-	$pdf->AddPage();
-	$pdf->SetFont('Arial','B', 16);
-	$pdf->Cell(40,10,'HelloWorld');
-	$pdf->Output('evaluation-review.pdf', 'F');
-?>
+	$rawData = $_POST['myData'];
+	$pdf = new PDF('L', 'mm', 'A4');
+	$pdf->setData($rawData);
+	$pdf->SetFont('Arial','', 12);
+	$pdf->printEvaluation();
+	$pdf->Output('evaluation-review.pdf','F');
+?>	
