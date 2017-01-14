@@ -53,6 +53,7 @@
 				$this->Ln(PADDING);
 			}
 
+			$this->AddPage();
 			$this->printProjectsHeader();
 			if($data->numOfProjects > 0){
 				$projectNum = 0;
@@ -65,6 +66,7 @@
 				$this->Ln(PADDING);
 			}
 
+			$this->AddPage();
 			$this->printDevelopmentPlansHeader();
 			if($data->numOfDevelopmentPlans > 0){
 				$planNum = 0;
@@ -77,24 +79,29 @@
 				$this->Ln(PADDING);
 			}
 
+			$this->AddPage();
 			$this->printAttributesHeader();
 			foreach($data->attributes as $attribute){
 				$this->printAttribute($attribute);
 			}
 			$this->Ln(PADDING);
 
+			$this->AddPage();
 			$this->printSupervisorAttributesHeader();
 			foreach($data->supervisorAttributes as $attribute){
 				$this->printSupervisorAttribute($attribute);
 			}
 			$this->Ln(PADDING);
 
+			$this->AddPage();
 			//print overall rating
 			$this->printOverallRating($data->overallRating);
+
 
 			// print employee comment
 			$this->printEmployeeComment($data->employeeComment);
 
+			$this->AddPage();
 			// print signatures
 			$this->printSignatures();
 
@@ -115,9 +122,9 @@
 		function printJobFunction($job, $jobNum){
 			//print top top and rating
 			$value = current((array)$job->textareas[0]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->Cell(0, FONTSIZE, "Essential Job Function ".$jobNum, 0, 1);
 			$this->setInputTitleFont();
 			$this->Cell((($this->GetPageWidth()-20)/12)*10, PADDING, "ESSENTIAL JOB FUNCTIONS", "LT", 0);
@@ -127,9 +134,9 @@
 
 			//print standard
 			$value = current((array)$job->textareas[1]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->setInputTitleFont();
 			$this->Cell(0, PADDING, "STANDARD", "LTR", 1);
 			$this->setInputRegularFont();
@@ -137,9 +144,9 @@
 
 			//print comments
 			$value = current((array)$job->textareas[2]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->setInputTitleFont();
 			$this->Cell(0, PADDING, "COMMENTS", "LTR", 1);
 			$this->setInputRegularFont();
@@ -151,9 +158,9 @@
 		function printProject($project, $projectNum){
 			//print top top and rating
 			$value = current((array)$project->textareas[0]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->Cell(0, FONTSIZE, "Project ".$projectNum, 0, 1);
 			$this->setInputTitleFont();
 			$this->Cell((($this->GetPageWidth()-20)/12)*10, PADDING, "SPECIAL PROJECTS", "LT", 0);
@@ -163,9 +170,9 @@
 
 			//print standard
 			$value = current((array)$project->textareas[1]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->setInputTitleFont();
 			$this->Cell(0, PADDING, "STANDARD", "LTR", 1);
 			$this->setInputRegularFont();
@@ -173,9 +180,9 @@
 
 			//print comments
 			$value = current((array)$project->textareas[2]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			// if($project->dueDate == "none"){
 			// 	$project->dueDate = '';
 			// }
@@ -191,9 +198,9 @@
 		function printDevelopmentPlan($plan, $planNum){
 			//print top top and rating
 			$value = current((array)$plan->textareas[0]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			// if($plan->dueDate == 'none'){
 			// 	$plan->dueDate ='';
 			// }
@@ -206,9 +213,9 @@
 
 			//print comments
 			$value = current((array)$plan->textareas[1]);
-			if(!$this->fitsOnPage($value, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($value, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			// if($plan->startDate == "none"){
 			// 	$plan->startDate = '';
 			// }
@@ -226,9 +233,9 @@
 		}
 
 		function printAttribute($attribute){
-			if(!$this->fitsOnPage($attribute->comment, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($attribute->comment, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->setInputTitleFont();
 			$this->Cell((($this->GetPageWidth()-20)/12)*9.5, PADDING, $attribute->attribute, "LT", 0);
 			$this->Cell(0, PADDING, "Rating: ".$attribute->rating, 1, 1);
@@ -238,9 +245,9 @@
 		}
 
 		function printSupervisorAttribute($attribute){
-			if(!$this->fitsOnPage($attribute->comment, FONTSIZE)){
-				$this->AddPage();
-			}
+			// if(!$this->fitsOnPage($attribute->comment, FONTSIZE)){
+			// 	$this->AddPage();
+			// }
 			$this->setInputTitleFont();
 			$this->Cell((($this->GetPageWidth()-20)/12)*9.5, PADDING, $attribute->attribute, "LT", 0);
 			$this->Cell(0, PADDING, "Rating: ".$attribute->rating, 1, 1);
@@ -269,7 +276,7 @@
 		}
 
 		function printSignatures(){
-			$this->AddPage();
+			// $this->AddPage();
 			$section = ($this->GetPageWidth()-20)/20;
 			$this->setSectionHeaderTitleFont();
 			$this->Cell(0,PADDING, "SIGNATURES:", 0, 1);
