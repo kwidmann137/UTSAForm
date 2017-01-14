@@ -145,7 +145,6 @@
 			// Using mainly bare JS in this function because it is going
 			// to fire very often while typing, and needs to very efficient.
 			function adjust() {
-				console.log("adjusting");
 				var height, original;
 
 				if (mirrored !== ta) {
