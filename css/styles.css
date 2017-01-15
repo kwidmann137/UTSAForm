@@ -6,7 +6,7 @@
 	left: -350px;
 	width: 350px;
 	height: 100%;
-	background-color: grey;
+	background-color: #F7F7F7;
 	z-index: 10;
 	padding: 50px 15px 15px 15px;
 }
@@ -49,6 +49,10 @@
 	width: 90%;
 	margin: 5px 30px;
 }
+/*
+.tutorial-item-btn:hover{
+	background-color: #F0AD4E;
+}*/
 
 .fa-arrow-left, .fa-arrow-right{
 	color: green;
@@ -93,7 +97,11 @@
 }
 
 #tutorial-close-btn, #tutorial-next-btn{
-	margin: 5px 15px;
+	margin: 10px;
+}
+#tutorial-close-btn{
+	width: 90%;
+	margin: 5px 30px;
 }
 
 body{

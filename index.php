@@ -41,18 +41,19 @@
         <div class="col-xs-12">
             <button class="tutorial-menu-close-btn btn btn-danger"><i class="fa fa-times close-icon" aria-hidden="true"></i></button>
             <h1 class="tutorial-menu-header">Tutorials:</h1>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[8]);">Save Form</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[9]);">Open Form</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[10]);">Create PDF</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[0]);;">Employee Info</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[1]);">Job Functions</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[2]);">Projects</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[3]);"">Development Plans</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[4]);">Attributes</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[5]);">Supervisor Attributes</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[6]);">Overall Rating</button>
-            <button class="btn tutorial-item-btn" onclick="skipTo(tutorial.tutorialQueue[7]);">Employee Comment</button>
-            <button class="btn tutorial-item-btn" onclick=";startTutorial();">Start Over</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save Form</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open Form</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeInfo.start();">Employee Info</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.jobs.start();">Job Functions</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.projects.start();">Projects</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.developmentPlans.start();">Development Plans</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.attributes.start();">Attributes</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.supervisorAttributes.start();">Supervisor Attributes</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.overallRating.start();">Overall Rating</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeComment.start();">Employee Comment</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); startTutorial();">Start Over</button>
+            <button class="btn btn-danger" id="tutorial-close-btn" onclick="closeTutorial();">Exit Tutorial</button>
         </div>
     </div>`
     <div class="container">
