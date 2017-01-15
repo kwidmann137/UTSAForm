@@ -135,6 +135,7 @@ var moveArrow = function(to, direction){
 		arrow = ".arrow";
 		if($(arrow).length===0){
 			$("body").prepend(arrowImg);
+			$(".arrow").attr('src', 'images/upArrow.png');
 		}
 	    $(arrow).css('left', to.offset().left - $(arrow).width()/2+20);
 	    $(arrow).css('top', to.offset().top + to.height());
@@ -684,7 +685,7 @@ function employeeCommentTutorial(){
 		    });
 		    moveArrow($("#employee-comments-section"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Employee Comments</h3><p>The employee should fill in their comments regarding the evaluation.<br>We will now cover how to save the form so you can send it to an employee or have a copy to work on later.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Employee Comments</h3><p>The employee should fill in their comments regarding the evaluation.<br>We cover how to save the form so you can send it to an employee or have a copy to edit at a later time in the next step.</p>');
 		}
 	}
 }
