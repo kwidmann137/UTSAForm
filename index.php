@@ -42,6 +42,7 @@
             <button class="tutorial-menu-close-btn btn btn-danger"><i class="fa fa-times close-icon" aria-hidden="true"></i></button>
             <h1 class="tutorial-menu-header">Tutorials:</h1>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save Form</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.share.start();">Share Form</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open Form</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeInfo.start();">Employee Info</button>
