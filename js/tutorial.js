@@ -45,12 +45,12 @@ Tutorial.prototype.createTutorialItems = function(){
 	this.employeeComment.prev = this.overallRating; 
 	this.employeeComment.next = this.save; 
 	this.save.prev = this.employeeComment; 
-	this.save.next = this.share; 
-	this.share.prev = this.save;
-	this.share.next = this.open;
-	this.open.prev = this.share; 
-	this.open.next = this.createPDF; 
-	this.createPDF.prev = this.open; 
+	this.save.next = this.open; 
+	this.open.prev = this.save; 
+	this.open.next = this.share; 
+	this.share.prev = this.open;
+	this.share.next = this.createPDF;
+	this.createPDF.prev = this.share; 
 	this.createPDF.next = null; 
 
 	this.currStep = this.welcome;
@@ -159,7 +159,7 @@ function welcomeToTutorial(){
 		prev : null,
 		// add next button at bottom
 		run : function(){
-		$('#tutorial-content-container').html("<h3>Welcome to the tutorial!</h3><p>A few things before you start:</p><ul><li>The form is disabled during the tutorials.</li><li>You can navigate through the entire tutorial by clicking the <strong>next</strong button at the bottom.</li><li>You can also choose specific portions with the menu bar on the left hand side (which you can collapse and reopen).</li><li>At any time you can click the close button at the bottom to return to the active form.</li></ul>");
+		$('#tutorial-content-container').html("<h3>Welcome to the tutorial</h3><p>A few things before you start:</p><ul><li>Navigate this tutorial using the Next and Back buttons or use the buttons on the left menu bar to take you directly to a specific topic.</li><li>At any time you can click on the <strong>Exit Tutorial</strong> button to return to editing the form.</li></ul>");
 		}
 	}
 
@@ -202,7 +202,7 @@ function employeeInfoTutorial(){
         	scrollTop: $(".employee-info-section").offset().top-450
     	});
     	moveArrow($(".employee-info-section"), "right");
-    	$('#tutorial-content-container').html("<h3 class='text-center'>Employee Info</h3><p>Fill out the years for the review period, employees Name, Title, EMPL ID and Job Code.</p>");
+    	$('#tutorial-content-container').html("<h3 class='text-center'>Employee Info</h3><p>Fill out only the years for the review period, employees Name, Title, EMPL ID and Job Code.</p>");
     	}
 	}
 }
@@ -247,7 +247,7 @@ function essentialJobFunctionsTutorial(){
 		        scrollTop: $(".essential-job-functions-container").offset().top-450
 		    });
 		    moveArrow($(".essential-job-functions-container"), "right");
-		    $('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Here you will fill out the employees job functions.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>List an essential job responsibility and the standards for each function. The standard describes performance in that function that would meet expectations.</p>');
 		}
 	}
 
@@ -255,7 +255,7 @@ function essentialJobFunctionsTutorial(){
 		//explain button
 		run : function(){
 			moveArrow($("#add-essential-function-btn"), "right");
-    		$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Click self button to add a function.</p>');
+    		$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Click this button to add an essential job function and standard.</p>');
     	}
     	
 	}
@@ -268,7 +268,7 @@ function essentialJobFunctionsTutorial(){
 				self.jobsAdded++;
 			}
 	    	moveArrow($(".job-function").last(), "right");
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Essential Job Funciton and Standard fields are mandatory.<br>Comments are preferred for all ratings, but <strong>required</strong> for ratings of O and I.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>“Essential Job Function” and “Standard” fields are mandatory.  Comments are preferred for all ratings, but required for ratings of O and I.</p>');
 	    }
 	}
 
@@ -277,7 +277,7 @@ function essentialJobFunctionsTutorial(){
 		run: function(){
 			moveArrow($(".job-function .btn-group").last(), "right");
 			$(".job-function button[value='O']").last().tooltip().mouseover();
-			$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Use these buttons to select the appropriate rating.  You can hover over each of the options to see a definition.  When you select a button it will turn green.</p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Use these buttons to select the appropriate rating for each job function. Hover over each of the options to see a definition. When you select a rating it will turn green.</p>');
 		}
 	}
 
@@ -286,7 +286,7 @@ function essentialJobFunctionsTutorial(){
 		run: function(){
 			$(".job-function button[value='O']").last().tooltip().mouseout();
 			moveArrow($(".function-close-btn").last(), "right");
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Click this button to delete the associated function.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Click this button to delete the associated job function.</p>');
 	    }
 	}
 }
@@ -310,9 +310,7 @@ function projectsTutorial(){
 		self.step4.prev = self.step3;
 		self.step4.next = self.step5;
 		self.step5.prev = self.step4;
-		self.step5.next = self.step6;
-		self.step6.prev = self.step5;
-		self.step6.next = null;
+		self.step5.next = null;
 		self.currSubStep = self.step1;
 		self.currSubStep.run();
 	}
@@ -331,22 +329,13 @@ function projectsTutorial(){
 			$('html, body').animate({
 		        scrollTop: $(".projects-container").offset().top-450
 		    });
-		    moveArrow($(".projects-container"), "right");
-
-		    //set initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Here you will fill out the employees special projects.</p>');
-		}
-	}
-
-	self.step2 = {
-		run: function(){
 			//explain button
 			moveArrow($("#add-project-btn"), "right");
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Click self button to add a Project.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Click on the Add Project button to add any special projects that the employee has worked on.</p>');
 	    }
 	}
 
-	self.step3 = {
+	self.step2 = {
 		run: function(){
 			//trigger button and explain fields
 			if(self.projectsAdded === 0){
@@ -354,30 +343,30 @@ function projectsTutorial(){
 				self.projectsAdded++;
 			}
 	    	moveArrow($(".project").last(), "right");
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Special Project and Standard fields are mandatory.<br>Comments are preferred for all ratings, but <strong>required</strong> for ratings of O and I.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>If a special projects was assigned, the Standard field is mandatory. Comments are preferred for all ratings, but required for ratings of O and I.</p>');
 	    }
 	}
 
-	self.step4 = {
+	self.step3 = {
 		run: function(){
 			//explain calendar
 			var datePicker = $(".project .date-picker").last();
 			moveArrow(datePicker, "right");
 			datePicker.trigger('focus');
-			$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Click in self field to choose the due date from the calendar.<br><strong>self field is not required.</strong></p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Click in this field to choose the due date from the calendar.  <strong>This field is not required.</strong></p>');
 		}
 	}
 
-	self.step5 = {
+	self.step4 = {
 		run: function(){
 			//explain ratings
 			moveArrow($(".project .btn-group").last(), "right");
 			$(".project button[value='O']").last().tooltip().mouseover();
-			$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Use these buttons to select the appropriate rating.  You can hover over each of the options to see a definition.  When you select a button it will turn green.</p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Use these buttons to select the appropriate rating. Hover over each of the options to see a definition. When you select a button it will turn green.</p>');
 		}
 	}
 
-	self.step6 = {
+	self.step5 = {
 		run: function(){
 			//explain delete btn
 			$(".project button[value='O']").last().tooltip().mouseout();
@@ -426,7 +415,7 @@ function developmentPlanTutorial(){
 		    });
 		    moveArrow($(".development-plans-container"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Here you will fill out the employees special projects.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Complete the employee’s development plans and training requirements.</p>');
 		}
 	}
 
@@ -434,7 +423,7 @@ function developmentPlanTutorial(){
 		run: function(){
 			//explain button
 			moveArrow($("#add-development-plan-btn"), "right");
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Click self button to add a Development Plan.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Click this button to add a Development Plan.</p>');
 	    }
     	
 	}
@@ -447,7 +436,7 @@ function developmentPlanTutorial(){
 				self.developmentPlansAdded++;
 			}
 	    	moveArrow($(".development-plan").last(), "right");
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Both Fields are required, but dates are not.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>If a Development Plan is added, both fields are required, but dates are not.</p>');
 	    }
 	}
 
@@ -457,7 +446,7 @@ function developmentPlanTutorial(){
 			var datePicker = $(".development-plan .date-picker").last();
 			moveArrow(datePicker, "right");
 			datePicker.trigger('focus');
-			$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Click in self field to choose the due date from the calendar.<br><strong>this field is not required.</strong></p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Click in this field to choose the due date from the calendar.  <strong>This field is not required.</strong></p>');
 		}
 	}
 
@@ -507,7 +496,7 @@ function attributesTutorial(){
 		    });
 		    moveArrow($(".attributes-container"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Here you will rank the employee for each attribute.  For ratings of "O" or "I" a comment is required.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Evaluate the employee on each attribute. For ratings of “O” or “I”, a comment is required.</p>');
 		}
 	}
 
@@ -516,7 +505,7 @@ function attributesTutorial(){
 		//explain clipboard
 			moveArrow($("#attribute-1 .attribute-glyph"), "right");
 			$("#attribute-1 .attribute-glyph").tooltip().mouseover();
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>You can hover over the clipboard icon to see a definition of the attribute.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Hover over the green clipboard icon to see a definition of the attribute.</p>');
 	    }
     	
 	}
@@ -524,7 +513,7 @@ function attributesTutorial(){
 	self.step3 = {
 		run: function(){
 		//explain clipboard
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>You can also choose to click on the clipboard to automatically copy the contents into the field.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Click on the green clipboard to automatically copy the contents into the field for editing.</p>');
 	    	self.oldContents = $("#attribute-1 textarea").val();
 	    	$("#attribute-1 textarea").val('');
 	    	$("#attribute-1 .attribute-glyph").last().tooltip().mouseout();
@@ -538,7 +527,7 @@ function attributesTutorial(){
 			$("#attribute-1 textarea").val(self.oldContents);
 			moveArrow($("#attribute-1 .btn-group"), "right");
 			$("#attribute-1 button[value='O']").last().tooltip().mouseover();
-			$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Use these buttons to select the appropriate rating.  You can hover over each of the options to see a definition.  When you select a button it will turn green.</p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Use these buttons to select the appropriate rating. Hover over each of the options to see a definition. When you select a rating, it will turn green.</p>');
 		}
 	}
 }
@@ -580,7 +569,7 @@ function supservisorsOnlyTutorial(){
 		    });
 		    moveArrow($("#supervisor-attributes-container"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>Here you will rank supervisors for each attribute.  For ratings of "O" or "I" a comment is required.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>There are an additional set of attributes required of the supervisor. For ratings of “O” or “I” a comment is required.</p>');
 		}
 	}
 
@@ -589,7 +578,7 @@ function supservisorsOnlyTutorial(){
 		//explain clipboard
 			moveArrow($("#supervisor-attribute-1 .attribute-glyph"), "right");
 			$("#supervisor-attribute-1 .attribute-glyph").tooltip().mouseover();
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>You can hover over the clipboard icon to see a definition of the attribute.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>Hover over the green clipboard icon to see a definition of the attribute.</p>');
 	    }
     	
 	}
@@ -598,7 +587,7 @@ function supservisorsOnlyTutorial(){
 		run: function(){
 			//explain clipboard
 			$("#supervisor-attribute-1 .attribute-glyph").tooltip().mouseout();
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>You can also choose to click on the clipboard to automatically copy the contents into the field.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>Click on the green clipboard to automatically copy the contents into the field for editing.</p>');
 	    	self.oldContents = $("#supervisor-attribute-1 textarea").val();
 	    	$("#supervisor-attribute-1 textarea").val('');
 	    	$("#supervisor-attribute-1 .attribute-glyph").last().tooltip().mouseout();
@@ -612,7 +601,7 @@ function supservisorsOnlyTutorial(){
 			$("#supervisor-attribute-1 textarea").val(self.oldContents);
 			moveArrow($("#supervisor-attribute-1 .btn-group"), "right");
 			$("#supervisor-attribute-1 button[value='O']").last().tooltip().mouseover();
-			$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Use these buttons to select the appropriate rating.  You can hover over each of the options to see a definition.  When you select a button it will turn green.</p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Use these buttons to select the appropriate rating. Hover over each of the options to see a definition. When you select a rating, it will turn green.</p>');
 		}
 	}
 }
@@ -645,7 +634,7 @@ function overallRatingTutorial(){
 		    });
 		    moveArrow($("#overall-rating-section"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Overall Rating</h3><p>Provide your overall rating of the employee.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Overall Rating</h3><p>Provide your overall rating of the employee (consider all sections of the performance evaluation).</p>');
 		}
 	}
 
@@ -654,7 +643,7 @@ function overallRatingTutorial(){
 			//explain ratings
 			moveArrow($("#overall-rating-section .btn-group"), "right");
 			$("#overall-rating-section button[value='O']").last().tooltip().mouseover();
-			$('#tutorial-content-container').html('<h3 class="text-center">Overall Rating</h3><p>Use these buttons to select the appropriate rating.  You can hover over each of the options to see a definition.  When you select a button it will turn green.</p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Overall Rating</h3><p>Use these buttons to select the appropriate rating. Hover over each of the options to see a definition. When you select a rating, it will turn green.</p>');
 		}
 	}
 }
@@ -685,7 +674,7 @@ function employeeCommentTutorial(){
 		    });
 		    moveArrow($("#employee-comments-section"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Employee Comments</h3><p>The employee should fill in their comments regarding the evaluation.<br>We cover how to save the form so you can send it to an employee or have a copy to edit at a later time in the next step.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Employee Comments</h3><p>The employee can add comments, if any.</p>');
 		}
 	}
 }
@@ -702,7 +691,9 @@ function createPDFTutorial(){
 		self.step1.prev = null;
 		self.step1.next = self.step2;
 		self.step2.prev = self.step1;
-		self.step2.next = null;
+		self.step2.next = self.step3;
+		self.step3.prev = self.step2;
+		self.step3.next = null;
 		self.currSubStep = self.step1;
 		self.currSubStep.run();
 	}
@@ -716,7 +707,7 @@ function createPDFTutorial(){
 			moveArrow($("#make-pdf-btn"), "up");
 
 	    	//initial step
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Creating the PDF</h3><p>This will be the <strong>LAST</strong> step you will perform.  You will not be able to generate the PDF if you have any errors on the form still, such as any required fields being blank.  Don\'t worry, it will warn you if that is the case.  To begin you would click this button (don\'t actually do it now, keep using the next button at the bottom).</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create PDF</h3><p>Selecting the red <strong>Create PDF</strong> button will create the PDF with the form data you entered in the form.</p>');
 	    }
 	}
 	self.step2 = {
@@ -731,7 +722,13 @@ function createPDFTutorial(){
 			$(".arrow").attr('src', 'images/greenArrow.png');
 			$(".arrow").css('left', $(".tutorial-info-box").offset().left - $(".arrow").width());
 	    	$(".arrow").css('top', $(".tutorial-info-box").offset().top+$(".tutorial-info-box").height()+100);
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Create the PDF</h3><p>Creating the PDF will not save your form.  If you want to be able to make revisions after generating the PDF be sure to hit <strong>Save</strong> before you <strong>Generate the PDF</strong>.  When you do hit <strong>Generate PDF</strong> the PDF will open in a new window where you can print or download it.<br><span class="warning text-center">WARNING</span><br>Using File->Print from the menu will <strong>NOT</strong> print the correct document, you must use this button to generate the PDF.</p>');	
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create, Print, and Save the PDF</h3><p>Now that you have completed entering the form data, it is time to copy the form/data to a PDF document.</p><p>The <strong>Create PDF</strong> button will generate a PDF that will be populated with the form data you entered.</p><p>The PDF created will open in a new window.  From that window you can do a final review of the PDF before saving and/or printing.</p><p>Use standard print method to PRINT the PDF in the new window.</p>');	
+	    }
+	}
+	self.step3 = {
+		run: function(){
+			// trigger the pdf button and explain the menu
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create, Print, and Save the PDF</h3><p>You can <strong>SAVE</strong> the PDF from the new window using standard file->save but you will not be able to make future edits to the PDF. You can click the <strong>SAVE</strong> button before creating the PDF in order to save the file for future edits.  If you are unsure about how the save process works, simply go to the “Save File For Editing” tutorial.</p><p><span class="warning text-center">WARNING</span><br>Please be aware that creating a PDF <strong>DOES NOT SAVE</strong> the information currently in the form for future editing. </p>');	
 	    	$("#tutorial-next-btn").removeClass('btn-primary');
 	    	$("#tutorial-next-btn").removeClass('pull-right');
 	    	$("#tutorial-next-btn").addClass('btn-warning');
@@ -767,7 +764,7 @@ function openFileTutorial(){
 			moveArrow($("#open-btn"), "up");
 
 			//initial step
-			$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>This button allows you to open a file you previously saved from this program.</p>');
+			$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>The blue <strong>Open</strong> button allows you to open a file you previously saved from this program.</p>');
 		}
 	}
 
@@ -782,7 +779,7 @@ function openFileTutorial(){
 			$(".arrow").attr('src', 'images/greenArrow.png');
 			$(arrow).css('left', $(".tutorial-info-box").offset().left - $(arrow).width());
 	    	$(arrow).css('top', $(".tutorial-info-box").offset().top+$(".tutorial-info-box").height()+140);
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>This dialogue allows you to click on <strong>Choose File</strong> and browse your computer for the file you wish to upload.  Once you hit open, it will read the file and prepopulate the form with all the information you had saved before.<br><span class="text-center warning">WARNING</span><br>You can only open files that were generated by this program.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>Browse your computer to retrieve your previously saved file.</p><p>The default file location is in the <strong>Downloads</strong> folder under your profile on the computer you saved it to.</p><p>The default file name is formData.txt</p><p>Select the file and click <strong>Open</strong>.  It will read the file and prepopulate the form with all the information you previously saved.</p><p><span class="warning text-center">WARNING</span><br>You can only open files that were generated by this program.</p>');
 		}
 	}
 }
@@ -811,7 +808,7 @@ function saveFileTutorial(){
 			moveArrow($("#save-btn"), "up");
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>This button allows you to save all of the data from the form so you can come back and continue working any time, or save different drafts if you wish.  Clicking save will automatically download the data for you.<br><span class="text-center warning">WARNING</span><br>When you download the data file it is encrypted for security.  Do not attempt to alter it outside of this program or you will ruin the file.  Only this program can open the data file you will download in a useable format.<br><br>Using File->Save from the menu will <strong>NOT</strong> save your form, you must use this save button.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p><p><span class="warning text-center">FILE SAVE WARNING</span><br>Using File->Save from the browser menu is <strong>NOT</strong> the correct method to save the form data, you must use the green <strong>Save</strong> button.</p><p><span class="warning text-center">ENCRYPTION WARNING</span><br>When you download the data file it is encrypted for security. Do not attempt to alter it outside of this program or you will ruin the file. Only this program can open the data file you will download in a useable format.</p>');
 		}
 	}
 }
@@ -841,7 +838,7 @@ function shareFileTutorial(){
 			moveArrow($("#save-btn"), "up");
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Sharing</h3><p> You will share the form with another employee the same way you would share any other file.  You can share it via email, google drive, or any other way you wish.  Just remember to not alter it outside of this program.  The next step offers a template you can use to send to the employee if they have never used this form before, it will help get them started.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Sharing</h3><p>You will share the form with another employee the same way you would share any other file. You can share it via email, google drive, or any other way you wish. Just remember to not alter it outside of this program. The next step offers a template you can use to send to the employee if they have never used this form before, it will help get them started.</p>');
 		}
 	}
 

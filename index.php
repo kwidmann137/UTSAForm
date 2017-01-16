@@ -41,11 +41,8 @@
         <div class="col-xs-12">
             <button class="tutorial-menu-close-btn btn btn-danger"><i class="fa fa-times close-icon" aria-hidden="true"></i></button>
             <h1 class="tutorial-menu-header">Tutorials:</h1>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save Form</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.share.start();">Share Form</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open Form</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeInfo.start();">Employee Info</button>
+             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.welcome.start();">Welcome to the tutorial</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeInfo.start();">Employee Information</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.jobs.start();">Job Functions</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.projects.start();">Projects</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.developmentPlans.start();">Development Plans</button>
@@ -53,7 +50,10 @@
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.supervisorAttributes.start();">Supervisor Attributes</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.overallRating.start();">Overall Rating</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeComment.start();">Employee Comment</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); startTutorial();">Start Over</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save File For Editing</button>
+             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open A Saved File</button>
+             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.share.start();">Share File For Review and Editing</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
             <button class="btn btn-danger" id="tutorial-close-btn" onclick="closeTutorial();">Exit Tutorial</button>
         </div>
     </div>`
@@ -102,7 +102,7 @@
             <div class="row">
                <div class="col-xs-0 col-sm-1 col-md-2"></div>
                 <div class="col-xs-12 col-sm-10 col-md-8">
-                    <p class="certification-rule text-center">Rule 30501 of hte Rules and Regulations of the U.T. System Board of Regents requires all employees (administrative, faculty, and classified) receive and annual evaluation during hte past fiscal year.</p>
+                    <p class="certification-rule text-center">Rule 30501 of the Rules and Regulations of the U.T. System Board of Regents requires all employees (administrative, faculty, and classified) receive an annual evaluation during thesub past fiscal year.</p>
                 </div>
                 <div class="col-xs-0 col-sm-1 col-md-2"></div>
                 
@@ -139,7 +139,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-primary btn-md pull-right" id="add-development-plan-btn" onclick="addDevelopmentPlan();">Add Training/Skill</button>
+                        <button class="btn btn-primary btn-md pull-right" id="add-development-plan-btn" onclick="addDevelopmentPlan();">Add Development Plan</button>
                     </div>
                 </div>
             </div>
