@@ -1,12 +1,12 @@
 $(function(){
 
-	validateForm();
+	validateFormExceptButtons();
 
 })
 
 function runValidation(){
 
-	$('input').each(function(){
+	$('textarea').each(function(){
 		$(this).trigger('blur');
 	})
 
@@ -23,7 +23,7 @@ function runValidation(){
 	});
 }
 
-function validateForm(){
+function validateFormExceptButtons(){
 	//validate review period
 	$('#review_period_from').on("blur", function(){
 		var value = $(this).val();
@@ -120,8 +120,11 @@ function validateForm(){
 	});
 
 	// validate text areas for job functions, dev plans and projects
-	$('#essential-job-functions-container, #projects-container').on('blur', 'textarea[placeholder*="Standard"], textarea[placeholder*="Essential"], textarea[placeholder*="Special"]', function(evt){
+	$('#essential-job-functions-container, #projects-container').on('blur', 'textarea[placeholder*="Standard"], textarea[placeholder*="Essential"], textarea[placeholder*="Special"]', function(){
+		console.log("validating text");
+		console.log(this);
 		if($(this).val().length === 0){
+			console.log("should have an error");
 			$(this).addClass('incomplete');
 			if($(this).next('small').length === 0){
 				$(this).after('<small class="error">Please fill in the field</small>')
@@ -145,33 +148,6 @@ function validateForm(){
 		}
 	});
 
-	//validate calenders for functions, projects and dev plans
-	// $('#projects-container, #development-plans-container').on('blur', '.date-picker', function(){
-	// 	if($(this).val().length === 0){
-	// 		$(this).addClass('incomplete');
-	// 		if($(this).next('small').length === 0){
-	// 			$(this).after('<small class="error">Please choose a date</small>')
-	// 		}
-	// 	}else{
-	// 		$(this).removeClass('incomplete');
-	// 		$(this).next('small').remove();
-	// 	}
-	// });
-
-	// validate attributes and comments for projects and job functions
-	$('#essential-job-functions-container, #projects-container').on('blur', '.btn-group',function(){
-		console.log($('.selected-rating', this));
-		if($('.selected-rating', this).length === 1 && ($('.selected-rating', this).val() === "O" || $('.selected-rating', this).val() === "I") && $(this).parent().parent().find('textarea[placeholder*="Comments"]').val().length === 0){
-			$(this).parent().parent().find('textarea[placeholder*="Comments"]').addClass('incomplete');
-			if($(this).parent().parent().find('textarea[placeholder*="Comments"]').next('small').length === 0){
-				$(this).parent().parent().find('textarea[placeholder*="Comments"]').after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
-			}
-		}else{
-			$(this).parent().parent().find('textarea[placeholder*="Comments"]').removeClass('incomplete');
-			$(this).parent().parent().find('textarea[placeholder*="Comments"]').next('small').remove();
-		}
-	});
-
 	// check comment text field on blur as well
 	$('#essential-job-functions-container, #projects-container').on('blur', 'textarea[placeholder*="Comments"]', function(){
 		console.log(this);
@@ -187,20 +163,6 @@ function validateForm(){
 				$(this).addClass('incomplete');
 				$(this).after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
 			}
-		}
-	});
-
-
-	//validate attributes and supervisors only sections
-	$('#attributes-container, #supervisor-attributes-container').on('click', '.btn-group',function(){
-		if($('.selected-rating', this).length === 1 && ($('.selected-rating', this).val() === "O" || $('.selected-rating', this).val() === "I") && $(this).parent().parent().find('textarea').val().length === 0){
-			$(this).parent().parent().find('textarea').addClass('incomplete');
-			if($(this).parent().parent().find('textarea').next('small').length === 0){
-				$(this).parent().parent().find('textarea').after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
-			}
-		}else{
-			$(this).parent().parent().find('textarea').removeClass('incomplete')
-			$(this).parent().parent().find('textarea').next('small').remove();
 		}
 	});
 
@@ -230,21 +192,40 @@ function validateForm(){
 			$(this).next('small').remove();
 
 		}
-	})
+	});
+}
 
-	// // validate button groups
-	// $('.rating-btn').on('click', function(){
-	// 	console.log(this);
-	// 	var parent = $(this).parent('.btn-group');
-	// 	console.log(parent);
-	// 	if($('.selected-rating', parent).length === 0){
-	// 		parent.addClass('incomplete');
-	// 		if(parent.next('small').length === 0){
-	// 			parent.after('<small class="error">Please choose a rating</small>')
-	// 		}
-	// 	}else{
-	// 		parent.removeClass('incomplete');
-	// 		parent.next('small').remove();
-	// 	}
-	// });
+function validateRatingBtn(ele){
+	parent = $(ele).parent().parent().parent();
+	btnGroup = $(ele).parent();
+	console.log("validating");
+	console.log(ele);
+	if(parent.hasClass('job-function') || parent.hasClass('project')){
+		console.log("project or function");
+		if(btnGroup.find('.selected-rating').length === 1 && ($(ele).val() === "O" || $(ele).val() === "I") && parent.find('textarea[placeholder*="Comments"]').val().length === 0){
+			parent.find('textarea[placeholder*="Comments"]').addClass('incomplete');
+			if(parent.find('textarea[placeholder*="Comments"]').next('small').length === 0){
+				parent.find('textarea[placeholder*="Comments"]').after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+			}
+		}else{
+			parent.find('textarea[placeholder*="Comments"]').removeClass('incomplete');
+			parent.find('textarea[placeholder*="Comments"]').next('small').remove();
+		}
+	}else if( parent.hasClass('attribute') || parent.hasClass('supervisor-attribute')){
+		console.log("attribute");
+		if(btnGroup.find('.selected-rating').length === 1 && ($(ele).val() === "O" || $(ele).val() === "I") && parent.find('textarea').val().length === 0){
+			parent.find('textarea').addClass('incomplete');
+			if(parent.find('textarea').next('small').length === 0){
+				parent.find('textarea').after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+			}
+		}else{
+			parent.find('textarea').removeClass('incomplete')
+			parent.find('textarea').next('small').remove();
+		}
+	}
+
+	if(btnGroup.find('.selected-rating').length === 1){
+		btnGroup.removeClass('incomplete');
+		btnGroup.next('small').remove();
+	}
 }
