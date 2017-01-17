@@ -23,9 +23,12 @@
     <script type="text/javascript" src="js/tutorial.js"></script>
     <script type="text/javascript" src="js/general.js"></script>
     <script type="text/javascript" src="js/textareaResize.js"></script>
+    <script type="text/javascript" src="js/spellChecker.js"></script>
     <script type="text/javascript" src="bootstrap/addons/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="js/spellChecker/css/spellcheck.min.css">
+    <script src="js/spellChecker/js/spellcheck.min.js"></script>
 </head>
 <body>
     <div class="top-bar row">
