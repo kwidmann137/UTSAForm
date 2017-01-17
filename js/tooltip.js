@@ -22,6 +22,9 @@ var supervisorAttributeDefinitions = {
 var attributeGlyph = '<div class="attribute-glyph-div %type%" data-toggle="tooltip" title="%title%" onClick="copyTooltip(this);"> <span class="glyphicon glyphicon-copy attribute-glyph"></span> </div>';
 
 $(function(){
+
+    addButtonToolTips();
+    
     $('.attribute').each(function(){
     	var attribute = $('label', this).text();
     	var formattedGlyph = attributeGlyph.replace(/%title%/, attributeDefinitions[attribute]);
