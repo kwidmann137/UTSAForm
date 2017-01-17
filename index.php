@@ -102,7 +102,7 @@
             <div class="row">
                <div class="col-xs-0 col-sm-1 col-md-2"></div>
                 <div class="col-xs-12 col-sm-10 col-md-8">
-                    <p class="certification-rule text-center">Rule 30501 of the Rules and Regulations of the U.T. System Board of Regents requires all employees (administrative, faculty, and classified) receive an annual evaluation during thesub past fiscal year.</p>
+                    <p class="certification-rule text-center">Rule 30501 of the Rules and Regulations of the U.T. System Board of Regents requires all employees (administrative, faculty, and classified) receive an annual evaluation during the past fiscal year.</p>
                 </div>
                 <div class="col-xs-0 col-sm-1 col-md-2"></div>
                 
