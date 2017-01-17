@@ -169,6 +169,11 @@ textarea{
 	background-color: #fff;
 }
 
+.create-pdf-error{
+	font-size: 1.2em;
+	color: red;
+}
+
 .year-input{
 	max-width: 35%;
 }

@@ -513,17 +513,26 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal for errors when attempting to create PDF -->
+    <div class="modal" id="makePDFErrorModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+            <!-- will be filled in by js -->
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tutorial-background"></div>
-    <!-- <div class="row tutorial-bar text-center">
-        <div class="col-xs-5">
-            <button class="btn btn-danger btn-lg pull-right" onclick="closeTutorial();">Close</button>
-        </div>
-        <div class="col-xs-2">
-            
-        </div>
-        <div class="col-xs-5">
-            <button class="btn btn-primary btn-lg pull-left" id="tutorial-next-btn" onclick="tutorialNext();">Next</button>
-        </div>
-    </div> -->
 </body>
 </html>
