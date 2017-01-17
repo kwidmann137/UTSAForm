@@ -66,6 +66,9 @@ var startTutorial = function(){
 			$(".tutorial-element").remove();
 		}
 	}
+	if($(".arrow").length===0){
+		$("body").prepend(arrowImg);
+	}
 	tutorial = new Tutorial();
 	tutorial.createTutorialItems();
 	$(".tutorial-background").css('display', "inline");
@@ -159,7 +162,7 @@ function welcomeToTutorial(){
 		prev : null,
 		// add next button at bottom
 		run : function(){
-		$('#tutorial-content-container').html("<h3>Welcome to the tutorial</h3><p>A few things before you start:</p><ul><li>Navigate this tutorial using the Next and Back buttons or use the buttons on the left menu bar to take you directly to a specific topic.</li><li>At any time you can click on the <strong>Exit Tutorial</strong> button to return to editing the form.</li></ul>");
+			$('#tutorial-content-container').html("<h3>Welcome to the tutorial</h3><p>A few things before you start:</p><ul><li>Navigate this tutorial using the Next and Back buttons or use the buttons on the left menu bar to take you directly to a specific topic.</li><li>At any time you can click on the <strong>Exit Tutorial</strong> button to return to editing the form.</li></ul>");
 		}
 	}
 

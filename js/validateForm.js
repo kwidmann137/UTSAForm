@@ -6,6 +6,10 @@ $(function(){
 
 function runValidation(){
 
+	$('input').each(function(){
+		$(this).trigger('blur');
+	})
+
 	$('textarea').each(function(){
 		$(this).trigger('blur');
 	})
