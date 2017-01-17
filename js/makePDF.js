@@ -4,32 +4,17 @@ function validatePDF(){
     if($('.incomplete').length === 0){
         promptToSave();
     }else{
-        alert("You must correct all errors before generating the PDF.");
+        numOfErorrs = $('.incomplete').length;
+        var errorContent = '<p>You can not create your PDF yet.  You have <span class="create-pdf-error">%num% errors</span> to fix before you can create the PDF.  Once you have fixed the errors use the <strong>Create PDF</strong> button to create the completed PDF.</p><p>Your errors are highlighted on the form with a red border, and a note explaining the error underneath in red.</p><div class="text-center"><button class="btn btn-md btn-success" data-dismiss="modal" aria-label="Close">OK I will fix them</button></div>'
+        var formattedContent = errorContent.replace(/%num%/, numOfErorrs);
+        $("#makePDFErrorModal .modal-body").html(formattedContent);
+        $("#makePDFErrorModal").modal('show');
     }
 }
 
 function promptToSave(){
     $('#makePDFModal').modal('show');
 }
-
-// function saveAndMakePDF(){
-//     save();
-//     $.when(save()).done(function(){
-//         console.log("starting dl of pdf");
-//         $.ajax({
-//             type: 'POST',
-//             url: 'php/makePDF.php',
-//             data: {'myData':JSON.stringify(formData)},
-//             cache: false,
-//             success: function(data){
-//                 window.location = 'php/downloadPDF.php';
-//             },
-//             error: function(data){
-//                 alert("Failed to generate PDF file");
-//             }
-//         });
-//     })
-// }
 
 function generatePDF(){
     // alert("This feature is not active yet.  Coming Soon!");
