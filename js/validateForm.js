@@ -153,15 +153,18 @@ function validateFormExceptButtons(){
 		console.log(this);
 		parent = $(this).parent().parent();
 		console.log(parent);
+		ratingBtn = $('.selected-rating', parent);
+		console.log(ratingBtn);
+		//is a rating selected
+		//if yes then check the rating
 		if($('.selected-rating', parent).length !== 0){
-			console.log("has rating");
-			$ratingBtn = $('.selected-rating', parent);
-			if(($ratingBtn.val() === 'O' || $ratingBtn.val() === 'I') && ($(this).val().length !== 0)){
-				$(this).removeClass('incomplete');
-				$(this).next('small').remove();
-			}else if($ratingBtn.val() !== 'SP' || $ratingBtn.val() !== 'SP-' || $ratingBtn.val() !== 'SP+'){
+			//is rating O or I, and if so is the comments box empty
+			if((ratingBtn.val() === 'O' || ratingBtn.val() === 'I') && ($(this).val().length === 0)){
 				$(this).addClass('incomplete');
 				$(this).after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+			}else{
+				$(this).removeClass('incomplete');
+				$(this).next('small').remove();	
 			}
 		}
 	});
