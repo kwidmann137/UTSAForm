@@ -165,11 +165,16 @@ function validateFormExceptButtons(){
 			//is rating O or I, and if so is the comments box empty
 			if((ratingBtn.val() === 'O' || ratingBtn.val() === 'I') && ($(this).val().length === 0)){
 				$(this).addClass('incomplete');
-				$(this).after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+				if($(this).next('small').length === 0){
+					$(this).after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+				}
 			}else{
 				$(this).removeClass('incomplete');
 				$(this).next('small').remove();	
 			}
+		}else{
+			$(this).removeClass('incomplete');
+			$(this).next('small').remove();	
 		}
 	});
 
