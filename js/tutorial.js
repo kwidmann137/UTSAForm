@@ -250,7 +250,7 @@ function essentialJobFunctionsTutorial(){
 		        scrollTop: $(".essential-job-functions-container").offset().top-450
 		    });
 		    moveArrow($(".essential-job-functions-container"), "right");
-		    $('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>List an essential job responsibility and the standards for each function. The standard describes performance in that function that would meet expectations.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>List an essential job function/responsibility and the standards for each. The standard describes performance in that function that would meet expectations.</p>');
 		}
 	}
 
@@ -258,7 +258,10 @@ function essentialJobFunctionsTutorial(){
 		//explain button
 		run : function(){
 			moveArrow($("#add-essential-function-btn"), "right");
-    		$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Click this button to add an essential job function and standard.</p>');
+			$('html, body').animate({
+		        scrollTop: $(".arrow").offset().top-450
+		    });
+    		$('#tutorial-content-container').html('<h3 class="text-center">Job Functions</h3><p>Click this button to add an essential job function/responsibility and the standard.</p>');
     	}
     	
 	}
@@ -329,11 +332,11 @@ function projectsTutorial(){
 
 	self.step1 = {
 		run: function(){
-			$('html, body').animate({
-		        scrollTop: $(".projects-container").offset().top-450
-		    });
 			//explain button
 			moveArrow($("#add-project-btn"), "right");
+			$('html, body').animate({
+		        scrollTop: $(".arrow").offset().top-450
+		    });
 	    	$('#tutorial-content-container').html('<h3 class="text-center">Projects</h3><p>Click on the Add Project button to add any special projects that the employee has worked on.</p>');
 	    }
 	}
@@ -418,7 +421,7 @@ function developmentPlanTutorial(){
 		    });
 		    moveArrow($(".development-plans-container"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Complete the employee’s development plans and training requirements.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Complete the employee’s development plans and training requirements (if any).</p>');
 		}
 	}
 
@@ -426,6 +429,9 @@ function developmentPlanTutorial(){
 		run: function(){
 			//explain button
 			moveArrow($("#add-development-plan-btn"), "right");
+			$('html, body').animate({
+		        scrollTop: $(".arrow").offset().top-450
+		    });
 	    	$('#tutorial-content-container').html('<h3 class="text-center">Development Plans</h3><p>Click this button to add a Development Plan.</p>');
 	    }
     	
@@ -516,7 +522,7 @@ function attributesTutorial(){
 	self.step3 = {
 		run: function(){
 		//explain clipboard
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Click on the green clipboard to automatically copy the contents into the field for editing.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Attributes</h3><p>Click on the green clipboard to automatically copy the contents into the field if you would like to use and edit.</p>');
 	    	self.oldContents = $("#attribute-1 textarea").val();
 	    	$("#attribute-1 textarea").val('');
 	    	$("#attribute-1 .attribute-glyph").last().tooltip().mouseout();
@@ -572,7 +578,7 @@ function supservisorsOnlyTutorial(){
 		    });
 		    moveArrow($("#supervisor-attributes-container"), "right");
 
-		    $('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>There are an additional set of attributes required of the supervisor. For ratings of “O” or “I” a comment is required.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>There are an additional set of attributes required of supervisors. For ratings of “O” or “I” a comment is required.</p>');
 		}
 	}
 
@@ -590,7 +596,7 @@ function supservisorsOnlyTutorial(){
 		run: function(){
 			//explain clipboard
 			$("#supervisor-attribute-1 .attribute-glyph").tooltip().mouseout();
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>Click on the green clipboard to automatically copy the contents into the field for editing.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Supervisor Attributes</h3><p>Click on the green clipboard to automatically copy the contents into the field if you would like to use and edit.</p>');
 	    	self.oldContents = $("#supervisor-attribute-1 textarea").val();
 	    	$("#supervisor-attribute-1 textarea").val('');
 	    	$("#supervisor-attribute-1 .attribute-glyph").last().tooltip().mouseout();
@@ -719,7 +725,7 @@ function createPDFTutorial(){
 			$("#makePDFModal").modal('show');
 			$("#makePDFModal").css('z-index', 6);
 			$("#makePDFModal").css('top', $(".tutorial-info-box").position().top+$(".tutorial-info-box").height()+80);
-			$(".modal-backdrop").css('z-index', '5');
+			$(".modal-backdrop").css('z-index', 5);
 			$(".modal-backdrop").css('display', 'none');
 
 			$(".arrow").attr('src', 'images/greenArrow.png');

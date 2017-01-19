@@ -193,6 +193,7 @@ function validateFormExceptButtons(){
 		}
 	});
 
+	//check overall rating section for filled in comment and valid rating
 	$('#overall-rating-section').on('blur', 'textarea', function(){
 		if($(this).val().length === 0){
 			$(this).addClass('incomplete');
@@ -229,6 +230,21 @@ function validateRatingBtn(ele){
 			parent.find('textarea').addClass('incomplete');
 			if(parent.find('textarea').next('small').length === 0){
 				parent.find('textarea').after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+			}
+		}else{
+			parent.find('textarea').removeClass('incomplete')
+			parent.find('textarea').next('small').remove();
+		}
+	}else if(parent.is('#overall-rating-section')){
+		if(btnGroup.find('.selected-rating').length === 1 && ($(ele).val() === "O" || $(ele).val() === "I") && parent.find('textarea').val().length === 0){
+			parent.find('textarea').addClass('incomplete');
+			if(parent.find('textarea').next('small').length === 0){
+				parent.find('textarea').after('<small class="error">Comments are required for a rating of "O" or "I"</small>');
+			}
+		}else if(btnGroup.find('.selected-rating').length === 1 && parent.find('textarea').val().length === 0){
+			parent.find('textarea').addClass('incomplete');
+			if(parent.find('textarea').next('small').length === 0){
+				parent.find('textarea').after('<small class="error">Comments are required for overall rating</small>');
 			}
 		}else{
 			parent.find('textarea').removeClass('incomplete')

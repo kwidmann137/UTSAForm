@@ -29,11 +29,11 @@
 </head>
 <body>
     <div class="top-bar row">
+        <button type="button" class="btn btn-danger btn-md pull-right menu-btn" onclick="validatePDF();" id="make-pdf-btn">Create PDF</button>
         <button type="button" class="btn btn-success btn-md pull-right menu-btn" onclick="save();" id="save-btn">Save</button>
         <button type="button" class="btn btn-primary btn-md pull-right menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
           Open
         </button>
-        <button type="button" class="btn btn-danger btn-md pull-right menu-btn" onclick="validatePDF();" id="make-pdf-btn">Create PDF</button>
         <button type="button" class="btn btn-info btn-md pull-right menu-btn" onclick="startTutorial();" >Tutorial</button>
     </div>
     <button class="tutorial-menu-show-btn btn btn-danger"><i class="fa fa-bars show-icon" aria-hidden="true"></i></i></button>
@@ -105,12 +105,19 @@
                     <p class="certification-rule text-center">Rule 30501 of the Rules and Regulations of the U.T. System Board of Regents requires all employees (administrative, faculty, and classified) receive an annual evaluation during the past fiscal year.</p>
                 </div>
                 <div class="col-xs-0 col-sm-1 col-md-2"></div>
-                
+            </div>
+            <div class="row">
+               <div class="col-xs-0 col-sm-1 col-md-2"></div>
+                <div class="col-xs-12 col-sm-10 col-md-8">
+                    <p class="comments-warning text-center">Comment are required for <u>all</u> ratings (in each section) of Outstanding "O" or Improvement Needed "I".</p>
+                    <p class="comments-warning text-center">Ratings of SP (Sp-, SP, SP+) do not <u>require</u> comments.</p>
+                </div>
+                <div class="col-xs-0 col-sm-1 col-md-2"></div>
             </div>
             <div class="form-group row" id="essential-job-functions-section">
                 <div class="col-xs-12">
                     <h3>SECTION I. ESSENTIAL JOB FUNCTIONS/RESPONSIBILITIES</h3>
-                    <p class="section-description essential-job-functionssection-description">List the essential job functions/responsibilites of this employee.  These are the major responsibilities of the job. It defines the job (along with the reason it exists).  Typically this would include 5-8 key essential job functions and can be found in the job description or position description.</p>
+                    <p class="section-description essential-job-functionssection-description">List the essential job functions (major)/responsibilites of the job for this employee.  It defines the job (along with the reason it exists).  Typically this would include 5-8 key essential job functions and can be found in the job or position description.</p>
                 </div>
                 <div class="col-xs-12 essential-job-functions-container" id="essential-job-functions-container"></div>
                 <div class="col-xs-12" id="add-essential-function-btn-div">
@@ -131,7 +138,7 @@
             <div class="form-group row" id="development-plans-section">
                 <div class="col-xs-12 development-plans-description">
                     <h3>SECTION III. DEVELOPMENT PLANS</h3>
-                    <p class="section-description development-plans-section-description"><strong>Employees are always encouraged to actively engage in self development affairs.</strong>  Identify specific work assignments, training (courses/classes, skills, books, magazines, seminars or CEU's) designed to increase the individual's effectiveness in present job and/or prepare for future job assignments.</p>
+                    <p class="section-description development-plans-section-description"><strong>Employees are always encouraged to actively engage in self development activities.</strong>  Identify specific work assignments, training (courses/classes, skills, books, magazines, seminars or CEU's) designed to increase the individual's effectiveness in their present job and/or to prepare for future job assignments.</p>
                     <p><strong>** While this section will not have a rating, it should be a factor used to determine overall performance. **</strong></p>
                 </div>
                 <div class="col-xs-12 development-plans-container" id="development-plans-container">
@@ -148,13 +155,8 @@
                     <h3>SECTION IV. ATTRIBUTES</h3>
                     <p class="section-description attributes-description">
                         <strong>To be completed for all employees, including supervisors</strong>
-                        <ul>
-                            <li>For each attribute in which an employee is rated "Outstanding" or "Improvement Needed" comments <strong>are required</strong></li>
-                            <li>For each attribute in which an employee is rated "Solid Performance", <strong>comments are not necessary, but are desirable</strong></li>
-
-                        </ul>
                     </p>
-                    <p class="instruction">You can hover over the clipboard (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  Click clipboard to add the description to the associated text area.</p>
+                    <p class="instruction">You can hover over the clipboard (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  Click clipboard to add and edit the description to the associated text area.</p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="attributes-container">
                     <div class="row attribute" id="attribute-1">
@@ -334,7 +336,6 @@
                     <h3>SECTION V. SUPERVISORS ONLY</h3>
                     <p class="section-description supervisor-attributes-description">
                         Please compelete this page of attributes (in addition to the previous page) for employees.  Supervisor for purposes of this exercise is defined as those who have the responsibility of supervising others, whether in a formal capacity (e.g., by title) or informal.  Supervisors will be rated on 15 attributes (total).
-                        <br><strong>Comments are not required for a rating of "SP"</strong>
                     </p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="supervisor-attributes-container">
@@ -428,7 +429,7 @@
             <div class="form-group row" id="overall-rating-section">
                 <div class="col-xs-12 overall-rating-description">
                     <h3>SECTION VI. OVERALL RATING</h3>
-                    <p class="section-description">When providing comments/summary, consider the employee's performance in: Section I - Essential Job Functions, Section II - Projects, Section III - Development Plans, Sections IV &amp; V - Attributes</p>
+                    <p class="section-description">When providing comments/summary, consider the entire performance evaluation</p>
                 </div>
                 <div class="col-xs-9">
                     <textarea class="form-control"  placeholder="Performance Summary/Manager's Comments -- REQUIRED"></textarea>

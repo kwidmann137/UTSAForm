@@ -9,6 +9,7 @@
 	background-color: #F7F7F7;
 	z-index: 105;
 	padding: 50px 15px 15px 15px;
+	overflow-y: scroll;
 }
 
 .active{
@@ -90,8 +91,8 @@
 	margin: auto
 }
 
-.modal-in{
-	z-index: 5 !important: 
+.modal-backdrop{
+	z-index: 5 !important;
 }
 
 #tutorial-close-btn, #tutorial-next-btn{
@@ -107,6 +108,10 @@
 	padding-left: 15px;
 	border: 1px solid black;
 	border-radius: 10px;
+}
+
+.comments-warning{
+	color: red;
 }
 
 body{
