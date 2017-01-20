@@ -9,15 +9,12 @@ function runValidation(){
 	//validate input fields at top
 	$('input').each(function(){
 		$(this).trigger('blur');
-	})
+	});
 
 	//validate all text areas except for supervisor attributes
 	$('textarea').each(function(){
-		var parent = $(this).parent().parent().parent();
-		if(!(parent.is('#supervisor-attributes-container'))){
-			$(this).trigger('blur');
-		}
-	})
+		$(this).trigger('blur');
+	});
 
 	//validate all rating button groups
 	$('.btn-group').each(function(){
@@ -33,14 +30,23 @@ function runValidation(){
 	});
 
 	//valdate supervisor section
+
+	//if yes then values already checked for errors, so only need to handle no answer and no
 	if($('.selected-supervisor-status').length === 0){
 		$('.supervisor-question-div').addClass('incomplete');
 		if($('.supervisor-question-div').next('small').length === 0){
 			$('.supervisor-question-div').after('<small class="error">You must choose whether or not this employee is a supervisor</small>')
 		}
-	}else{
-		$('supervisor-attributes-container textarea').each(function(){
-			$(this).trigger('blur');
+		//remove errors since no rating selected yet
+	}else if($('.selected-supervisor-status').val() === 'No'){
+		//if yes then check text areas and buttons
+		$('#supervisor-attributes-container textarea').each(function(){
+			$(this).removeClass('incomplete');
+			$(this).next('small').remove();
+		});
+		$('#supervisor-attributes-container .btn-group').each(function(){
+			$(this).removeClass('incomplete');
+			$(this).next('small').remove();
 		})
 	}
 }
@@ -143,8 +149,6 @@ function validateFormExceptButtons(){
 
 	// validate text areas for job functions, dev plans and projects
 	$('#essential-job-functions-container, #projects-container').on('blur', 'textarea[placeholder*="Standard"], textarea[placeholder*="Essential"], textarea[placeholder*="Special"]', function(){
-		console.log("validating text");
-		console.log(this);
 		if($(this).val().length === 0){
 			console.log("should have an error");
 			$(this).addClass('incomplete');
@@ -172,11 +176,8 @@ function validateFormExceptButtons(){
 
 	// check comment text field on blur as well
 	$('#essential-job-functions-container, #projects-container').on('blur', 'textarea[placeholder*="Comments"]', function(){
-		console.log(this);
 		parent = $(this).parent().parent();
-		console.log(parent);
 		ratingBtn = $('.selected-rating', parent);
-		console.log(ratingBtn);
 		//is a rating selected
 		//if yes then check the rating
 		if($('.selected-rating', parent).length !== 0){
@@ -235,10 +236,7 @@ function validateFormExceptButtons(){
 function validateRatingBtn(ele){
 	parent = $(ele).parent().parent().parent();
 	btnGroup = $(ele).parent();
-	console.log("validating");
-	console.log(ele);
 	if(parent.hasClass('job-function') || parent.hasClass('project')){
-		console.log("project or function");
 		if(btnGroup.find('.selected-rating').length === 1 && ($(ele).val() === "O" || $(ele).val() === "I") && parent.find('textarea[placeholder*="Comments"]').val().length === 0){
 			parent.find('textarea[placeholder*="Comments"]').addClass('incomplete');
 			if(parent.find('textarea[placeholder*="Comments"]').next('small').length === 0){
@@ -249,7 +247,6 @@ function validateRatingBtn(ele){
 			parent.find('textarea[placeholder*="Comments"]').next('small').remove();
 		}
 	}else if( parent.hasClass('attribute') || parent.hasClass('supervisor-attribute')){
-		console.log("attribute");
 		if(btnGroup.find('.selected-rating').length === 1 && ($(ele).val() === "O" || $(ele).val() === "I") && parent.find('textarea').val().length === 0){
 			parent.find('textarea').addClass('incomplete');
 			if(parent.find('textarea').next('small').length === 0){

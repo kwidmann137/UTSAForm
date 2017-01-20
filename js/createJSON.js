@@ -162,7 +162,11 @@ function createJSON(){
 			formData.supervisorAttributes.push(item);
 		});
 	}else{
-		formData['isSupervisor'] = 'no';
+		if($('.selected-supervisor-status').length === 1){
+			formData['isSupervisor'] = 'no';
+		}else{
+			formData['usSupervisor'] = '';
+		}
 		formData['supervisorAttributes'] = '';
 	}
 

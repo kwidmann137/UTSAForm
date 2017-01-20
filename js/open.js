@@ -13,6 +13,7 @@ function openFormData(){
         processData: false,
         //Ajax events
         success: function(data){
+            clearForm();
             fillInForm(data);
             $('#openModal').modal('hide'); 
         },
@@ -78,7 +79,7 @@ function fillInForm(data){
                 }
                 var rating = currProject.selectedRating;
                 if(rating !== ''/*none*/){
-                    $('.rating-btn[value='+rating+']', this).addClass('selected-rating');
+                    $('.rating-btn[value="'+rating+'"]', this).addClass('selected-rating');
                 }
                 var dueDate = currProject.dueDate;
                 if(dueDate !==''/*none*/){
@@ -137,18 +138,24 @@ function fillInForm(data){
         }
     }
 
-    for(attribute in formData.supervisorAttributes){
-        var attr  = formData.supervisorAttributes[attribute].attribute;
-        var com = formData.supervisorAttributes[attribute].comment;
-        var rat = formData.supervisorAttributes[attribute].rating;
-        var parent = $('.supervisor-attribute:contains("'+attr+'")');
+    if(formData.isSupervisor === 'yes'){
+        $('.supervisor-status-btn[value*="Yes"]').addClass("selected-supervisor-status");
+        $('#supervisor-attributes-container').css('display', 'inline');
+        for(attribute in formData.supervisorAttributes){
+            var attr  = formData.supervisorAttributes[attribute].attribute;
+            var com = formData.supervisorAttributes[attribute].comment;
+            var rat = formData.supervisorAttributes[attribute].rating;
+            var parent = $('.supervisor-attribute:contains("'+attr+'")');
 
-        if(com !== ''/*none*/){
-            $('textarea', parent).val(com);
+            if(com !== ''/*none*/){
+                $('textarea', parent).val(com);
+            }
+            if(rat !== ''/*none*/){
+                $('.rating-btn[value="'+rat+'"]', parent).addClass('selected-rating');
+            }
         }
-        if(rat !== ''/*none*/){
-            $('.rating-btn[value="'+rat+'"]', parent).addClass('selected-rating');
-        }
+    }else if(formData.isSupervisor === 'no'){
+        $('.supervisor-status-btn[value*="No"]').addClass("selected-supervisor-status");
     }
 
     var overallText = formData.overallRating.overallComment;
@@ -174,36 +181,56 @@ function fillInForm(data){
     runValidation()
 }
 
-function runValidation(){
-    $('#review_period_from').trigger("blur");
-    $('#review_period_to').trigger("blur");
-    // validate name
-    $('#employee_name').trigger('blur');
+function clearForm(){
+    $('.review-period-section input, .employee-info-section input').each(function(){
+        $(this).val('');
+    });
 
-    // validate title
-    $('#employee_title').trigger('blur');
+    $('textarea').each(function(){
+        $(this).val('');
+    });
 
-    // validate employee id
-    $('#employee_id').trigger('blur');
+    $('.selected-rating').each(function(){
+        $(this).removeClass('selected-rating');
+    });
 
-    // validate job code
-    $('#job_code').trigger('blur');
+    $('.date-picker').each(function(){
+        $(this).val('');
+    });
 
-    // validate text areas for jub functions, dev plans and projects
-    $('#essential-job-functions-container textarea, #projects-container textarea, #development-plans-container textarea').trigger('blur');
-        
-
-    //validate calenders for functions, projects and dev plans
-    $('#projects-container .datepicker, #development-plans-container .datepicker').trigger('blur');
-
-    //validate attributes and supervisors only sections
-    $('#attributes-container .btn-group, #supervisor-attributes-container .btn-group').trigger('blur');
-        
-
-    //to double check after they enter a comment
-    $('#attributes-container textarea, #supervisor-attributes-container textarea').trigger('blur');
-        
-
-    $('#overall-rating-section textarea').trigger('blur');
-        
+    $('.selected-supervisor-status').removeClass('selected-supervisor-status');
 }
+
+// function runValidation(){
+//     $('#review_period_from').trigger("blur");
+//     $('#review_period_to').trigger("blur");
+//     // validate name
+//     $('#employee_name').trigger('blur');
+
+//     // validate title
+//     $('#employee_title').trigger('blur');
+
+//     // validate employee id
+//     $('#employee_id').trigger('blur');
+
+//     // validate job code
+//     $('#job_code').trigger('blur');
+
+//     // validate text areas for jub functions, dev plans and projects
+//     $('#essential-job-functions-container textarea, #projects-container textarea, #development-plans-container textarea').trigger('blur');
+        
+
+//     //validate calenders for functions, projects and dev plans
+//     $('#projects-container .datepicker, #development-plans-container .datepicker').trigger('blur');
+
+//     //validate attributes and supervisors only sections
+//     $('#attributes-container .btn-group, #supervisor-attributes-container .btn-group').trigger('blur');
+        
+
+//     //to double check after they enter a comment
+//     $('#attributes-container textarea, #supervisor-attributes-container textarea').trigger('blur');
+        
+
+//     $('#overall-rating-section textarea').trigger('blur');
+        
+// }
