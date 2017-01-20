@@ -23,6 +23,7 @@ Tutorial.prototype.createTutorialItems = function(){
 	this.save = new saveFileTutorial(); 
 	this.open = new openFileTutorial(); 
 	this.createPDF = new createPDFTutorial(); 
+	this.createEmployeePDF = new createEmployeePDF();
 	this.share = new shareFileTutorial();
 
 	//set the order of all tutorial items
@@ -49,19 +50,18 @@ Tutorial.prototype.createTutorialItems = function(){
 	this.open.prev = this.save; 
 	this.open.next = this.share; 
 	this.share.prev = this.open;
-	this.share.next = this.createPDF;
-	this.createPDF.prev = this.share; 
+	this.share.next = this.createEmployeePDF;
+	this.createEmployeePDF.prev = this.share;
+	this.createEmployeePDF.next = this.createPDF;
+	this.createPDF.prev = this.createEmployeePDF; 
 	this.createPDF.next = null; 
 
 	this.currStep = this.welcome;
 }
 
 var startTutorial = function(){
-	console.log('In start tutorial');
 	if(typeof tutorial !== 'undefined'){
-		console.log("tutorial existed");
 		if(typeof tutorial.currStep !== 'undefined'){
-			console.log("currstep existed, cleaning");
 			tutorial.currStep.clean();
 			$(".tutorial-element").remove();
 		}
@@ -235,10 +235,9 @@ function essentialJobFunctionsTutorial(){
 	}
 
 	self.clean = function(){
-		console.log("In clean function for essential jobs functions");
 		if(self.jobsAdded === 1){
 			$(".job-function button[value='O']").last().tooltip().mouseout();
-			$(".function-close-btn").last().trigger('click');
+			deleteElement($(".function-close-btn").last());
 			self.jobsAdded--;
 		}
 	}
@@ -325,7 +324,7 @@ function projectsTutorial(){
 		if(self.projectsAdded === 1){
 			$(".project .date-picker").last().trigger('blur');
 			$(".project button[value='O']").last().tooltip().mouseout();
-			$(".project-close-btn").last().trigger('click');
+			deleteElement($(".project-close-btn").last());
 			self.projectsAdded--;
 		}
 	}
@@ -409,7 +408,7 @@ function developmentPlanTutorial(){
 	self.clean = function(){
 		if(self.developmentPlansAdded === 1){
 			$(".development-plan .date-picker").last().trigger('blur');
-			$(".development-plan-close-btn").last().trigger('click');
+			deleteElement($(".development-plan-close-btn").last());
 			self.developmentPlansAdded--;
 		}
 	}
@@ -546,6 +545,7 @@ function supservisorsOnlyTutorial(){
 	var self = this;
 	self.oldContents;
 	self.currSubStep = null;
+	self.origState;
 
 	self.start = function(){
 		$("#tutorial-back-btn").css('display', 'inline');
@@ -569,10 +569,13 @@ function supservisorsOnlyTutorial(){
 			$("#supervisor-attribute-1 textarea").val(self.oldContents);
 		}
 		$("#supervisor-attribute-1 button[value='O']").last().tooltip().mouseout();
+		$("#supervisor-attributes-container").css('display', self.origState);
 	}
 
 	self.step1 = {
 		run: function(){
+			self.origState = $("#supervisor-attributes-container").css('display');
+			$("#supervisor-attributes-container").css('display', 'inline');
 			$('html, body').animate({
 		        scrollTop: $("#supervisor-attributes-container").offset().top-450
 		    });
@@ -716,7 +719,7 @@ function createPDFTutorial(){
 			moveArrow($("#make-pdf-btn"), "up");
 
 	    	//initial step
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Create PDF</h3><p>Selecting the red <strong>Create PDF</strong> button will create the PDF with the form data you entered in the form.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create PDF</h3><p>This will be the <strong>LAST</strong> step you perform.  Only once the form is completely filled out and without errors can you perform this step.  Selecting the red <strong>Create PDF</strong> button will create the PDF with the form data you entered in the form.</p>');
 	    }
 	}
 	self.step2 = {
@@ -731,7 +734,7 @@ function createPDFTutorial(){
 			$(".arrow").attr('src', 'images/greenArrow.png');
 			$(".arrow").css('left', $(".tutorial-info-box").offset().left - $(".arrow").width());
 	    	$(".arrow").css('top', $(".tutorial-info-box").offset().top+$(".tutorial-info-box").height()+100);
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Create, Print, and Save the PDF</h3><p>Now that you have completed entering the form data, it is time to copy the form/data to a PDF document.</p><p>The <strong>Create PDF</strong> button will generate a PDF that will be populated with the form data you entered.</p><p>The PDF created will open in a new window.  From that window you can do a final review of the PDF before saving and/or printing.</p><p>Use standard print method to PRINT the PDF in the new window.</p>');	
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create, Print, and Save the PDF</h3><p>Now that you have completed entering the form data and your employee has reviewed it, it is time to copy the form/data to a PDF document.</p><p>The <strong>Create PDF</strong> button will generate a PDF that will be populated with the form data you entered.</p><p>The PDF created will open in a new window.  From that window you can do a final review of the PDF before saving and/or printing.</p><p>Use standard file->print method to PRINT the PDF in the new window.</p>');	
 	    }
 	}
 	self.step3 = {
@@ -743,6 +746,34 @@ function createPDFTutorial(){
 	    	$("#tutorial-next-btn").addClass('btn-warning');
 	    	$("#tutorial-next-btn").html("Finish");
 	    	$("#tutorial-back-btn").css('display', 'none');
+	    }
+	}
+}
+
+function createEmployeePDF(){
+	var self = this;
+	self.currSubStep = null;
+
+	self.start = function(){
+		$("#tutorial-back-btn").css('display', 'inline');
+		//set new curr step
+		tutorial.currStep = self;
+		self.step1.prev = null;
+		self.step1.next = null;
+		self.currSubStep = self.step1;
+		self.currSubStep.run();
+	}
+
+	self.clean = function(){
+
+	}
+
+	self.step1 = {
+		run: function(){
+			moveArrow($("#make-employee-pdf-btn"), "up");
+
+	    	//initial step
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create Employee PDF</h3><p>This will create a PDF version of the form that you can share with your employee if you prefer to have your employee review a hard copy.  It will create a PDF in the same way as the Create PDF button except no Signature Page will be generated.  For more details refer to the Create PDF Tutorial.</p>');
 	    }
 	}
 }
@@ -788,7 +819,7 @@ function openFileTutorial(){
 			$(".arrow").attr('src', 'images/greenArrow.png');
 			$(arrow).css('left', $(".tutorial-info-box").offset().left - $(arrow).width());
 	    	$(arrow).css('top', $(".tutorial-info-box").offset().top+$(".tutorial-info-box").height()+140);
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>Browse your computer to retrieve your previously saved file.</p><p>The default file location is in the <strong>Downloads</strong> folder under your profile on the computer you saved it to.</p><p>The default file name is formData.txt</p><p>Select the file and click <strong>Open</strong>.  It will read the file and prepopulate the form with all the information you previously saved.</p><p><span class="warning text-center">WARNING</span><br>You can only open files that were generated by this program.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>Browse your computer to retrieve your previously saved file.</p><p>The default file location is in the <strong>Downloads</strong> folder under your profile on the computer you saved it to.</p><p>Select the file and click <strong>Open</strong>.  It will read the file and prepopulate the form with all the information you previously saved.</p><p><span class="warning text-center">WARNING</span><br>You can only open files that were generated by this program.</p>');
 		}
 	}
 }
@@ -803,7 +834,15 @@ function saveFileTutorial(){
 		//set new curr step
 		tutorial.currStep = self;
 		self.step1.prev = null;
-		self.step1.next = null;
+		self.step1.next = self.step2;
+		self.step2.prev = self.step1;
+		self.step2.next = self.step3;
+		self.step3.prev = self.step2;
+		self.step3.next = self.step4;
+		self.step4.prev = self.step3;
+		self.step4.next = self.step5;
+		self.step5.prev = self.step4;
+		self.step5.next = null;
 		self.currSubStep = self.step1;
 		self.currSubStep.run();
 	}
@@ -817,7 +856,39 @@ function saveFileTutorial(){
 			moveArrow($("#save-btn"), "up");
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p><p><span class="warning text-center">FILE SAVE WARNING</span><br>Using File->Save from the browser menu is <strong>NOT</strong> the correct method to save the form data, you must use the green <strong>Save</strong> button.</p><p><span class="warning text-center">ENCRYPTION WARNING</span><br>When you download the data file it is encrypted for security. Do not attempt to alter it outside of this program or you will ruin the file. Only this program can open the data file you will download in a useable format.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p>');
+		}
+	}
+
+	self.step2 = {
+		run: function(){
+
+		    //initial step
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>This web form is developed to work best with Firefox and Chrome browsers.  Since the files is downloaded by the browser, the way the download is handled varies slightly depending upon your browser.  See the FAQ section for details on how downloads are handled in Firefox and Chrome</p>');
+		}
+	}
+
+	self.step3 = {
+		run: function(){
+
+		    //initial step
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The data will always download with the file name as formData.txt.  If you download multiple files they will be index (i.e. formData(1).txt, formData(2).txt etc.).  If you are saving for multiple employees or multiple versions it is highly recommended you rename these files in order to make it easier to keep track and store them for later use.  If you are not sure how to rename a file you download view the FAQ section.</p>');
+		}
+	}
+
+	self.step4 = {
+		run: function(){
+
+		    //initial step
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p><span class="warning text-center">FILE SAVE WARNING</span><br>Using File->Save from the browser menu is <strong>NOT</strong> the correct method to save the form data, you must use the green <strong>Save</strong> button.</p>');
+		}
+	}
+
+	self.step5 = {
+		run: function(){
+
+		    //initial step
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p><span class="warning text-center">ENCRYPTION WARNING</span><br>When you download the data file it is encrypted for security. Do not attempt to alter it outside of this program or you will ruin the file. Only this program can open the data file you will download in a useable format.</p>');
 		}
 	}
 }
@@ -847,13 +918,13 @@ function shareFileTutorial(){
 			moveArrow($("#save-btn"), "up");
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Sharing</h3><p>You will share the form with another employee the same way you would share any other file. You can share it via email, google drive, or any other way you wish. Just remember to not alter it outside of this program. The next step offers a template you can use to send to the employee if they have never used this form before, it will help get them started.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Sharing</h3><p>You will share the form with another employee the same way you would share any other file. You can share it via email, google drive, or any other way you wish. Just remember not to alter it outside of this program. The next step offers a template you can use to send to the employee if they have never used this form before.  It will help get them started.</p>');
 		}
 	}
 
 	self.step2 = {
 		run: function(){
-		    $('#tutorial-content-container').html('<h3 class="text-center">Sharing</h3><p>Share the file however you wish, email, cloud storage etc.  You can send the following template to provide them with instructions:</p><div class="share-template"><p><h4>Steps to open form</h4><br>Step 1 ) Download a copy of the file shared with you<br>Step 2 ) Proceed to this link: <a href="http://terry.it.utsa.edu/www1/hr/compensation/PerformanceEvaluation/form/">http://terry.it.utsa.edu/www1/hr/compensation/PerformanceEvaluation/form/</a><br>Step 3) Once there click on the tutorial button in the top right hand corner to learn about the form, including how to open the file provided</p></div>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Sharing</h3><p>Share the file however you wish, email, cloud storage etc.  You can send the following template to provide the employee with instructions:</p><div class="share-template"><p><h4>Steps to open form</h4><br>Step 1 ) Open a copy of the file shared with you.<br>Step 2 ) Proceed to this link: <a href="http://terry.it.utsa.edu/www1/hr/compensation/PerformanceEvaluation/form/">http://terry.it.utsa.edu/www1/hr/compensation/PerformanceEvaluation/form/</a><br>Step 3) Once there, click on the tutorial button in the top right hand corner to learn about the form, including how to open the file provided.</p></div>');
 		}
 	}
 }
