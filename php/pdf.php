@@ -289,12 +289,33 @@
 			$this->SetFont('', '', 8);
 			//first line
 			$this->Ln(PADDING*3);
-			$this->Cell($section*6, 4, "Employee Signature *", "T", 0);
+			$x = $this->GetX();
+			$y = $this->GetY();
+			$stringWidth = $this->GetStringWidth("Employee Signature");
+			$this->Cell($stringWidth, 4, "Employee Signature", 0, 0);
+			$this->SetTextColor(255,0,0);
+			$this->Cell($section, 4, " *", 0, 0);
+			$this->SetTextColor(0,0,0);
+			$this->SetXY($x, $y);
+			$this->Cell($section*6, 4, "", "T", 0);
 			$this->Cell($section*2, 4, "", 0, 0);
 			$this->Cell($section*6, 4, "Employee Printed Name", "T", 0);
 			$this->Cell($section*2, 4, "", 0, 0);
 			$this->Cell($section*4, 4, "Date", "T", 1);
 			
+			//note for employee signature
+			$this->Ln(PADDING*3);
+			$x = $this->GetX();
+			$y = $this->GetY();
+			$this->SetTextColor(255,0,0);
+			$this->Cell($section, 4, " *", 0, 0);
+			$this->SetXY($x, $y);
+			$this->SetTextColor(0, 0 ,0);
+			$this->Cell(0, 4, "    Your signature does not necessarily signify agreement with the appraisal; but simply that the appraisal has been discussed with you.", "B", 1);
+			$this->SetTextColor(255,0,0);
+			$this->Cell(0, 4, "If the employee chooses not to sign the appraisal, have another member of the management team witness the delivery of the appraisal.", 0 ,1);
+			$this->SetTextColor(0,0,0);
+
 			//second
 			$this->Ln(PADDING*3);
 			$this->Cell($section*6, 4, "Supervisor Signature", "T", 0);
@@ -312,12 +333,24 @@
 			
 			//fourth
 			$this->Ln(PADDING*3);
-			$this->Cell($section*6, 4, "Additional(* if required)", "T", 0);
+			$x = $this->GetX();
+			$y = $this->GetY();
+			$stringWidth = $this->GetStringWidth("Additional ");
+			$this->Cell($stringWidth, 4, "Additional ", 0, 0);
+			$this->SetTextColor(255,0,0);
+			$this->Cell($section*3, 4, "(* if required)", 0, 0);
+			$this->SetXY($x, $y);
+			$this->SetTextColor(0,0,0);
+			$this->Cell($section*6, 4, "", "T", 0);
 			$this->Cell($section*2, 4, "", 0, 0);
 			$this->Cell($section*6, 4, "Printed Name", "T", 0);
 			$this->Cell($section*2, 4, "", 0, 0);
 			$this->Cell($section*4, 4, "Date", "T", 1);
 
+			$this->Ln(PADDING*3);
+			$this->SetFont('', '', 12);
+			$this->MultiCell(0, 8, "Once all signatures have been obtained, return the original or a copy of the completed Performance Appraisal to:", 0, 1);
+			$this->MultiCell(0, 8, "UTSA - The Department of Human Resources: Attention Records Department", 0, 1);
 		}
 
 		function setSectionHeaderTitleFont(){
