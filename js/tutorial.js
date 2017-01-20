@@ -80,6 +80,9 @@ var startTutorial = function(){
 }
 
 var cleanTutorial = function(){
+	$("#tutorial-next-btn").removeClass('btn-warning');
+	$("#tutorial-next-btn").addClass('btn-primary');
+	$("#tutorial-next-btn").addClass('pull-right');
 	$("#tutorial-next-btn").html("Next");
 	tutorial.currStep.clean();
 }

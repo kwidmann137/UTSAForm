@@ -58,6 +58,7 @@
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save File For Editing</button>
              <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open A Saved File</button>
              <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.share.start();">Share File For Review and Editing</button>
+             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createEmployeePDF.start();">Create Employee  PDF</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
             <button class="btn btn-danger" id="tutorial-close-btn" onclick="closeTutorial();">Exit Tutorial</button>
         </div>
