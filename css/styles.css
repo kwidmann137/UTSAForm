@@ -16,6 +16,22 @@
 	left: 0;
 }
 
+.selected-supervisor-status[value*="Yes"]{
+	background-color: #5cb85c;
+}
+
+.selected-supervisor-status[value*="No"]{
+	background-color: #D9534F;
+}
+
+.selected-supervisor-status[value*="Yes"]:focus{
+	background-color: #5cb85c;
+}
+
+.selected-supervisor-status[value*="No"]:focus{
+	background-color: #D9534F;
+}
+
 .tutorial-menu-close-btn{
 	position: absolute;
 	top: 0px;
@@ -258,6 +274,10 @@ textarea{
 
 .attribute, .supervisor-attribute{
 	margin: 5px 0px;
+}
+
+#supervisor-attributes-container{
+	display: none;
 }
 
 .attribute-glyph-div{

@@ -23,6 +23,7 @@
     <script type="text/javascript" src="js/tutorial.js"></script>
     <script type="text/javascript" src="js/general.js"></script>
     <script type="text/javascript" src="js/textareaResize.js"></script>
+    <script type="text/javascript" src="js/supervisorAttributes.js"></script>
     <script type="text/javascript" src="bootstrap/addons/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
@@ -337,6 +338,9 @@
                     <p class="section-description supervisor-attributes-description">
                         Please compelete this page of attributes (in addition to the previous page) for employees.  Supervisor for purposes of this exercise is defined as those who have the responsibility of supervising others, whether in a formal capacity (e.g., by title) or informal.  Supervisors will be rated on 15 attributes (total).
                     </p>
+                </div>
+                <div class="col-xs-12 text-center supervisor-question-div">
+                    Is this employee a supervisor? <button class="btn supervisor-status-btn" type="button" name="supervisor-yes" value="Yes">Yes</button><button class="btn supervisor-status-btn" type="button" name="supervisor-no" value="No">No</button>
                 </div>
                 <div class="col-xs-12 attributes-container" id="supervisor-attributes-container">
                     <div class="row supervisor-attribute" id="supervisor-attribute-1">

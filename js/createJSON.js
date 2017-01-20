@@ -141,24 +141,30 @@ function createJSON(){
 	})
 
 	//caputre supervisor attributes
-	formData['supervisorAttributes'] = [];
-	$('.supervisor-attribute').each(function(){
-		var item = {};
-		var attribute = $('label', this).text();
-		var comment = $('textarea', this).val();
-		if(typeof comment === 'undefined'){
-			comment = ''/*none*/;
-		}
-		item['attribute'] = attribute;
-		item['comment'] = comment;
-		var rating = $('.selected-rating', this).val();
-		if(typeof rating !== 'undefined'){
-			item['rating'] = rating;
-		}else{
-			item['rating'] = ''/*none*/;
-		}
-		formData.supervisorAttributes.push(item);
-	})
+	if($('.selected-supervisor-status').val() === 'Yes'){
+		formData['isSupervisor'] = 'yes';
+		formData['supervisorAttributes'] = [];
+		$('.supervisor-attribute').each(function(){
+			var item = {};
+			var attribute = $('label', this).text();
+			var comment = $('textarea', this).val();
+			if(typeof comment === 'undefined'){
+				comment = ''/*none*/;
+			}
+			item['attribute'] = attribute;
+			item['comment'] = comment;
+			var rating = $('.selected-rating', this).val();
+			if(typeof rating !== 'undefined'){
+				item['rating'] = rating;
+			}else{
+				item['rating'] = ''/*none*/;
+			}
+			formData.supervisorAttributes.push(item);
+		});
+	}else{
+		formData['isSupervisor'] = 'no';
+		formData['supervisorAttributes'] = '';
+	}
 
 	//capture overall rating
 	formData['overallRating'] = {};

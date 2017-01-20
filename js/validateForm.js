@@ -6,14 +6,20 @@ $(function(){
 
 function runValidation(){
 
+	//validate input fields at top
 	$('input').each(function(){
 		$(this).trigger('blur');
 	})
 
+	//validate all text areas except for supervisor attributes
 	$('textarea').each(function(){
-		$(this).trigger('blur');
+		var parent = $(this).parent().parent().parent();
+		if(!(parent.is('#supervisor-attributes-container'))){
+			$(this).trigger('blur');
+		}
 	})
 
+	//validate all rating button groups
 	$('.btn-group').each(function(){
 		if($('.selected-rating', this).length === 0){
 			$(this).addClass('incomplete');
@@ -25,6 +31,18 @@ function runValidation(){
 			$(this).next('small').remove();
 		}
 	});
+
+	//valdate supervisor section
+	if($('.selected-supervisor-status').length === 0){
+		$('.supervisor-question-div').addClass('incomplete');
+		if($('.supervisor-question-div').next('small').length === 0){
+			$('.supervisor-question-div').after('<small class="error">You must choose whether or not this employee is a supervisor</small>')
+		}
+	}else{
+		$('supervisor-attributes-container textarea').each(function(){
+			$(this).trigger('blur');
+		})
+	}
 }
 
 function validateFormExceptButtons(){
@@ -192,6 +210,12 @@ function validateFormExceptButtons(){
 
 		}
 	});
+
+	// check supervisor btn on click
+	$('.supervisor-status-btn').on('click', function(){
+		$('.supervisor-question-div').removeClass('incomplete');
+		$('.supervisor-question-div').next('small').remove();
+    });
 
 	//check overall rating section for filled in comment and valid rating
 	$('#overall-rating-section').on('blur', 'textarea', function(){
