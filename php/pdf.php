@@ -88,10 +88,15 @@
 
 			$this->AddPage();
 			$this->printSupervisorAttributesHeader();
-			foreach($data->supervisorAttributes as $attribute){
-				$this->printSupervisorAttribute($attribute);
+			if($data->isSupervisor == 'no'){
+				$this->Cell(0, FONTSIZE, "This employee is not a supervisor", 0, 1 , 'C'); 
+				$this->Ln(PADDING);
+			}else{
+				foreach($data->supervisorAttributes as $attribute){
+					$this->printSupervisorAttribute($attribute);
+				}
+				$this->Ln(PADDING);
 			}
-			$this->Ln(PADDING);
 
 			$this->AddPage();
 			//print overall rating

@@ -156,6 +156,9 @@ function fillInForm(data){
         }
     }else if(formData.isSupervisor === 'no'){
         $('.supervisor-status-btn[value*="No"]').addClass("selected-supervisor-status");
+        $('#supervisor-attributes-container').css('display', 'none');
+    }else{
+        $('#supervisor-attributes-container').css('display', 'none');
     }
 
     var overallText = formData.overallRating.overallComment;

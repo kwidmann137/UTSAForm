@@ -31,13 +31,21 @@ function runValidation(){
 
 	//valdate supervisor section
 
-	//if yes then values already checked for errors, so only need to handle no answer and no
+	//if yes then values already checked for errors, so only need to handle no answer and none provided
 	if($('.selected-supervisor-status').length === 0){
 		$('.supervisor-question-div').addClass('incomplete');
 		if($('.supervisor-question-div').next('small').length === 0){
 			$('.supervisor-question-div').after('<small class="error">You must choose whether or not this employee is a supervisor</small>')
 		}
 		//remove errors since no rating selected yet
+		$('#supervisor-attributes-container textarea').each(function(){
+			$(this).removeClass('incomplete');
+			$(this).next('small').remove();
+		});
+		$('#supervisor-attributes-container .btn-group').each(function(){
+			$(this).removeClass('incomplete');
+			$(this).next('small').remove();
+		});
 	}else if($('.selected-supervisor-status').val() === 'No'){
 		//if yes then check text areas and buttons
 		$('#supervisor-attributes-container textarea').each(function(){
@@ -47,7 +55,7 @@ function runValidation(){
 		$('#supervisor-attributes-container .btn-group').each(function(){
 			$(this).removeClass('incomplete');
 			$(this).next('small').remove();
-		})
+		});
 	}
 }
 
