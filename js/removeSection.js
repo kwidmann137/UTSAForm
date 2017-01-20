@@ -1,4 +1,18 @@
 function removeSection(ele){
+	$('#promptToDeleteModal').modal('show');
+	$('#delete-btn-yes').unbind().on('click', function(){
+		deleteElement(ele);
+		$('#promptToDeleteModal').modal('hide');
+		return;
+	});
+	$('#delete-btn-no').unbind().on('click', function(){
+		$('#promptToDeleteModal').modal('hide');
+		return;
+	});
+}
+
+
+function deleteElement(ele){
 	if($(ele).hasClass('function-close-btn')){
 		var id = $(ele).parents('.job-function').attr('id');
 		$('#'+id).remove();

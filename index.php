@@ -505,6 +505,29 @@
       </div>
     </div>
 
+    <!-- Modal for asking to delete -->
+    <div class="modal" id="promptToDeleteModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this item?</p>
+                <div class="text-center">
+                    <button class="btn btn-md btn-success" id="delete-btn-no">No</button>
+                    <button class="btn btn-md btn-danger" id="delete-btn-yes">Yes</button>
+                </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal for creating PDF and prompting to save -->
     <div class="modal" id="makePDFModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -528,7 +551,7 @@
       </div>
     </div>
 
-    <!-- Modal for creating PDF and prompting to save -->
+    <!-- Modal for creating Employee copy of PDF and prompting to save -->
     <div class="modal" id="makeEmplPDFModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
