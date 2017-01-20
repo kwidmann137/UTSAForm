@@ -70,6 +70,11 @@
             <div class="col-xs-2"></div>
         </div>
         <div class="form">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h4 class="browser-warning">This web form is certified to work with Firefox and Chrome.</h4>
+                </div>
+            </div>
             <div class=" row form-group text-center review-period-section">
                 <div class="col-xs-6 review-period-section">
                     <label class="review-period-label">Review Period From: 2/1/&nbsp;</label>

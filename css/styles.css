@@ -101,6 +101,11 @@
     display: none;
 }
 
+.browser-warning{
+	color: red;
+	margin-bottom: 20px;
+}
+
 .warning{
 	font-size: 2em;
 	color: red;
