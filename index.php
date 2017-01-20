@@ -36,6 +36,7 @@
           Open
         </button>
         <button type="button" class="btn btn-info btn-md pull-right menu-btn" onclick="startTutorial();" >Tutorial</button>
+        <button type="button" class="btn btn-warning btn-md pull-right menu-btn" >FAQ</button>
     </div>
     <button class="tutorial-menu-show-btn btn btn-danger"><i class="fa fa-bars show-icon" aria-hidden="true"></i></i></button>
     <div class="tutorial-side-menu row">
