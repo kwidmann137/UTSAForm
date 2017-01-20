@@ -112,6 +112,78 @@
 
 		}
 
+		function printEmployeeCopy(){
+			global $data;
+
+			$this->AddPage();
+			// print job functions
+			$this->printJobFunctionsHeader();
+			if($data->numOfEssentialFunctions > 0){
+				$jobNum = 0;
+				foreach($data->jobFunctions as $job){
+					$jobNum++;
+					$this->printJobFunction($job, $jobNum);
+				}
+			}else{
+				$this->Cell(0, FONTSIZE, "No Essential Job Functions reported for employee", 0, 1, 'C');
+				$this->Ln(PADDING);
+			}
+
+			$this->AddPage();
+			$this->printProjectsHeader();
+			if($data->numOfProjects > 0){
+				$projectNum = 0;
+				foreach($data->projects as $project){
+					$projectNum++;
+					$this->printProject($project, $projectNum);
+				}
+			}else{
+				$this->Cell(0, FONTSIZE, "No Projects reported for employee", 0, 1 , 'C');
+				$this->Ln(PADDING);
+			}
+
+			$this->AddPage();
+			$this->printDevelopmentPlansHeader();
+			if($data->numOfDevelopmentPlans > 0){
+				$planNum = 0;
+				foreach($data->developmentPlans as $plan){
+					$planNum++;
+					$this->printDevelopmentPlan($plan, $planNum);
+				}
+			}else{
+				$this->Cell(0, FONTSIZE, "No Development Plans reported for employee", 0, 1 , 'C'); 
+				$this->Ln(PADDING);
+			}
+
+			$this->AddPage();
+			$this->printAttributesHeader();
+			foreach($data->attributes as $attribute){
+				$this->printAttribute($attribute);
+			}
+			$this->Ln(PADDING);
+
+			$this->AddPage();
+			$this->printSupervisorAttributesHeader();
+			if($data->isSupervisor == 'no'){
+				$this->Cell(0, FONTSIZE, "This employee is not a supervisor", 0, 1 , 'C'); 
+				$this->Ln(PADDING);
+			}else{
+				foreach($data->supervisorAttributes as $attribute){
+					$this->printSupervisorAttribute($attribute);
+				}
+				$this->Ln(PADDING);
+			}
+
+			$this->AddPage();
+			//print overall rating
+			$this->printOverallRating($data->overallRating);
+
+
+			// print employee comment
+			$this->printEmployeeComment($data->employeeComment);
+
+		}
+
 		function printEmployeeInfo(){
 			global $data;
 			$this->SetFont('Arial','',10);

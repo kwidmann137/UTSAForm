@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/open.js"></script>
     <script type="text/javascript" src="js/makePDF.js"></script>
+    <script type="text/javascript" src="js/makeEmplPDF.js"></script>
     <script type="text/javascript" src="js/addEssentialFunction.js"></script>
     <script type="text/javascript" src="js/addProject.js"></script>
     <script type="text/javascript" src="js/addDevelopmentPlan.js"></script>
@@ -38,6 +39,7 @@
         </button>
         <button type="button" class="btn btn-info btn-md pull-right menu-btn" onclick="startTutorial();" >Tutorial</button>
         <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md pull-right menu-btn" >FAQ</a>
+        <button type="button" class="btn btn-secondary btn-md pull-right menu-btn" onclick="validateEmplPDF();" id="make-employee-pdf-btn">Create Employee PDF</button>
     </div>
     <button class="tutorial-menu-show-btn btn btn-danger"><i class="fa fa-bars show-icon" aria-hidden="true"></i></i></button>
     <div class="tutorial-side-menu row">
@@ -518,6 +520,29 @@
                 <div class="text-center">
                     <button class="btn btn-md btn-success" onclick="save();">Save</button>
                     <button class="btn btn-md btn-danger" onclick="generatePDF();">Generate PDF</button>
+                </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for creating PDF and prompting to save -->
+    <div class="modal" id="makeEmplPDFModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>Please be aware that <strong>Generating a PDF</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click <strong>Generate Employee PDF</strong>.</p>
+                <div class="text-center">
+                    <button class="btn btn-md btn-success" onclick="save();">Save</button>
+                    <button class="btn btn-md btn-danger" onclick="generateEmplPDF();">Generate Employee PDF</button>
                 </div>
           </div>
           <div class="modal-footer">
