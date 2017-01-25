@@ -8,8 +8,16 @@
             echo "Error: ", $e->getMessage(),"\n";
             exit;
         }
-        $size = filesize($file2);
-        $filename = fread($fh, $size);
+        $filename = '';
+        try{
+                $size = filesize($file2);
+                $filename = fread($fh, $size);
+        }catch(Exception $e){
+                //do nothing just give it a default name
+        }
+        if(ctype_space($filename) || $filename == ''){
+                $filename = "formData.txt";
+        }
         if(file_exists($file)){
                 // set the headers, so that
                 // the browser knows to expect a .txt file download.
