@@ -63,9 +63,8 @@
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeComment.start();">Employee Comment</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save File For Editing</button>
              <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open A Saved File</button>
-             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.share.start();">Share File For Review and Editing</button>
-             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createEmployeePDF.start();">Create Employee  PDF</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
+             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createEmployeePDF.start();">Print for Review</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Print Final</button>
             <button class="btn btn-danger" id="tutorial-close-btn" onclick="closeTutorial();">Exit Tutorial</button>
         </div>
     </div>`
@@ -81,7 +80,7 @@
         <div class="form">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h4 class="browser-warning">This web form is certified to work with Firefox and Chrome.</h4>
+                    <h4 class="browser-warning">Recommended Browsers are Chrome and FireFox.  IE is not supported.</h4>
                 </div>
             </div>
             <div class=" row form-group text-center review-period-section">
@@ -505,6 +504,15 @@
                     <br>
                     <input  class="btn btn-success btn-md" type="button" name="uploadFormBtn" value="Open" id="uploadFormBtn" onclick="openFormData();"/>
                 </form>
+                <br>
+                <p>If you are unable to open the form, please select your browser to see step by step instructions on how to properly open the file.  <strong>You can only open a file you previously saved with this program</strong>.</p>
+                <div class="text-center">
+                    <button class="btn btn-md btn-warning" onclick="playVideo(this);">FireFox</button>
+                    <button class="btn btn-md btn-info" onclick="playVideo(this);">Chrome</button>
+                </div>
+                <div class="video-container">
+                    
+                </div>
           </div>
           <div class="modal-footer">
           </div>
