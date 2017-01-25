@@ -164,6 +164,7 @@ body{
 	position: fixed;
 	z-index: 3;
 	margin: 0;
+	padding: 5px 0px;
 	width: 100%;
 	background-color: grey;
 	padding: 5px 20px;
@@ -171,19 +172,19 @@ body{
 
 @media (min-width: 768px){
 	.top-bar{
-		padding: 0px calc((100% - 750px) / 2);
+		padding: 5px calc((100% - 750px) / 2);
 	}
 }
 
 @media (min-width: 992px){
 	.top-bar{
-		padding: 0px calc((100% - 970px) / 2);
+		padding: 5px calc((100% - 970px) / 2);
 	}
 }
 
 @media (min-width: 1200px){
 	.top-bar{
-		padding: 0px calc((100% - 1170px) / 2);
+		padding: 5px calc((100% - 1170px) / 2);
 	}
 }
 

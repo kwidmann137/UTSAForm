@@ -26,6 +26,7 @@
     <script type="text/javascript" src="js/general.js"></script>
     <script type="text/javascript" src="js/textareaResize.js"></script>
     <script type="text/javascript" src="js/supervisorAttributes.js"></script>
+    <script type="text/javascript" src="js/video.js"></script>
     <script type="text/javascript" src="bootstrap/addons/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
@@ -36,14 +37,14 @@
             <p class="current-file-name">Current File:  </p>
         </div>
         <div class="col-xs-8 text-right">
-            <button type="button" class="btn btn-danger btn-md menu-btn" onclick="validatePDF();" id="make-pdf-btn">Create PDF</button>
-            <button type="button" class="btn btn-success btn-md menu-btn" onclick="save();" id="save-btn">Save</button>
+            <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md menu-btn" >FAQ</a>
+            <button type="button" class="btn btn-info btn-md menu-btn" onclick="startTutorial();" >Tutorial</button>
             <button type="button" class="btn btn-primary btn-md menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
               Open
             </button>
-            <button type="button" class="btn btn-info btn-md menu-btn" onclick="startTutorial();" >Tutorial</button>
-            <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md menu-btn" >FAQ</a>
-            <button type="button" class="btn btn-secondary btn-md menu-btn" onclick="validateEmplPDF();" id="make-employee-pdf-btn">Create Employee PDF</button>
+            <button type="button" class="btn btn-success btn-md menu-btn" onclick="save();" id="save-btn">Save</button>
+            <button type="button" class="btn btn-secondary btn-md menu-btn" onclick="validateEmplPDF();" id="make-employee-pdf-btn">Print for Review</button>
+            <button type="button" class="btn btn-danger btn-md menu-btn" onclick="validatePDF();" id="make-pdf-btn">Print Final</button>
         </div>
     </div>
     <button class="tutorial-menu-show-btn btn btn-danger"><i class="fa fa-bars show-icon" aria-hidden="true"></i></i></button>
@@ -523,12 +524,39 @@
           </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete this item?</p>
+          </div>
+          <div class="modal-footer">
+                <button class="btn btn-md btn-success pull-left" id="delete-btn-no">No</button>
+                <button class="btn btn-md btn-danger pull-right" id="delete-btn-yes">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for asking to save-->
+    <div class="modal" id="promptToSaveModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>Saving this form will save the file on your local computer.  You can access the file via the "File Explorer" in order to move, or rename the file.  Renaming is highly suggested so you know which employee the form is for.<br><br>If you are unsure of how to do this please chose your browser below to watch a video with step by step instructions.</p>
                 <div class="text-center">
-                    <button class="btn btn-md btn-success" id="delete-btn-no">No</button>
-                    <button class="btn btn-md btn-danger" id="delete-btn-yes">Yes</button>
+                    <button class="btn btn-md btn-warning" onclick="playVideo(this);">FireFox</button>
+                    <button class="btn btn-md btn-info" onclick="playVideo(this);">Chrome</button>
+                </div>
+                <div class="video-container">
+                    
                 </div>
           </div>
           <div class="modal-footer">
+            <div class="text-center">
+                <button class="btn btn-md btn-success" id="save-btn-yes">Save</button>
+            </div>
           </div>
         </div>
       </div>
