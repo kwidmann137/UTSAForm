@@ -20,7 +20,6 @@ function openFormData(){
             var filename = resultData.file;
             var formData = resultData.data;
             fillInForm(formData);
-            showFileName(filename);
             $('#openModal').modal('hide'); 
         },
         error: function(data){
@@ -31,11 +30,11 @@ function openFormData(){
 
 }
 
-function showFileName(filename){
-	$(".current-file-name").html("Current File: "+filename);
-	$(".current-file-name").css('visibility', 'visible');
-	currentFile = filename;
-}
+// function showFileName(filename){
+// 	$(".current-file-name").html("Current File: "+filename);
+// 	$(".current-file-name").css('visibility', 'visible');
+// 	currentFile = filename;
+// }
 
 function fillInForm(data){
 	var formData = JSON.parse(data);
