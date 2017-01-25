@@ -49,7 +49,10 @@
 	$decrypted = decrypt($contents);
 	$decrypted = strip_tags($decrypted);
 
-	echo $decrypted;
+	// echo $decrypted;
+
+	$results = array('file' => basename($_FILES['userfile']['name']), 'data' => $decrypted);
+	echo json_encode($results);
 
 	exit;
 ?>

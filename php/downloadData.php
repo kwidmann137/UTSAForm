@@ -1,10 +1,19 @@
 <?php
         // echo "valid json";
         $file = "formData.txt";
+        $file2 = "vars.txt";
+        try{
+            $fh = fopen($file2, "r");
+        }catch(Exception $e){
+            echo "Error: ", $e->getMessage(),"\n";
+            exit;
+        }
+        $size = filesize($file2);
+        $filename = fread($fh, $size);
         if(file_exists($file)){
                 // set the headers, so that
                 // the browser knows to expect a .txt file download.
-                header("Content-Disposition: attachment; filename=".basename($file));
+                header("Content-Disposition: attachment; filename=".$filename);
                 header("Content-Type: text/html");
                 header("Content-Length: " . filesize($file));
 
@@ -17,6 +26,7 @@
                 // print out the file data for
                 // the browser to open or save.
                 try{
+                        // echo $filename;
                         readfile($file);
                 }catch(Exception $e){
                         echo "Error: ", $e->getMessage(),"\n";

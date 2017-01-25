@@ -1,3 +1,5 @@
+var currentFile = '';
+
 function openFormData(){
     var fileData = $("#userfile").prop("files")[0];
     var formData = new FormData();
@@ -14,7 +16,11 @@ function openFormData(){
         //Ajax events
         success: function(data){
             clearForm();
-            fillInForm(data);
+            var resultData = JSON.parse(data);
+            var filename = resultData.file;
+            var formData = resultData.data;
+            fillInForm(formData);
+            showFileName(filename);
             $('#openModal').modal('hide'); 
         },
         error: function(data){
@@ -25,8 +31,14 @@ function openFormData(){
 
 }
 
+function showFileName(filename){
+	$(".current-file-name").html("Current File: "+filename);
+	$(".current-file-name").css('visibility', 'visible');
+	currentFile = filename;
+}
+
 function fillInForm(data){
-    var formData = JSON.parse(data);
+	var formData = JSON.parse(data);
     $('#review_period_from').val(formData.review_period_from);
     $('#review_period_to').val(formData.review_period_to);
     $('#employee_name').val(formData.employee_name);

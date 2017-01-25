@@ -32,14 +32,19 @@
 </head>
 <body>
     <div class="top-bar row">
-        <button type="button" class="btn btn-danger btn-md pull-right menu-btn" onclick="validatePDF();" id="make-pdf-btn">Create PDF</button>
-        <button type="button" class="btn btn-success btn-md pull-right menu-btn" onclick="save();" id="save-btn">Save</button>
-        <button type="button" class="btn btn-primary btn-md pull-right menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
-          Open
-        </button>
-        <button type="button" class="btn btn-info btn-md pull-right menu-btn" onclick="startTutorial();" >Tutorial</button>
-        <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md pull-right menu-btn" >FAQ</a>
-        <button type="button" class="btn btn-secondary btn-md pull-right menu-btn" onclick="validateEmplPDF();" id="make-employee-pdf-btn">Create Employee PDF</button>
+        <div class="col-xs-4">
+            <p class="current-file-name">Current File:  </p>
+        </div>
+        <div class="col-xs-8 text-right">
+            <button type="button" class="btn btn-danger btn-md menu-btn" onclick="validatePDF();" id="make-pdf-btn">Create PDF</button>
+            <button type="button" class="btn btn-success btn-md menu-btn" onclick="save();" id="save-btn">Save</button>
+            <button type="button" class="btn btn-primary btn-md menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
+              Open
+            </button>
+            <button type="button" class="btn btn-info btn-md menu-btn" onclick="startTutorial();" >Tutorial</button>
+            <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md menu-btn" >FAQ</a>
+            <button type="button" class="btn btn-secondary btn-md menu-btn" onclick="validateEmplPDF();" id="make-employee-pdf-btn">Create Employee PDF</button>
+        </div>
     </div>
     <button class="tutorial-menu-show-btn btn btn-danger"><i class="fa fa-bars show-icon" aria-hidden="true"></i></i></button>
     <div class="tutorial-side-menu row">
