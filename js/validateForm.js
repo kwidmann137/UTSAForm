@@ -2,7 +2,7 @@ $(function(){
 
 	validateFormExceptButtons();
 
-})
+});
 
 function runValidation(){
 
@@ -21,7 +21,7 @@ function runValidation(){
 		if($('.selected-rating', this).length === 0){
 			$(this).addClass('incomplete');
 			if($(this).next('small').length === 0){
-				$(this).after('<small class="error">Please choose a rating</small>')
+				$(this).after('<small class="error">Please choose a rating</small>');
 			}
 		}else{
 			$(this).removeClass('incomplete');
@@ -68,7 +68,7 @@ function runEmplPrintValidation(){
 
 	//validate all text areas except for supervisor attributes
 	$('textarea').each(function(){
-		if($(this).attr('id') != "overall-rating-textarea");{
+		if($(this).attr('id') != "overall-rating-textarea"){
 			$(this).trigger('blur');
 		}else{
 			$(this).removeClass('incomplete');

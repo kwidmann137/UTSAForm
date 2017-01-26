@@ -30,13 +30,11 @@ function generatePDF(){
         cache: false,
         async: false,
         success: function(data){
-            console.log(data);
         	window.open('php/viewPDF.php');
         	// console.log(data);
             $('#makePDFModal').modal('hide');
         },
         error: function(data){
-        	console.log(data);
             alert("Failed to generate PDF file");
         }
     });
