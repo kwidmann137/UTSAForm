@@ -720,7 +720,7 @@ function createPDFTutorial(){
 			moveArrow($("#make-pdf-btn"), "up");
 
 	    	//initial step
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Create PDF</h3><p>This will be the <strong>LAST</strong> step you perform.  Only once the form is completely filled out and without errors can you perform this step.  Selecting the red <strong>Create PDF</strong> button will create the PDF with the form data you entered in the form.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Print Final</h3><p>This will be the <strong>LAST</strong> step you perform.  Only once the form is completely filled out and without errors can you perform this step.  Selecting the red <strong>Create PDF</strong> button will create the PDF with the form data you entered in the form.</p>');
 	    }
 	}
 	self.step2 = {
@@ -735,7 +735,7 @@ function createPDFTutorial(){
 			$(".arrow").attr('src', 'images/greenArrow.png');
 			$(".arrow").css('left', $(".tutorial-info-box").offset().left - $(".arrow").width());
 	    	$(".arrow").css('top', $(".tutorial-info-box").offset().top+$(".tutorial-info-box").height()+100);
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Create, Print, and Save the PDF</h3><p>Now that you have completed entering the form data and your employee has reviewed it, it is time to copy the form/data to a PDF document.</p><p>The <strong>Create PDF</strong> button will generate a PDF that will be populated with the form data you entered.</p><p>The PDF created will open in a new window.  From that window you can do a final review of the PDF before saving and/or printing.</p><p>Use standard file->print method to PRINT the PDF in the new window.</p>');	
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Create, Print, and Save the PDF</h3><p>Now that you have completed entering the form data and your employee has reviewed it, it is time to copy the form/data to a PDF document.</p><p>The <strong>Print Final</strong> button will generate a PDF that will be populated with the form data you entered.  A signature page will be added to the end of the document.</p><p>The PDF created will open in a new window.  From that window you can do a final review of the PDF before saving and/or printing.</p><p>Use standard file->print method to PRINT the PDF in the new window.</p>');	
 	    }
 	}
 	self.step3 = {
@@ -774,7 +774,7 @@ function createEmployeePDF(){
 			moveArrow($("#make-employee-pdf-btn"), "up");
 
 	    	//initial step
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Create Employee PDF</h3><p>This will create a PDF version of the form that you can share with your employee if you prefer to have your employee review a hard copy.  It will create a PDF in the same way as the Create PDF button except no Signature Page will be generated.  For more details refer to the Create PDF Tutorial.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Print for Review</h3><p>This will create a PDF version of the form that you can share with your employee if you prefer to have your employee review a hard copy.  It will create a PDF in the same way as the Create PDF button except no Signature Page will be generated.</p>');
 	    }
 	}
 }
@@ -857,7 +857,7 @@ function saveFileTutorial(){
 			moveArrow($("#save-btn"), "right");
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p><p>It is advised that you save and rename your file for each Performance Evaluation created. See “Saving your documents” in the FAQ.</p>');
 		}
 	}
 
@@ -865,15 +865,14 @@ function saveFileTutorial(){
 		run: function(){
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>This web form is developed to work best with Firefox and Chrome browsers.  Since the files is downloaded by the browser, the way the download is handled varies slightly depending upon your browser.  See the FAQ section for details on how downloads are handled in Firefox and Chrome</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>This web form is developed to work best with Firefox and Chrome browsers.  Since the file is downloaded by the browser, the way the download is handled varies slightly depending upon your browser.  Details on downloads are located as video at <strong>SAVE</strong> button</p>');
 		}
 	}
 
 	self.step3 = {
 		run: function(){
-
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The data will always download with the file name as formData.txt.  If you download multiple files they will be index (i.e. formData(1).txt, formData(2).txt etc.).  If you are saving for multiple employees or multiple versions it is highly recommended you rename these files in order to make it easier to keep track and store them for later use.  If you are not sure how to rename a file you download view the FAQ section.</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>If you are starting a new form, the data will save as formData.txt.  If you are working on form you opened, the data will save with the same name, but an index attached.  (i.e. sameName.txt (1) then sameName.txt(2)).  If you download multiple files they will be index (i.e. formData(1).txt, formData(2).txt etc.).  If you are saving for multiple employees or multiple versions it is highly recommended you rename these files in order to make it easier to keep track and store them for later use.  If you are not sure how to rename a file, view “How to Rename a File” in the FAQ.</p>');
 		}
 	}
 
