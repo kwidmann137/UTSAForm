@@ -33,10 +33,7 @@
 </head>
 <body>
     <div class="top-bar row">
-        <div class="col-xs-4">
-            <p class="current-file-name">Current File:  </p>
-        </div>
-        <div class="col-xs-8 text-right">
+        <div class="col-xs-12 text-right">
             <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md menu-btn" >FAQ</a>
             <button type="button" class="btn btn-info btn-md menu-btn" onclick="startTutorial();" >Tutorial</button>
             <button type="button" class="btn btn-primary btn-md menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
@@ -127,7 +124,7 @@
                <div class="col-xs-0 col-sm-1 col-md-2"></div>
                 <div class="col-xs-12 col-sm-10 col-md-8">
                     <p class="comments-warning text-center">Comment are required for <u>all</u> ratings (in each section) of Outstanding "O" or Improvement Needed "I".</p>
-                    <p class="comments-warning text-center">Ratings of SP (Sp-, SP, SP+) do not <u>require</u> comments.</p>
+                    <p class="comments-warning text-center">Ratings of SP (SP-, SP, SP+) do not <u>require</u> comments.</p>
                 </div>
                 <div class="col-xs-0 col-sm-1 col-md-2"></div>
             </div>
