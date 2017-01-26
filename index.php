@@ -27,6 +27,7 @@
     <script type="text/javascript" src="js/textareaResize.js"></script>
     <script type="text/javascript" src="js/supervisorAttributes.js"></script>
     <script type="text/javascript" src="js/video.js"></script>
+    <script type="text/javascript" src="js/clearForm.js"></script>
     <script type="text/javascript" src="bootstrap/addons/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
@@ -34,6 +35,7 @@
 <body>
     <div class="top-bar row">
         <div class="col-xs-12 text-right">
+        <button type="button" class="btn btn-danger btn-md menu-btn pull-left" onclick="promptToClear();" >Clear Form</button>
             <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md menu-btn" >FAQ</a>
             <button type="button" class="btn btn-info btn-md menu-btn" onclick="startTutorial();" >Tutorial</button>
             <button type="button" class="btn btn-primary btn-md menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
@@ -60,9 +62,8 @@
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.employeeComment.start();">Employee Comment</button>
             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.save.start();">Save File For Editing</button>
              <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.open.start();">Open A Saved File</button>
-             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial();  tutorial.share.start();">Share File For Review and Editing</button>
-             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createEmployeePDF.start();">Create Employee  PDF</button>
-            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Create PDF</button>
+             <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createEmployeePDF.start();">Print for Review</button>
+            <button class="btn tutorial-item-btn btn-primary" onclick="cleanTutorial(); tutorial.createPDF.start();">Print Final</button>
             <button class="btn btn-danger" id="tutorial-close-btn" onclick="closeTutorial();">Exit Tutorial</button>
         </div>
     </div>`
@@ -78,7 +79,7 @@
         <div class="form">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h4 class="browser-warning">This web form is certified to work with Firefox and Chrome.</h4>
+                    <h4 class="browser-warning">Recommended Browsers are Chrome and FireFox.  IE is not supported.</h4>
                 </div>
             </div>
             <div class=" row form-group text-center review-period-section">
@@ -154,6 +155,7 @@
                     <h3>SECTION III. DEVELOPMENT PLANS</h3>
                     <p class="section-description development-plans-section-description"><strong>Employees are always encouraged to actively engage in self development activities.</strong>  Identify specific work assignments, training (courses/classes, skills, books, magazines, seminars or CEU's) designed to increase the individual's effectiveness in their present job and/or to prepare for future job assignments.</p>
                     <p><strong>** While this section will not have a rating, it should be a factor used to determine overall performance. **</strong></p>
+                    <p><strong class="instruction">** Comments are required **</strong></p>
                 </div>
                 <div class="col-xs-12 development-plans-container" id="development-plans-container">
 
@@ -170,7 +172,7 @@
                     <p class="section-description attributes-description">
                         <strong>To be completed for all employees, including supervisors</strong>
                     </p>
-                    <p class="instruction">You can hover over the clipboard (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  Click clipboard to add and edit the description to the associated text area.</p>
+                    <p class="instruction">You can hover over the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  If you choose to use the Attribute description and edit, you can click on the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) and proceed with edits.</p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="attributes-container">
                     <div class="row attribute" id="attribute-1">
@@ -482,6 +484,12 @@
                     <textarea class="form-control"  placeholder="Employee comments..."></textarea>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="warning">Send a copy of the completed form with all required signatures to:<br>UTSA – Office of Human Resources: Attention HR Records<br>or scan and email to:<a href="mailto:HR-Records@utsa.edu">HR-Records@utsa.edu</a></p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -502,6 +510,15 @@
                     <br>
                     <input  class="btn btn-success btn-md" type="button" name="uploadFormBtn" value="Open" id="uploadFormBtn" onclick="openFormData();"/>
                 </form>
+                <br>
+                <p>If you are unable to open the form, please select your browser to see step by step instructions on how to properly open the file.  <strong>You can only open a file you previously saved with this program</strong>.</p>
+                <div class="text-center">
+                    <button class="btn btn-md btn-warning" onclick="playVideo(this);">FireFox</button>
+                    <button class="btn btn-md btn-info" onclick="playVideo(this);">Chrome</button>
+                </div>
+                <div class="video-container">
+                    
+                </div>
           </div>
           <div class="modal-footer">
           </div>
@@ -619,6 +636,27 @@
             <!-- will be filled in by js -->
           </div>
           <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for errors when attempting to create PDF -->
+    <div class="modal" id="promptToClearModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>Are you sure you want to clear the form?  All data present will be lost unless you have saved it.</p>
+          </div>
+          <div class="modal-footer">
+                <button class="btn btn-md btn-success pull-left" id="clear-btn-no">No</button>
+                <button class="btn btn-md btn-danger pull-right" id="clear-btn-yes">Yes</button>
           </div>
         </div>
       </div>

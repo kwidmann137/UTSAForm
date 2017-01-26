@@ -18,6 +18,7 @@ function openFormData(){
             clearForm();
             var resultData = JSON.parse(data);
             var filename = resultData.file;
+            currentFile = filename;
             var formData = resultData.data;
             fillInForm(formData);
             $('#openModal').modal('hide'); 
@@ -194,57 +195,3 @@ function fillInForm(data){
 
     runValidation()
 }
-
-function clearForm(){
-    $('.review-period-section input, .employee-info-section input').each(function(){
-        $(this).val('');
-    });
-
-    $('textarea').each(function(){
-        $(this).val('');
-    });
-
-    $('.selected-rating').each(function(){
-        $(this).removeClass('selected-rating');
-    });
-
-    $('.date-picker').each(function(){
-        $(this).val('');
-    });
-
-    $('.selected-supervisor-status').removeClass('selected-supervisor-status');
-}
-
-// function runValidation(){
-//     $('#review_period_from').trigger("blur");
-//     $('#review_period_to').trigger("blur");
-//     // validate name
-//     $('#employee_name').trigger('blur');
-
-//     // validate title
-//     $('#employee_title').trigger('blur');
-
-//     // validate employee id
-//     $('#employee_id').trigger('blur');
-
-//     // validate job code
-//     $('#job_code').trigger('blur');
-
-//     // validate text areas for jub functions, dev plans and projects
-//     $('#essential-job-functions-container textarea, #projects-container textarea, #development-plans-container textarea').trigger('blur');
-        
-
-//     //validate calenders for functions, projects and dev plans
-//     $('#projects-container .datepicker, #development-plans-container .datepicker').trigger('blur');
-
-//     //validate attributes and supervisors only sections
-//     $('#attributes-container .btn-group, #supervisor-attributes-container .btn-group').trigger('blur');
-        
-
-//     //to double check after they enter a comment
-//     $('#attributes-container textarea, #supervisor-attributes-container textarea').trigger('blur');
-        
-
-//     $('#overall-rating-section textarea').trigger('blur');
-        
-// }

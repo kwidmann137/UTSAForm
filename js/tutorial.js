@@ -48,10 +48,8 @@ Tutorial.prototype.createTutorialItems = function(){
 	this.save.prev = this.employeeComment; 
 	this.save.next = this.open; 
 	this.open.prev = this.save; 
-	this.open.next = this.share; 
-	this.share.prev = this.open;
-	this.share.next = this.createEmployeePDF;
-	this.createEmployeePDF.prev = this.share;
+	this.open.next = this.createEmployeePDF; 
+	this.createEmployeePDF.prev = this.open;
 	this.createEmployeePDF.next = this.createPDF;
 	this.createPDF.prev = this.createEmployeePDF; 
 	this.createPDF.next = null; 
@@ -722,7 +720,7 @@ function createPDFTutorial(){
 			moveArrow($("#make-pdf-btn"), "up");
 
 	    	//initial step
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Print Final</h3><p>This will be the <strong>LAST</strong> step you perform.  Only once the form is completely filled out and without errors can you perform this step.  Selecting the red <strong>Create PDF</strong> button will create the PDF with the form data you entered in the form.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Print Final</h3><p>This will be the <strong>LAST</strong> step you perform.  Only once the form is completely filled out and without errors can you perform this step.  Selecting the red <strong>Print Final</strong> button will create the PDF with the form data you entered in the form.</p>');
 	    }
 	}
 	self.step2 = {
@@ -776,7 +774,7 @@ function createEmployeePDF(){
 			moveArrow($("#make-employee-pdf-btn"), "up");
 
 	    	//initial step
-	    	$('#tutorial-content-container').html('<h3 class="text-center">Print for Review</h3><p>This will create a PDF version of the form that you can share with your employee if you prefer to have your employee review a hard copy.  It will create a PDF in the same way as the Create PDF button except no Signature Page will be generated.</p>');
+	    	$('#tutorial-content-container').html('<h3 class="text-center">Print for Review</h3><p>This will create a PDF version of the form that you can share with your employee if you prefer to have your employee review a hard copy.  It will create a PDF in the same way as the Final Print button except no Signature Page will be generated.</p>');
 	    }
 	}
 }
@@ -804,7 +802,7 @@ function openFileTutorial(){
 
 	self.step1 = {
 		run: function(){
-			moveArrow($("#open-btn"), "up");
+			moveArrow($("#open-btn"), "right");
 
 			//initial step
 			$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>The blue <strong>Open</strong> button allows you to open a file you previously saved from this program.</p>');
@@ -856,7 +854,7 @@ function saveFileTutorial(){
 
 	self.step1 = {
 		run: function(){
-			moveArrow($("#save-btn"), "up");
+			moveArrow($("#save-btn"), "right");
 
 		    //initial step
 		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p><p>It is advised that you save and rename your file for each Performance Evaluation created. See “Saving your documents” in the FAQ.</p>');
@@ -867,7 +865,7 @@ function saveFileTutorial(){
 		run: function(){
 
 		    //initial step
-		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>This web form is developed to work best with Firefox and Chrome browsers.  Since the file is downloaded by the browser, the way the download is handled varies slightly depending upon your browser.  Details on downloads are located as video at <strong>SAVE</strong> button</p>');
+		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>This web form is developed to work best with Firefox and Chrome browsers.  Since the file is saved by the browser, the way the file is saved varies slightly depending upon your browser.  Details on saving are located as a video under the <strong>SAVE</strong> button</p>');
 		}
 	}
 

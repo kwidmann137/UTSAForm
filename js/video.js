@@ -1,21 +1,33 @@
 function playVideo(ele){
-	if($(ele).text() === 'FireFox'){
-		console.log("FireFox");
-		var source1 = "./videos/Save-On-Firefox/Video/MP4/Save-On-Firefox.mp4";
-		var source2 = "./videos/Save-On-Firefox/Video/WebM/Save-On-Firefox.webm";
-	}else{
-		console.log("Chrome");
-		var source1 = "./videos/Save-On-Chrome/Video/MP4/Save-On-Chrome.mp4";
-		var source2 = "./videos/Save-On-Chrome/Video/WebM/Save-On-Chrome.webm";
+	var parent = $(ele).closest('.modal-dialog');
+	var type = parent.closest(".modal");
+
+	if(type.attr('id') == "openModal"){
+		var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/xSz3nR8CxSQ?rel=0" frameborder="0" allowfullscreen></iframe>';
+	}else if(type.attr('id') == "promptToSaveModal"){
+		if($(ele).text() === 'FireFox'){
+			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/tIPAuBYJc1s?rel=0" frameborder="0" allowfullscreen></iframe>';
+		}else{
+			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/0bnQvfsUySs?rel=0" frameborder="0" allowfullscreen></iframe>';
+		}
 	}
 
-	$("#promptToSaveModal .modal-dialog").css('width', '900px');
-	$("#promptToSaveModal .video-container").css('width', '868px');
-	$("#promptToSaveModal .video-container").css('height', '500px');
+	parent.css('width', '900px');
+	$(".video-container", parent).css('width', '868px');
+	$(".video-container", parent).css('height', '500px');
 
-	var video = '<video width="800" controls> <source src="%src1%" type="video/mp4"> <source src="%src2%" type="video/ogg"> Your browser does not support HTML5 video.</video>';
-	var formattedVideo = video.replace(/%src1%/, source1);
-	var formattedVideo = formattedVideo.replace(/%src2%/, source2);
-	$("#promptToSaveModal .video-container").empty();
-	$("#promptToSaveModal .video-container").append(formattedVideo);
+	// var video = '<video width="800" controls> <source src="%src1%" type="video/mp4"> <source src="%src2%" type="video/ogg"> Your browser does not support HTML5 video.</video>';
+	// var formattedVideo = video.replace(/%src1%/, source1);
+	// var formattedVideo = formattedVideo.replace(/%src2%/, source2);
+	$(".video-container", parent).empty();
+	$(".video-container", parent).append(source);
 }
+
+$(function(){
+	$(".modal").on('hidden.bs.modal', function (e) {
+	    $(".video-container", ".modal").empty();
+	    $(".modal-dialog", this).css('width', '600px');
+        $(".video-container").css('width', 'auto');
+        $(".video-container").css('height', 'auto');
+	});
+});

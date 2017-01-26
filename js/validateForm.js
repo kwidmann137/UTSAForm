@@ -192,7 +192,7 @@ function validateFormExceptButtons(){
 		if(typeof value === 'undefined' || !isDigits || length !== 10){
 			$(this).addClass('incomplete');
 			if($('#employee_id + small').length === 0){
-				$(this).after('<small class="error">Please enter a valid id</small>');
+				$(this).after('<small class="error">Please enter a valid id<br>- A valid id is 10 digits</small>');
 			}
 		}else{
 			$(this).removeClass('incomplete');
@@ -205,10 +205,10 @@ function validateFormExceptButtons(){
 		var value = $(this).val();
 		var isDigits = /^\d+$/.test(value);
 		var length = value.length;
-		if(typeof value === 'undefined' || !isDigits || length !== 5){
+		if(typeof value === 'undefined' || !isDigits || (length < 4 || length > 5)){
 			$(this).addClass('incomplete');
 			if($('#job_code + small').length === 0){
-				$(this).after('<small class="error">Please enter a valid job code</small>');
+				$(this).after('<small class="error">Please enter a valid job code<br>- A valid job code is 4-5 digits</small>');
 			}
 		}else{
 			$(this).removeClass('incomplete');

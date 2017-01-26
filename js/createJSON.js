@@ -132,6 +132,7 @@ function createJSON(){
 		item['attribute'] = attribute;
 		item['comment'] = comment;
 		var rating = $('.selected-rating', this).val();
+		console.log(rating);
 		if(typeof rating !== 'undefined'){
 			item['rating'] = rating;
 		}else{

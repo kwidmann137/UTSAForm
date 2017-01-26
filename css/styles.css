@@ -188,6 +188,10 @@ body{
 	}
 }
 
+.video-container{
+	margin-top: 15px;
+}
+
 .video-container video{
 	width: 100%;
 }
