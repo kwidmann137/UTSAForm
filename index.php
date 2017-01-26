@@ -449,10 +449,10 @@
                     <p class="section-description">When providing comments/summary, consider the entire performance evaluation</p>
                 </div>
                 <div class="col-xs-9">
-                    <textarea class="form-control"  placeholder="Performance Summary/Manager's Comments -- REQUIRED"></textarea>
+                    <textarea class="form-control"  placeholder="Performance Summary/Manager's Comments -- REQUIRED" id="overall-rating-textarea"></textarea>
                 </div>
                  <div class="col-xs-3" role="group" aria-label="Rating:"><span class="rating-label">Choose Rating:<br></span>
-                    <div class="btn-group">
+                    <div class="btn-group" id="overall-rating-btn-group">
                         <button type="button" class="btn btn-default rating-btn left-btn" value="I">I</button>
                         <button type="button" class="btn btn-default rating-btn" value="SP-">SP-</button>
                         <button type="button" class="btn btn-default rating-btn" value="SP">SP</button>

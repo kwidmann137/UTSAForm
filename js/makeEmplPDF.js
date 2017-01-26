@@ -1,5 +1,5 @@
 function validateEmplPDF(){
-    runValidation();
+    runEmplPrintValidation();
     if($('.incomplete').length === 0){
         promptToSaveEmployeePDF();
     }else{
