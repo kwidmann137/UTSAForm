@@ -6,9 +6,9 @@ function playVideo(ele){
 		var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/xSz3nR8CxSQ?rel=0" frameborder="0" allowfullscreen></iframe>';
 	}else if(type.attr('id') == "promptToSaveModal"){
 		if($(ele).text() === 'FireFox'){
-			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/K9VlBaQi3OA?rel=0" frameborder="0" allowfullscreen></iframe>';
+			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/tIPAuBYJc1s?rel=0" frameborder="0" allowfullscreen></iframe>';
 		}else{
-			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/Ga9y6FnBqcU?rel=0" frameborder="0" allowfullscreen></iframe>';
+			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/0bnQvfsUySs?rel=0" frameborder="0" allowfullscreen></iframe>';
 		}
 	}
 
