@@ -16,6 +16,7 @@ function clearForm(){
     });
 
     $('.selected-supervisor-status').removeClass('selected-supervisor-status');
+    $('#supervisor-attributes-container').css('display', 'none');
 }
 
 function promptToClear(){

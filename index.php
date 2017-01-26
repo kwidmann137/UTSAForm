@@ -486,8 +486,8 @@
             </div>
 
             <div class="row">
-                <div class="col-xs-12">
-                    <p class="warning">Send a copy of the completed form with all required signatures to: UTSA – Office of Human Resources: Attention HR Records or scan and email to:<a href="mailto:HR-Records@utsa.edu">HR-Records@utsa.edu</a></p>
+                <div class="col-xs-12 text-center">
+                    <p class="warning">Send a copy of the completed form with all required signatures to:<br>UTSA – Office of Human Resources: Attention HR Records<br>or scan and email to:<a href="mailto:HR-Records@utsa.edu">HR-Records@utsa.edu</a></p>
                 </div>
             </div>
         </div>
@@ -652,7 +652,7 @@
             <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
           </div>
             <div class="modal-body">
-                <p>Are you sure you want to clear the form?  All data present will be lost.</p>
+                <p>Are you sure you want to clear the form?  All data present will be lost unless you have saved it.</p>
           </div>
           <div class="modal-footer">
                 <button class="btn btn-md btn-success pull-left" id="clear-btn-no">No</button>
