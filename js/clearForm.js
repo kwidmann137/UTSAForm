@@ -17,6 +17,10 @@ function clearForm(){
 
     $('.selected-supervisor-status').removeClass('selected-supervisor-status');
     $('#supervisor-attributes-container').css('display', 'none');
+
+    $("#essential-job-functions-container").empty();
+    $("#projects-container").empty();
+    $("#development-plans-container").empty();
 }
 
 function promptToClear(){
