@@ -23,6 +23,7 @@ function deleteElement(ele){
 			currFunction++
 		})
 		numOfEssentialFunctions--;
+		fixIDs("#essential-job-functions-container");
 	}else if($(ele).hasClass('project-close-btn')){
 		var id = $(ele).parents('.project').attr('id');
 		$('#'+id).remove();
@@ -33,6 +34,7 @@ function deleteElement(ele){
 			currProject++
 		})
 		numOfProjects--;
+		fixIDs("#projects-container");
 	}else if($(ele).hasClass('development-plan-close-btn')){
 		var id = $(ele).parents('.development-plan').attr('id');
 		$('#'+id).remove();
@@ -43,5 +45,40 @@ function deleteElement(ele){
 			currDevelopmentPlan++
 		})
 		numOfDevelopmentPlans--;
+		fixIDs("#development-plans-container");
+	}
+}
+
+function fixIDs(section){
+	if(section == "#essential-job-functions-container"){
+		var itemCount = 1;
+		$(".job-function").each(function(){
+			$("textarea", this).each(function(){
+				var id = $(this).attr('id');
+				var newId = id.replace(/\d/, itemCount);
+				$(this).attr('id', newId);
+			});
+			itemCount++;
+		})
+	}else if(section == "#projects-container"){
+		var itemCount = 1;
+		$(".project").each(function(){
+			$("textarea", this).each(function(){
+				var id = $(this).attr('id');
+				var newId = id.replace(/\d/, itemCount);
+				$(this).attr('id', newId);
+			});
+			itemCount++;
+		})
+	}else if(section == "#development-plans-container"){
+		var itemCount = 1;
+		$(".development-plan").each(function(){
+			$("textarea", this).each(function(){
+				var id = $(this).attr('id');
+				var newId = id.replace(/\d/, itemCount);
+				$(this).attr('id', newId);
+			});
+			itemCount++;
+		})
 	}
 }
