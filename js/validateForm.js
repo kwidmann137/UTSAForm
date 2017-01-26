@@ -59,66 +59,6 @@ function runValidation(){
 	}
 }
 
-function runEmplPrintValidation(){
-
-	//validate input fields at top
-	$('input').each(function(){
-		$(this).trigger('blur');
-	});
-
-	//validate all text areas except for supervisor attributes
-	$('textarea').each(function(){
-		if($(this).attr('id') != "overall-rating-textarea"){
-			$(this).trigger('blur');
-		}else{
-			$(this).removeClass('incomplete');
-			$(this).next('small').remove();
-		}
-
-	});
-
-	//validate all rating button groups
-	$('.btn-group').each(function(){
-		if($('.selected-rating', this).length === 0 && $(this).closest('.btn-group').attr('id') != 'overall-rating-btn-group'){
-			$(this).addClass('incomplete');
-			if($(this).next('small').length === 0){
-				$(this).after('<small class="error">Please choose a rating</small>')
-			}
-		}else{
-			$(this).removeClass('incomplete');
-			$(this).next('small').remove();
-		}
-	});
-
-	//valdate supervisor section
-
-	//if yes then values already checked for errors, so only need to handle no answer and none provided
-	if($('.selected-supervisor-status').length === 0){
-		$('.supervisor-question-div').addClass('incomplete');
-		if($('.supervisor-question-div').next('small').length === 0){
-			$('.supervisor-question-div').after('<small class="error">You must choose whether or not this employee is a supervisor</small>')
-		}
-		//remove errors since no rating selected yet
-		$('#supervisor-attributes-container textarea').each(function(){
-			$(this).removeClass('incomplete');
-			$(this).next('small').remove();
-		});
-		$('#supervisor-attributes-container .btn-group').each(function(){
-			$(this).removeClass('incomplete');
-			$(this).next('small').remove();
-		});
-	}else if($('.selected-supervisor-status').val() === 'No'){
-		//if yes then check text areas and buttons
-		$('#supervisor-attributes-container textarea').each(function(){
-			$(this).removeClass('incomplete');
-			$(this).next('small').remove();
-		});
-		$('#supervisor-attributes-container .btn-group').each(function(){
-			$(this).removeClass('incomplete');
-			$(this).next('small').remove();
-		});
-	}
-}
 
 function validateFormExceptButtons(){
 	//validate review period
