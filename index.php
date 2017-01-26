@@ -27,6 +27,7 @@
     <script type="text/javascript" src="js/textareaResize.js"></script>
     <script type="text/javascript" src="js/supervisorAttributes.js"></script>
     <script type="text/javascript" src="js/video.js"></script>
+    <script type="text/javascript" src="js/clearForm.js"></script>
     <script type="text/javascript" src="bootstrap/addons/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
@@ -34,6 +35,7 @@
 <body>
     <div class="top-bar row">
         <div class="col-xs-12 text-right">
+        <button type="button" class="btn btn-danger btn-md menu-btn pull-left" onclick="promptToClear();" >Clear Form</button>
             <a href="FAQ/" target="_blank" type="button" class="btn btn-warning btn-md menu-btn" >FAQ</a>
             <button type="button" class="btn btn-info btn-md menu-btn" onclick="startTutorial();" >Tutorial</button>
             <button type="button" class="btn btn-primary btn-md menu-btn" data-toggle="modal" data-target="#openModal" id="open-btn">
@@ -634,6 +636,27 @@
             <!-- will be filled in by js -->
           </div>
           <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for errors when attempting to create PDF -->
+    <div class="modal" id="promptToClearModal" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>Are you sure you want to clear the form?  All data present will be lost.</p>
+          </div>
+          <div class="modal-footer">
+                <button class="btn btn-md btn-success pull-left" id="clear-btn-no">No</button>
+                <button class="btn btn-md btn-danger pull-right" id="clear-btn-yes">Yes</button>
           </div>
         </div>
       </div>

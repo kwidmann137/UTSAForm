@@ -7,7 +7,6 @@ function save(){
         $("#promptToSaveModal .video-container").css('width', 'auto');
         $("#promptToSaveModal .video-container").css('height', 'auto');
         createJSON();
-        console.log(formData);
         $.ajax({
             type: 'POST',
             url: 'php/save.php',
