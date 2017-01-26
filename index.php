@@ -590,7 +590,7 @@
                 <p>Please be aware that <strong>Generating a PDF</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click Generate PDF.</p>
                 <div class="text-center">
                     <button class="btn btn-md btn-success" onclick="save();">Save</button>
-                    <button class="btn btn-md btn-danger" onclick="generatePDF();">Generate PDF</button>
+                    <button class="btn btn-md btn-danger" onclick="generatePDF();">Print Final</button>
                 </div>
           </div>
           <div class="modal-footer">
@@ -613,7 +613,7 @@
                 <p>Please be aware that <strong>Generating a PDF</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click <strong>Generate Employee PDF</strong>.</p>
                 <div class="text-center">
                     <button class="btn btn-md btn-success" onclick="save();">Save</button>
-                    <button class="btn btn-md btn-danger" onclick="generateEmplPDF();">Generate Employee PDF</button>
+                    <button class="btn btn-md btn-danger" onclick="generateEmplPDF();">Print for Review</button>
                 </div>
           </div>
           <div class="modal-footer">
