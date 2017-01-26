@@ -39,6 +39,7 @@ function showFileName(filename){
 
 function fillInForm(data){
 	var formData = JSON.parse(data);
+    console.log(formData);
     $('#review_period_from').val(formData.review_period_from);
     $('#review_period_to').val(formData.review_period_to);
     $('#employee_name').val(formData.employee_name);

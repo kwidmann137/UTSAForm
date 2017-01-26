@@ -5,7 +5,7 @@ var attributeDefinitions = {
 	'ADAPTABILITY' : 'Ability to adjust to a variety of situations/issues; exhibits flexibility to changing work demands',
 	'INNOVATION, CREATIVITY & INITIATIVE' : 'Works independently , willing to learn new skills, processes; engages in creative problem solving, open and receptive to new ideas; integrates change and makes appropriate suggestions (based on work experience) to improve work area/flow or processes; proactively works to identify and address work problems or issues',
 	'MOTIVATION' : 'Enthusiastically assumes new tasks, responsibilities; takes personal responsibility for departmental success; works steadily and actively; demonstrates positive attitude toward self and others',
-	'JOB KNOWLEDGE' : 'Applies technical and procedural know-how to "get the job done"; demonstrates understanding and mastery of the process, methods, systems and/or procedures; keeps informed of the latest developments in area of specialty',
+	'JOB KNOWLEDGE' : 'Applies technical and procedural know-how to &quot;get the job done&quot;; demonstrates understanding and mastery of the process, methods, systems and/or procedures; keeps informed of the latest developments in area of specialty',
 	'JUDGEMENT' : 'Analyzes situations; uses problem solving skills; makes appropriate decisions consistent with the situation; obtains and evaluates pertinent information to determine source of and alternative solutions to problem',
 	'QUANTITY & PRODUCTIVITY' : 'Accommodates multiple demands for commitment of time, energy and resources; develops and/or follows work procedures; handles information flow; organizes work assignments for optimum results; manages time and priorities appropriately',
 	'QUALITY' : 'Demonstrates competence, accuracy, thoroughness, and reliability'
@@ -16,8 +16,8 @@ var supervisorAttributeDefinitions = {
 	'DECISION MAKING' : 'Knows when to refer matters to the next level; determines priorities and acts within the agreed upon time frame; develops alternatives with rationale and consequences for each course of action; uses the values and principles of the University to determine what is important, and to guide actions; effectively identifies solutions and solves problems',
 	'LEADERSHIP' : 'Effectively conveys vision of unit goals; motivates employees to embrace the vision and contribute to unit/department success; serves as positive role model for employees; visibly supports University goals and mission and demonstrates dedication to the success of the organization; effectively addresses conflicts; facilitates communication; fosters productive work environment',
 	'PROMOTES DIVERSITY' : 'Creates work environment which respects diversity and welcomes new ideas; proactively works to achieve/maintain diverse workforce',
-	'COMPLICANCE, ACCOUNTABILITY &  RISK MANAGEMENT' : 'Has completed a formal risk assessment of department, identifying all known high risk areas, and made recommendations for improvement/change along with an implementation plan; maintains ethical management practices for self and staff; ensures compliance of University & state/federal practices, policies and laws; protects proprietary information; ensures proper use of organization assets and the accuracy of records and reports.'
-};
+	'COMPLICANCE, ACCOUNTABILITY &  RISK MANAGEMENT' : 'Has completed a formal risk assessment of department, identifying all known high risk areas, and made recommendations for improvement/change along with an implementation plan; maintains ethical management practices for self and staff; ensures compliance of University & state/federal practices, policies and laws; protects proprietary information; ensures proper use of organization assets and the accuracy of records and reports'
+}
 
 var attributeGlyph = '<div class="attribute-glyph-div %type%" data-toggle="tooltip" title="%title%" onClick="copyTooltip(this);"> <span class="glyphicon glyphicon-copy attribute-glyph"></span> </div>';
 

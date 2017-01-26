@@ -17,12 +17,14 @@
         }
         if(ctype_space($filename) || $filename == ''){
                 $filename = "formData.txt";
+        }else{
+            $filename = preg_replace("/[ ]*\([0-9]+\)/", "", $filename);
         }
         if(file_exists($file)){
                 // set the headers, so that
                 // the browser knows to expect a .txt file download.
                 header("Content-Disposition: attachment; filename=".$filename);
-                header("Content-Type: text/html");
+                header("Content-Type: text/html; charset=utf-8");
                 header("Content-Length: " . filesize($file));
 
                 // set Cache headers, to minimize the

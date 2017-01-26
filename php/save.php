@@ -11,8 +11,8 @@
             echo "Error: ", $e->getMessage(),"\n";
             exit;
         }
-        // fwrite($fh, $encryptedJSON);
         fwrite($fh, $encryptedJSON);
+        // fwrite($fh, $json);
         fclose($fh);
 
         //write the filename to variable for download.php to use

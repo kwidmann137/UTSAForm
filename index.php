@@ -156,6 +156,7 @@
                     <h3>SECTION III. DEVELOPMENT PLANS</h3>
                     <p class="section-description development-plans-section-description"><strong>Employees are always encouraged to actively engage in self development activities.</strong>  Identify specific work assignments, training (courses/classes, skills, books, magazines, seminars or CEU's) designed to increase the individual's effectiveness in their present job and/or to prepare for future job assignments.</p>
                     <p><strong>** While this section will not have a rating, it should be a factor used to determine overall performance. **</strong></p>
+                    <p><strong class="instruction">** Comments are required **</strong></p>
                 </div>
                 <div class="col-xs-12 development-plans-container" id="development-plans-container">
 
@@ -172,7 +173,7 @@
                     <p class="section-description attributes-description">
                         <strong>To be completed for all employees, including supervisors</strong>
                     </p>
-                    <p class="instruction">You can hover over the clipboard (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  Click clipboard to add and edit the description to the associated text area.</p>
+                    <p class="instruction">You can hover over the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  If you choose to use the Attribute description and edit, you can click on the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) and proceed with edits.</p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="attributes-container">
                     <div class="row attribute" id="attribute-1">
@@ -482,6 +483,12 @@
                 </div>
                 <div class="col-xs-12">
                     <textarea class="form-control"  placeholder="Employee comments..."></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="warning">Send a copy of the completed form with all required signatures to: UTSA – Office of Human Resources: Attention HR Records or scan and email to:<a href="mailto:HR-Records@utsa.edu">HR-Records@utsa.edu</a></p>
                 </div>
             </div>
         </div>

@@ -10,7 +10,10 @@
 
 		function setData($in){
 			global $data;
+
+			// $data = iconv('UTF-8', 'windows-1252', $in);
 			$data = json_decode($in);
+			// $data = iconv('UTF-8', 'windows-1252', $data);
 		}
 
 		function Header(){
@@ -300,9 +303,7 @@
 			// 	$plan->endDate ='';
 			// }
 			$this->setInputTitleFont();
-			$this->Cell((($this->GetPageWidth()-20)/12)*7, PADDING, "COMMENTS", "LT", 0);
-			$this->Cell((($this->GetPageWidth()-20)/12)*2.5, PADDING, "Start Date: ".$plan->startDate, 1, 0);
-			$this->Cell((($this->GetPageWidth()-20)/12)*2.5, PADDING, "End Date: ".$plan->endDate, 1, 1);
+			$this->Cell(0, PADDING, "COMMENTS", "LTR", 1);
 			$this->setInputRegularFont();
 			$this->MultiCell(0, PADDING, $value, "LBR", "L");
 

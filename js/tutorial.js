@@ -802,7 +802,7 @@ function openFileTutorial(){
 
 	self.step1 = {
 		run: function(){
-			moveArrow($("#open-btn"), "up");
+			moveArrow($("#open-btn"), "right");
 
 			//initial step
 			$('#tutorial-content-container').html('<h3 class="text-center">Opening</h3><p>The blue <strong>Open</strong> button allows you to open a file you previously saved from this program.</p>');
@@ -854,7 +854,7 @@ function saveFileTutorial(){
 
 	self.step1 = {
 		run: function(){
-			moveArrow($("#save-btn"), "up");
+			moveArrow($("#save-btn"), "right");
 
 		    //initial step
 		    $('#tutorial-content-container').html('<h3 class="text-center">Saving</h3><p>The green <strong>Save</strong> button allows you to save the data you entered on the form so you can continue working at a later time.</p><p>Clicking <strong>Save</strong> will automatically download the data for you to a default file location in the Downloads folder.</p><p>The default file name is formData.txt</p>');
