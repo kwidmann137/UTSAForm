@@ -587,7 +587,7 @@
             <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
           </div>
             <div class="modal-body">
-                <p>Please be aware that <strong>Generating a PDF</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click Generate PDF.</p>
+                <p>Please be aware that <strong>Print Final</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click <strong>Print Final</strong>.</p>
                 <div class="text-center">
                     <button class="btn btn-md btn-success" onclick="save();">Save</button>
                     <button class="btn btn-md btn-danger" onclick="generatePDF();">Print Final</button>
@@ -610,7 +610,7 @@
             <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
           </div>
             <div class="modal-body">
-                <p>Please be aware that <strong>Generating a PDF</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click <strong>Generate Employee PDF</strong>.</p>
+                <p>Please be aware that <strong>Print for Review</strong> does not save the information currently in the form. If you would like to <strong>have this data in an editable format</strong> please click <strong>Save</strong> below to save the form data before generating your PDF, otherwise just click <strong>Print for Review</strong>.</p>
                 <div class="text-center">
                     <button class="btn btn-md btn-success" onclick="save();">Save</button>
                     <button class="btn btn-md btn-danger" onclick="generateEmplPDF();">Print for Review</button>
