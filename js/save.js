@@ -1,6 +1,7 @@
 function save(){
     //first show the modal, if they click save again then save
     $("#promptToSaveModal").modal('show');
+    $("#promptToSaveModal").css('z-index', '1500');
     var yes = $("#save-btn-yes");
     yes.off().on('click', function(){
         $("#promptToSaveModal .modal-dialog").css('width', '600px');
@@ -19,6 +20,9 @@ function save(){
             error: function(data){
                 alert(data);
             }
-        });
+        })
+    });
+    $("#promptToSaveModal").on('hidden.bs.modal', function () {
+        $(this).css('z-index', '1050');
     });
 }
