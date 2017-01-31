@@ -65,7 +65,7 @@ function fillInForm(data){
                 }
                 var rating = currFunction.selectedRating;
                 if(rating !== ''/*none*/){
-                    $('.rating-btn[value='+rating+']', this).addClass('selected-rating');
+                    $('.rating-btn[value="'+rating+'"]', this).addClass('selected-rating');
                 }
             }
             currJobFunctionIndex++;
