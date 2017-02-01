@@ -21,8 +21,8 @@ function createJSON(){
 	});
 
 	// capture job functions
-	formData['numOfEssentialFunctions'] = numOfEssentialFunctions;
-	if(numOfEssentialFunctions > 0){
+	formData['numOfEssentialFunctions'] = $(".job-function").length;
+	if($(".job-function").length > 0){
 		formData['jobFunctions'] = [];
 		$('.job-function').each(function(){
 			var jobFunction = {}
@@ -48,8 +48,8 @@ function createJSON(){
 	}
 
 	// capture projects
-	formData['numOfProjects'] = numOfProjects;
-	if(numOfProjects > 0){
+	formData['numOfProjects'] = $(".project").length;
+	if($(".project").length > 0){
 		formData['projects'] = [];
 		$('.project').each(function(){
 			var project = {};
@@ -82,8 +82,8 @@ function createJSON(){
 	}
 
 	//capture development plans
-	formData['numOfDevelopmentPlans'] = numOfDevelopmentPlans;
-	if(numOfDevelopmentPlans > 0){
+	formData['numOfDevelopmentPlans'] = $(".development-plan").length;
+	if($(".development-plan").length > 0){
 		formData['developmentPlans'] = [];
 		$('.development-plan').each(function(){
 			var developmentPlan = {};
