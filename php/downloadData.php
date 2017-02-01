@@ -19,6 +19,9 @@
                 $filename = "formData.txt";
         }else{
             $filename = preg_replace("/[ ]*\([0-9]+\)/", "", $filename);
+            // if(!(preg_match("/\.txt&/", $filename))){
+            //     $filename = $filename.'.txt.';
+            // }
         }
         if(file_exists($file)){
                 // set the headers, so that
