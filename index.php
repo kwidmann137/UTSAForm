@@ -662,6 +662,26 @@
       </div>
     </div>
 
+    <!-- Modal for resaving a file -->
+    <div class="modal" id="resaveWarning" tabindex="-1" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">Warning</h4>
+          </div>
+            <div class="modal-body">
+                <p>It appears you are saving a new version of a previously saved form.  Saving this form <span class="red">WILL NOT</span> overwrite the old version of the file on your local computer.  Instead it will create a <span class="red">new file</span> which will go to your downloads folder.  Please see the FAQ for more details.</p>
+          </div>
+          <div class="modal-footer">
+                <button class="btn btn-md btn-success pull-right" id="resave-btn-yes">I understand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tutorial-background"></div>
 </body>
 </html>

@@ -1,4 +1,6 @@
 function save(){
+	//check if resaving
+	resave();
     //first show the modal, if they click save again then save
     $("#promptToSaveModal").modal('show');
     $("#promptToSaveModal").css('z-index', '1500');
@@ -25,4 +27,17 @@ function save(){
     $("#promptToSaveModal").on('hidden.bs.modal', function () {
         $(this).css('z-index', '1050');
     });
+}
+
+function resave(){
+	if(currentFile !== ''){
+		$("#resaveWarning").modal('show');
+		$("#resaveWarning").css('z-index', '1500');
+		$("#resave-btn-yes").on('click', function(){
+			$("#resaveWarning").modal('hide');
+		});
+		$("#resaveWarning").on('hidden.bs.modal', function () {
+	        $(this).css('z-index', '1050');
+	    });
+	}
 }
