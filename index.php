@@ -709,7 +709,7 @@
                 <h2 class="text-center red">Before you conitnue, READ THIS.</h2>
                 <p>Is this your first time using this web form?</p>
                 <p>Please read the <a href="./FAQ" target="_blank">FAQ</a> before proceeding.</p>
-                <p>The FAQ contains answer to common questions.  We highly recommend that you read the FAQ prior ot completing your first evaluation form.</p>
+                <p>The FAQ contains answer to common questions.  We highly recommend that you read the FAQ prior to completing your first evaluation form.</p>
           </div>
           <div class="modal-footer">
                 <button class="btn btn-md btn-success pull-right" id="welcome-btn-yes">Ok</button>
