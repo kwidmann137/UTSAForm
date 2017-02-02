@@ -192,7 +192,7 @@
 		function printEmployeeInfo(){
 			global $data;
 			$this->SetFont('Arial','',10);
-			$this->Cell (0, 8, "Review Period 2/1/".$data->review_period_from." To 1/31/".$data->review_period_to, 0, 1, 'C');
+			$this->Cell (0, 8, "Review Period: 2/1/2016 To 1/31/2017", 0, 1, 'C');
 			$tenth = ($this->GetPageWidth()-20)/10;
 			$this->Cell($tenth*3, 6, "Name: ".$data->employee_name, "LBT",0);
 			$this->Cell($tenth*3, 6, "Title: ".$data->employee_title, "BT",0);

@@ -20,8 +20,15 @@ function openFormData(){
             var filename = resultData.file;
             currentFile = filename;
             var formData = resultData.data;
-            fillInForm(formData);
-            $('#openModal').modal('hide'); 
+            try{
+                fillInForm(formData)    
+            }catch(error){
+                alert("FAILED TO OPEN THE FILE");
+                $('#openModal').modal('hide');
+            }
+            $('#openModal').modal('hide');
+            $("#userfile").val('');
+
         },
         error: function(data){
             alert(data.responseText);
@@ -39,8 +46,8 @@ function openFormData(){
 
 function fillInForm(data){
 	var formData = JSON.parse(data);
-    $('#review_period_from').val(formData.review_period_from);
-    $('#review_period_to').val(formData.review_period_to);
+    // $('#review_period_from').val(formData.review_period_from);
+    // $('#review_period_to').val(formData.review_period_to);
     $('#employee_name').val(formData.employee_name);
     $('#employee_title').val(formData.employee_title);
     $('#employee_id').val(formData.employee_id);

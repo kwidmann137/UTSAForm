@@ -5,12 +5,12 @@ function createJSON(){
 	formData = {};
 
 	// capture review period info
-	$('.review-period-section input').each(function(){
-		var field = this.id;
-		var input = $(this).val();
+	// $('.review-period-section input').each(function(){
+	// 	var field = this.id;
+	// 	var input = $(this).val();
 		
-		formData[field] = input;
-	});
+	// 	formData[field] = input;
+	// });
 
 	// capture employee info
 	$('.employee-info-section input').each(function(){

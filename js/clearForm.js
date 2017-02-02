@@ -21,6 +21,12 @@ function clearForm(){
     $("#essential-job-functions-container").empty();
     $("#projects-container").empty();
     $("#development-plans-container").empty();
+    $(".incomplete").each(function(){
+        if($(".incomplete").next('small').length !== 0){
+            $(".incomplete").next('small').remove();
+        }
+        $(this).removeClass('incomplete');
+    });
 }
 
 function promptToClear(){
