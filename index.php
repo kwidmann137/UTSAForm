@@ -124,7 +124,7 @@
             <div class="row">
                <div class="col-xs-0 col-sm-1 col-md-2"></div>
                 <div class="col-xs-12 col-sm-10 col-md-8">
-                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings of Outstanding "O" or Improvement Needed "I" in sections I &amp; II.</p>
+                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings of Outstanding "O" or Improvement Needed "I".</p>
                     <p class="comments-warning text-center">Ratings of SP (SP-, SP, SP+) do not <u>require</u> comments.</p>
                 </div>
                 <div class="col-xs-0 col-sm-1 col-md-2"></div>
@@ -173,7 +173,6 @@
                         <strong>To be completed for all employees, including supervisors</strong>
                     </p>
                     <p class="instruction">You can hover over the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  If you choose to use the Attribute description and edit, you can click on the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) and proceed with edits.</p>
-                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings in sections IV and V.</p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="attributes-container">
                     <div class="row attribute" id="attribute-1">
@@ -359,7 +358,6 @@
                     Is this employee a supervisor? <button class="btn supervisor-status-btn" type="button" name="supervisor-yes" value="Yes">Yes</button><button class="btn supervisor-status-btn" type="button" name="supervisor-no" value="No">No</button>
                 </div>
                 <div class="col-xs-12 attributes-container" id="supervisor-attributes-container">
-                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings in sections IV and V.</p>
                     <div class="row supervisor-attribute" id="supervisor-attribute-1">
                         <div class="col-xs-2 attribute-label-div">
                             <label>STAFF DEVELOPMENT</label>

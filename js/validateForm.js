@@ -222,18 +222,18 @@ function validateFormExceptButtons(){
 	});
 
 	//to check they entered a comment after using text field
-	$('#attributes-container, #supervisor-attributes-container').on('blur', 'textarea', function(){
-		if($(this).val().length === 0){
-			$(this).addClass('incomplete');
-			if($(this).next('small').length === 0){
-				$(this).after('<small class="error">Comments are required for all attributes</small>');
-			}
-		}else{
-			$(this).removeClass('incomplete')
-			$(this).next('small').remove();
+	// $('#attributes-container, #supervisor-attributes-container').on('blur', 'textarea', function(){
+	// 	if($(this).val().length === 0){
+	// 		$(this).addClass('incomplete');
+	// 		if($(this).next('small').length === 0){
+	// 			$(this).after('<small class="error">Comments are required for all attributes</small>');
+	// 		}
+	// 	}else{
+	// 		$(this).removeClass('incomplete')
+	// 		$(this).next('small').remove();
 
-		}
-	});
+	// 	}
+	// });
 
 	// check supervisor btn on click
 	$('.supervisor-status-btn').on('click', function(){

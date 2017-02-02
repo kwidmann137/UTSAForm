@@ -206,7 +206,7 @@ function employeeInfoTutorial(){
         	scrollTop: $(".employee-info-section").offset().top-450
     	});
     	moveArrow($(".employee-info-section"), "right");
-    	$('#tutorial-content-container').html("<h3 class='text-center'>Employee Info</h3><p>Fill out only the years for the review period, employees Name, Title, EMPL ID and Job Code.</p>");
+    	$('#tutorial-content-container').html("<h3 class='text-center'>Employee Info</h3><p>Fill out only the employees Name, Title, EMPL ID and Job Code.</p>");
     	}
 	}
 }
