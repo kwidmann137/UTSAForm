@@ -3,12 +3,12 @@ function playVideo(ele){
 	var type = parent.closest(".modal");
 
 	if(type.attr('id') == "openModal"){
-		var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/xSz3nR8CxSQ?rel=0" frameborder="0" allowfullscreen></iframe>';
+		var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/AfUtCN3eyQc?rel=0" frameborder="0" allowfullscreen></iframe>';
 	}else if(type.attr('id') == "promptToSaveModal"){
 		if($(ele).text() === 'FireFox'){
-			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/tIPAuBYJc1s?rel=0" frameborder="0" allowfullscreen></iframe>';
+			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/v9GEKwewzV4?rel=0" frameborder="0" allowfullscreen></iframe>';
 		}else{
-			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/0bnQvfsUySs?rel=0" frameborder="0" allowfullscreen></iframe>';
+			var source = '<iframe width="853" height="480" src="https://www.youtube.com/embed/fp3Oy-PPPl0?rel=0" frameborder="0" allowfullscreen></iframe>';
 		}
 	}
 

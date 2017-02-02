@@ -564,9 +564,9 @@
                 <ul>
                     <li>This Saves the current data to the Downloads folder.</li>
                     <li>If this is a new form, it will save as formData.txt.  If it is a form you previously saved and reopened, it will save with the same file name.</li>
-                    <li>Each Save thereafter will create a new version of the file in the Downloads folder<br>i.e: your_desired_name(1).txt, your_desired_name(2).txt ...</li>
+                    <li>Each Save thereafter will create a new version of the file in the Downloads folder<br>i.e: your_file_name(1).txt, your_file_name(2).txt ...</li>
                     <li>After Saving, navigate to the saved file location in the Downloads folder. Use the refresh button to view the current file.</li>
-                    <li>Rename the file as your_desired_name.txt</li>
+                    <li>Rename the file as your_file_name.txt</li>
                     
                 </ul>
                  
