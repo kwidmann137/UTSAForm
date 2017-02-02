@@ -80,7 +80,7 @@
         <div class="form">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h4 class="browser-warning">Use Chrome or FireFox.<br><u>**Internet Explorer is not supported.**</u></h4>                </div>
+                    <h4 class="browser-warning">Use Chrome or FireFox.<br><u>Internet Explorer is not supported with this web form.</u></h4>                </div>
             </div>
             <div class=" row form-group text-center review-period-section">
                 <div class="col-xs-12 col-sm-6 review-period-section">
@@ -173,7 +173,7 @@
                         <strong>To be completed for all employees, including supervisors</strong>
                     </p>
                     <p class="instruction">You can hover over the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) by each attribute to see a description.  If you choose to use the Attribute description and edit, you can click on the clipboard icon (<span class="glyphicon glyphicon-copy attribute-glyph"></span>) and proceed with edits.</p>
-                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings.</p>
+                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings in sections IV and V.</p>
                 </div>
                 <div class="col-xs-12 attributes-container" id="attributes-container">
                     <div class="row attribute" id="attribute-1">
@@ -359,7 +359,7 @@
                     Is this employee a supervisor? <button class="btn supervisor-status-btn" type="button" name="supervisor-yes" value="Yes">Yes</button><button class="btn supervisor-status-btn" type="button" name="supervisor-no" value="No">No</button>
                 </div>
                 <div class="col-xs-12 attributes-container" id="supervisor-attributes-container">
-                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings.</p>
+                    <p class="comments-warning text-center">Comments are required for <u>all</u> ratings in sections IV and V.</p>
                     <div class="row supervisor-attribute" id="supervisor-attribute-1">
                         <div class="col-xs-2 attribute-label-div">
                             <label>STAFF DEVELOPMENT</label>
@@ -563,7 +563,7 @@
                 <p><!-- Saving this form will save the file on your local computer.  You can access the file via the "File Explorer" in order to move, or rename the file.  Renaming is highly suggested so you know which employee the form is for.<br><br> -->
                 <ul>
                     <li>This Saves the current data to the Downloads folder.</li>
-                    <li>If this is a new form, it will save as formData.txt.  If it is a form you previously saved and reopened, it will save with the same file name.</li>
+                    <li>If this is a new form, it will save as formData.txt.</li>
                     <li>Each Save thereafter will create a new version of the file in the Downloads folder<br>i.e: your_file_name(1).txt, your_file_name(2).txt ...</li>
                     <li>After Saving, navigate to the saved file location in the Downloads folder. Use the refresh button to view the current file.</li>
                     <li>Rename the file as your_file_name.txt</li>
@@ -706,10 +706,10 @@
             <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">IMPORTANT!</h4>
           </div>
             <div class="modal-body">
-                <h2 class="text-center red">Before you conitnue, READ THIS.</h2>
+                <h2 class="text-center red">Before you continue, READ THIS.</h2>
                 <p>Is this your first time using this web form?</p>
                 <p>Please read the <a href="./FAQ" target="_blank">FAQ</a> before proceeding.</p>
-                <p>The FAQ contains answer to common questions.  We highly recommend that you read the FAQ prior to completing your first evaluation form.</p>
+                <p>The FAQ contains answers to common questions.  We highly recommend that you read the FAQ prior to completing your first evaluation form.</p>
           </div>
           <div class="modal-footer">
                 <button class="btn btn-md btn-success pull-right" id="welcome-btn-yes">Ok</button>
