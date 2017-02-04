@@ -1,6 +1,5 @@
 <?php
 	require('pdf.php');
-
 	$rawData = $_POST['myData'];
 	$pdf = new PDF('L', 'mm', 'A4');
 	$pdf->setData($rawData);

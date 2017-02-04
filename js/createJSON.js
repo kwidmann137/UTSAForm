@@ -16,6 +16,7 @@ function createJSON(){
 	$('.employee-info-section input').each(function(){
 		var field = this.id;
 		var input = $(this).val();
+		input = escapeSpecialChars(input);
 		
 		formData[field] = input;
 	});
@@ -31,6 +32,7 @@ function createJSON(){
 				var item = {};
 				var field = $(this).attr('id');
 				var input = $(this).val();
+				input = escapeSpecialChars(input);
 				if(typeof input === 'undefined'){
 					input = ''/*none*/;
 				}
@@ -58,6 +60,7 @@ function createJSON(){
 				var item = {};
 				var field = $(this).attr('id');
 				var input = $(this).val();
+				input = escapeSpecialChars(input);
 				if(typeof input === 'undefined'){
 					input = ''/*none*/;
 				}
@@ -92,6 +95,7 @@ function createJSON(){
 				var item = {};
 				var field = $(this).attr('id');
 				var input = $(this).val();
+				input = escapeSpecialChars(input);
 				if(typeof input === 'undefined'){
 					input = ''/*none*/;
 				}
@@ -126,6 +130,7 @@ function createJSON(){
 		var item = {};
 		var attribute = $('label', this).text();
 		var comment = $('textarea', this).val();
+		comment = escapeSpecialChars(comment);
 		if(typeof comment === 'undefined'){
 			comment = ''/*none*/;
 		}
@@ -148,6 +153,7 @@ function createJSON(){
 			var item = {};
 			var attribute = $('label', this).text();
 			var comment = $('textarea', this).val();
+			comment = escapeSpecialChars(comment);
 			if(typeof comment === 'undefined'){
 				comment = ''/*none*/;
 			}
@@ -165,7 +171,7 @@ function createJSON(){
 		if($('.selected-supervisor-status').length === 1){
 			formData['isSupervisor'] = 'no';
 		}else{
-			formData['usSupervisor'] = '';
+			formData['isSupervisor'] = '';
 		}
 		formData['supervisorAttributes'] = '';
 	}
@@ -173,6 +179,7 @@ function createJSON(){
 	//capture overall rating
 	formData['overallRating'] = {};
 	var overallComment = $('textarea', '#overall-rating-section').val();
+	overallComment = escapeSpecialChars(overallComment);
 	if(typeof overallComment === 'undefined'){
 		overallComment = ''/*none*/;
 	}
@@ -185,16 +192,22 @@ function createJSON(){
 	}
 
 	// capture position type
-	var positionType = $('.selected-position-type', '#position-class-section').val();
-	if(typeof positionType !== 'undefined'){
-		formData['positionType'] = positionType;
-	}else{
-		formData['positionType'] = ''/*none*/;
-	}
+	// var positionType = $('.selected-position-type', '#position-class-section').val();
+	// if(typeof positionType !== 'undefined'){
+	// 	formData['positionType'] = positionType;
+	// }else{
+	// 	formData['positionType'] = ''/*none*/;
+	// }
 
 	var employeeComment = $('textarea', "#employee-comments-section").val();
+	employeeComment = escapeSpecialChars(employeeComment);
 	if(typeof employeeComment === 'undefined'){
 		employeeComment = ''/*none*/;
 	}
 	formData['employeeComment'] = employeeComment;
+}
+
+function escapeSpecialChars(item){
+	item = item.replace(/“|”/g, '"');
+	return item;
 }

@@ -26,6 +26,7 @@ function openFormData(){
                 alert("FAILED TO OPEN THE FILE");
                 $('#openModal').modal('hide');
             }
+            updateDynamicallyAddedTextAreas();
             $('#openModal').modal('hide');
             $("#userfile").val('');
 
@@ -190,10 +191,10 @@ function fillInForm(data){
         $('.rating-btn[value="'+overallRat+'"]', '#overall-rating-section').addClass('selected-rating');
     }
 
-    var posType = formData.positionType;
-    if(posType !== ''/*none*/){
-        $('.position-btn[value="'+posType+'"]', '#position-class-section').addClass('selected-position-type');
-    }
+    // var posType = formData.positionType;
+    // if(posType !== ''/*none*/){
+    //     $('.position-btn[value="'+posType+'"]', '#position-class-section').addClass('selected-position-type');
+    // }
 
     var employeeCom = formData.employeeComment;
     if(employeeCom !== ''/*none*/){

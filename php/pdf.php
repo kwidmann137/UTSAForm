@@ -2,20 +2,18 @@
 	require('./fpdf/fpdf.php');
 	define("FONTSIZE", 10);
 	define("PADDING", 5);
+	require_once('Encoding.php'); 
+	use \ForceUTF8\Encoding;  // It's namespaced now.
 	
 	class PDF extends FPDF{
 
-		private $data;
+		public $data;
 		private $title = 'NON-FACULTY PERFORMANCE REVIEW';
 
 		function setData($in){
 			global $data;
 			$converted_in = iconv('UTF-8', 'ASCII//TRANSLIT', $in);
 			$data = json_decode($converted_in);
-			// echo mb_detect_encoding($in)."\n";
-			// echo mb_detect_encoding($converted_in)."\n";
-			// echo mb_detect_encoding($data->jobFunctions[0]->textareas['essential-job-function-1-text-area-1'])."\n";
-			// echo $data->jobFunctions[0]->textareas['essential-job-function-1-text-area-1'];
 		}
 
 		function Header(){

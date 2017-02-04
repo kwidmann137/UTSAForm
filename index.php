@@ -34,6 +34,119 @@
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+    <?php
+        function getBrowser()
+        {
+            $u_agent = $_SERVER['HTTP_USER_AGENT'];
+            $bname = 'Unknown';
+            $platform = 'Unknown';
+            $version= "";
+
+            //First get the platform?
+            if (preg_match('/linux/i', $u_agent)) {
+                $platform = 'linux';
+            }
+            elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+                $platform = 'mac';
+            }
+            elseif (preg_match('/windows|win32/i', $u_agent)) {
+                $platform = 'windows';
+            }
+
+            // Next get the name of the useragent yes separately and for good reason.
+            if (preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent))
+            {
+                $bname = 'Internet Explorer';
+                $ub = "MSIE";
+            }
+            elseif (preg_match('/Firefox/i',$u_agent))
+            {
+                $bname = 'Mozilla Firefox';
+                $ub = "Firefox";
+            }
+            elseif (preg_match('/Chrome/i',$u_agent))
+            {
+                $bname = 'Google Chrome';
+                $ub = "Chrome";
+            }
+            elseif (preg_match('/Safari/i',$u_agent))
+            {
+                $bname = 'Apple Safari';
+                $ub = "Safari";
+            }
+            elseif (preg_match('/Opera/i',$u_agent))
+            {
+                $bname = 'Opera';
+                $ub = "Opera";
+            }
+            elseif (preg_match('/Netscape/i',$u_agent))
+            {
+                $bname = 'Netscape';
+                $ub = "Netscape";
+            }
+
+            // Finally get the correct version number.
+            $known = array('Version', $ub, 'other');
+            $pattern = '#(?<browser>' . join('|', $known) .
+            ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+            if (!preg_match_all($pattern, $u_agent, $matches)) {
+                // we have no matching number just continue
+            }
+
+            // See how many we have.
+            $i = count($matches['browser']);
+            if ($i != 1) {
+                //we will have two since we are not using 'other' argument yet
+                //see if version is before or after the name
+                if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
+                    $version= $matches['version'][0];
+                }
+                else {
+                    $version= $matches['version'][1];
+                }
+            }
+            else {
+                $version= $matches['version'][0];
+            }
+
+            // Check if we have a number.
+            if ($version==null || $version=="") {$version="?";}
+
+            return array(
+                'userAgent' => $u_agent,
+                'name'      => $bname,
+                'version'   => $version,
+                'platform'  => $platform,
+                'pattern'    => $pattern
+            );
+        }
+
+        // Now try it.
+        $ua=getBrowser();
+        if($ua['name'] == "Internet Explorer"){
+            ?>
+                <!-- Modal for resaving a file -->
+                <div class="modal" id="unsupportedBrowserModal" role="dialog" aria-labelledby="Warning" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">IMPORTANT!</h4>
+                      </div>
+                        <div class="modal-body">
+                            <p>It appears you are using Internet Explorer.  This browser is not supported.  Please use Chrome or Firefox.</p>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <script type="text/javascript">
+                    $("#unsupportedBrowserModal").modal({backdrop : 'static', keyboard: "false"});
+                </script>
+            <?php
+            exit;
+        }
+    ?>
     <div class="top-bar row">
         <div class="col-xs-12 text-right">
         <button type="button" class="btn btn-danger btn-md menu-btn pull-left" onclick="promptToClear();" >Clear Form</button>
@@ -562,9 +675,9 @@
                 <ul>
                     <li>This Saves the current data to the Downloads folder.</li>
                     <li>If this is a new form, it will save as formData.txt.</li>
-                    <li>Each Save thereafter will create a new version of the file in the Downloads folder<br>i.e: your_file_name(1).txt, your_file_name(2).txt ...</li>
                     <li>After Saving, navigate to the saved file location in the Downloads folder. Use the refresh button to view the current file.</li>
                     <li>Rename the file as your_file_name.txt</li>
+                    <li>Each Save thereafter will create a new version of the file in the Downloads folder<br>i.e: your_file_name(1).txt, your_file_name(2).txt ...</li>
                     
                 </ul>
                  

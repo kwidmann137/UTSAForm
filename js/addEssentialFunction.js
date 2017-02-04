@@ -3,8 +3,7 @@ var essentialFunction = '<div class="row job-function" id="job-function-%num%"> 
 var numOfEssentialFunctions = 0;
 
 function addEssentialFunction(){
-	var formattedSection = essentialFunction.replace(/%num%/g, numOfEssentialFunctions+1);
-	numOfEssentialFunctions++;
+	var formattedSection = essentialFunction.replace(/%num%/g, $(".job-function").length+1);
 	$('#essential-job-functions-container').append(formattedSection);
 	addButtonToolTips();
 	updateDynamicallyAddedTextAreas()
