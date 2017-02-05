@@ -2,12 +2,10 @@
 	require('./fpdf/fpdf.php');
 	define("FONTSIZE", 10);
 	define("PADDING", 5);
-	require_once('Encoding.php'); 
-	use \ForceUTF8\Encoding;  // It's namespaced now.
 	
 	class PDF extends FPDF{
 
-		public $data;
+		private $data;
 		private $title = 'NON-FACULTY PERFORMANCE REVIEW';
 
 		function setData($in){
