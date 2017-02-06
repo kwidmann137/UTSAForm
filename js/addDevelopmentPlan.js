@@ -6,5 +6,5 @@ function addDevelopmentPlan(){
 	var formattedSection = developmentPlanSection.replace(/%num%/g, numOfDevelopmentPlans+1);
     numOfDevelopmentPlans++;
     $('#development-plans-container').append(formattedSection);
-    updateDynamicallyAddedTextAreas();
+    // updateDynamicallyAddedTextAreas();
 }

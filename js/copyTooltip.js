@@ -7,6 +7,7 @@ function copyTooltip(ele){
 		var oldText = commentSection.val();
 		var newText = oldText+text;
 		commentSection.val(newText);
+		commentSection.trigger('change');
 		// $(ele).reisze();
 	}else if($(ele).hasClass('supervisor-attribute-glyph')){
 		var parent = $(ele).parents('.supervisor-attribute');
@@ -16,6 +17,7 @@ function copyTooltip(ele){
 		var oldText = commentSection.val();
 		var newText = oldText+text;
 		commentSection.val(newText);
+		commentSection.trigger('change');
 		// $(ele).reisze();
 	}
 }

@@ -6,5 +6,5 @@ function addProject(){
     numOfProjects++;
     $('#projects-container').append(formattedSection);
     addButtonToolTips();
-    updateDynamicallyAddedTextAreas();
+    // updateDynamicallyAddedTextAreas();
 }
