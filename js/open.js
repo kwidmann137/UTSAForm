@@ -20,13 +20,13 @@ function openFormData(){
             var filename = resultData.file;
             currentFile = filename;
             var formData = resultData.data;
+            console.log(formData);
             try{
                 fillInForm(formData)    
             }catch(error){
                 alert("FAILED TO OPEN THE FILE");
                 $('#openModal').modal('hide');
             }
-            updateDynamicallyAddedTextAreas();
             $('#openModal').modal('hide');
             $("#userfile").val('');
 

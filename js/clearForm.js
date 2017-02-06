@@ -27,6 +27,10 @@ function clearForm(){
         }
         $(this).removeClass('incomplete');
     });
+
+    $('textarea').each(function(){
+        $(this).height('50px');
+    })
 }
 
 function promptToClear(){
