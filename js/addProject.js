@@ -2,8 +2,7 @@ var projectSection = '<div class="project row" id="project-%num%"> <div class="c
 
 var numOfProjects = 0;
 function addProject(){
-    var formattedSection = projectSection.replace(/%num%/g, numOfProjects+1);
-    numOfProjects++;
+    var formattedSection = projectSection.replace(/%num%/g, $(".project").length+1);
     $('#projects-container').append(formattedSection);
     addButtonToolTips();
     // updateDynamicallyAddedTextAreas();

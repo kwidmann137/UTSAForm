@@ -22,7 +22,6 @@ function deleteElement(ele){
 			$('.job-function-header', this).text("Job Function "+currFunction);
 			currFunction++
 		})
-		numOfEssentialFunctions--;
 		fixIDs("#essential-job-functions-container");
 	}else if($(ele).hasClass('project-close-btn')){
 		var id = $(ele).parents('.project').attr('id');
@@ -33,7 +32,6 @@ function deleteElement(ele){
 			$('.project-header', this).text("Project "+currProject);
 			currProject++
 		})
-		numOfProjects--;
 		fixIDs("#projects-container");
 	}else if($(ele).hasClass('development-plan-close-btn')){
 		var id = $(ele).parents('.development-plan').attr('id');
@@ -44,7 +42,6 @@ function deleteElement(ele){
 			$('.development-plan-header', this).text("Training/Skill "+currDevelopmentPlan);
 			currDevelopmentPlan++
 		})
-		numOfDevelopmentPlans--;
 		fixIDs("#development-plans-container");
 	}
 }

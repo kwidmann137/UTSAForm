@@ -3,8 +3,7 @@ var developmentPlanSection = '<div class="row development-plan" id="development-
 var numOfDevelopmentPlans = 0;
 
 function addDevelopmentPlan(){
-	var formattedSection = developmentPlanSection.replace(/%num%/g, numOfDevelopmentPlans+1);
-    numOfDevelopmentPlans++;
+	var formattedSection = developmentPlanSection.replace(/%num%/g, $(".development-plan").length+1);
     $('#development-plans-container').append(formattedSection);
     // updateDynamicallyAddedTextAreas();
 }

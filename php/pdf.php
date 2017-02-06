@@ -12,10 +12,6 @@
 			global $data;
 			$converted_in = iconv('UTF-8', 'ASCII//TRANSLIT', $in);
 			$data = json_decode($converted_in);
-			// echo mb_detect_encoding($in)."\n";
-			// echo mb_detect_encoding($converted_in)."\n";
-			// echo mb_detect_encoding($data->jobFunctions[0]->textareas['essential-job-function-1-text-area-1'])."\n";
-			// echo $data->jobFunctions[0]->textareas['essential-job-function-1-text-area-1'];
 		}
 
 		function Header(){

@@ -7,13 +7,8 @@ function promptToSaveEmployeePDF(){
 }
 
 function generateEmplPDF(){
-    // alert("This feature is not active yet.  Coming Soon!");
     $('#makePDFModal').modal('hide');
     createJSON();
-    // console.log(JSON.stringify(formData));
-    // window.open('php/makePDF.php');
-    // var success = false;
-    console.log(formData);
     $.ajax({
         type: 'POST',
         url: 'php/makeEmplPDF.php',
@@ -21,6 +16,7 @@ function generateEmplPDF(){
         cache: false,
         async: false,
         success: function(data){
+            console.log(data);
         	window.open('php/viewPDF.php');
         	// console.log(data);
             $('#makeEmplPDFModal').modal('hide');
