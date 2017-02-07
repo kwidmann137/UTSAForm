@@ -220,7 +220,7 @@ a{
 }
 
 textarea{
-	resize: vertical;
+	resize: none;
 }
 
 
@@ -364,10 +364,4 @@ textarea{
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-
-.animated {
-	-webkit-transition: height 0.2s;
-	-moz-transition: height 0.2s;
-	transition: height 0.2s;
 }

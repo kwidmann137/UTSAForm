@@ -159,7 +159,6 @@ function validateFormExceptButtons(){
 	// validate text areas for job functions, dev plans and projects
 	$('#essential-job-functions-container, #projects-container').on('blur', 'textarea[placeholder*="Standard"], textarea[placeholder*="Essential"], textarea[placeholder*="Special"]', function(){
 		if($(this).val().length === 0){
-			console.log("should have an error");
 			$(this).addClass('incomplete');
 			if($(this).next('small').length === 0){
 				$(this).after('<small class="error">Please fill in the field</small>')
