@@ -5,5 +5,5 @@ var numOfDevelopmentPlans = 0;
 function addDevelopmentPlan(){
 	var formattedSection = developmentPlanSection.replace(/%num%/g, $(".development-plan").length+1);
     $('#development-plans-container').append(formattedSection);
-    updateDynamicallyAddedTextAreas();
+    // updateDynamicallyAddedTextAreas();
 }

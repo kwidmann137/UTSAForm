@@ -6,5 +6,5 @@ function addEssentialFunction(){
 	var formattedSection = essentialFunction.replace(/%num%/g, $(".job-function").length+1);
 	$('#essential-job-functions-container').append(formattedSection);
 	addButtonToolTips();
-	updateDynamicallyAddedTextAreas()
+	// updateDynamicallyAddedTextAreas()
 }

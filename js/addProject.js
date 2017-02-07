@@ -5,5 +5,5 @@ function addProject(){
     var formattedSection = projectSection.replace(/%num%/g, $(".project").length+1);
     $('#projects-container').append(formattedSection);
     addButtonToolTips();
-    updateDynamicallyAddedTextAreas();
+    // updateDynamicallyAddedTextAreas();
 }
