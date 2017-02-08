@@ -26,7 +26,7 @@
         if(file_exists($file)){
                 // set the headers, so that
                 // the browser knows to expect a .txt file download.
-                header("Content-Disposition: attachment; filename=".$filename);
+                header("Content-Disposition: attachment; filename=\"$filename\"");
                 header("Content-Type: text/html; charset=utf-8");
                 header("Content-Length: " . filesize($file));
 
