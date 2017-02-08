@@ -123,7 +123,7 @@
 
         // Now try it.
         $ua=getBrowser();
-        if($ua['name'] == "Internet Explorer"){
+        if(!($ua['name'] == "Google Chrome" || $ua['name'] == "Mozilla Firefox" || $ua['name'] == 'Apple Safari')){
             ?>
                 <!-- Modal for resaving a file -->
                 <div class="modal" id="unsupportedBrowserModal" role="dialog" aria-labelledby="Warning" aria-hidden="true">
@@ -133,7 +133,7 @@
                         <h4 class="modal-title text-center makePDFModalHeader" id="myModalLabel">IMPORTANT!</h4>
                       </div>
                         <div class="modal-body">
-                            <p>It appears you are using Internet Explorer.  This browser is not supported.  Please use Chrome or Firefox.</p>
+                            <p>It appears you are using a browser other than Chrome or Firefox.  This browser is not supported.  Please use Chrome or Firefox.</p>
                       </div>
                       <div class="modal-footer">
                       </div>
