@@ -95,7 +95,7 @@ function validateFormExceptButtons(){
 	// validate name
 	$('#employee_name').on('blur', function(){
 		var value = $(this).val();
-		var isLetters = /^[a-zA-Z .]+$/.test(value);
+		var isLetters = /^[a-zA-Z .-]+$/.test(value);
 		var length = value.length;
 		if(typeof value === 'undefined' || !isLetters || length < 1){
 			$(this).addClass('incomplete');

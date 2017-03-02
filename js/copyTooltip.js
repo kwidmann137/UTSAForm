@@ -3,6 +3,7 @@ function copyTooltip(ele){
 		var parent = $(ele).parents('.attribute');
 		var attribute = $('label', parent).text();
 		var text = attributeDefinitions[attribute];
+		text = text.replace(/&quot;/g, '"');
 		var commentSection = $('textarea', parent);
 		var oldText = commentSection.val();
 		var newText = oldText+text;
@@ -13,6 +14,7 @@ function copyTooltip(ele){
 		var parent = $(ele).parents('.supervisor-attribute');
 		var attribute = $('label', parent).text();
 		var text = supervisorAttributeDefinitions[attribute];
+		text = text.replace(/&quot;/g, '"');
 		var commentSection = $('textarea', parent);
 		var oldText = commentSection.val();
 		var newText = oldText+text;
